@@ -6,9 +6,41 @@ Target domain: https://qidolab.com/
 
 This repository contains the complete static site: 18 original puzzles, optional extra steps, extreme challenges and English, Simplified Chinese, Taiwan Traditional Chinese and Spanish interfaces. All runtime scripts, styles and logos use local relative paths. No installation or compilation is needed. The entry point is `index.html` at the repository root.
 
-The approved warm-cream theme uses warm charcoal, sage and muted apricot on desktop (980px and wider). Narrow screens retain cream, midnight blue and lake blue. The appearance comparison preview remains in the personal-site repository at https://stephenjia.com/qidolab-preview/?palette=cream; its controls are not loaded by this production page.
+The approved warm-cream theme uses warm charcoal, sage and muted apricot on desktop (980px and wider). Narrow screens retain cream, midnight blue and lake blue. The earlier appearance comparison preview is archived in the original repository's history; its controls are not loaded by this production page.
 
-## Cloudflare Pages deployment from GitHub
+## Cloudflare Workers deployment from GitHub
+
+The current "Set up your application" dashboard screen creates a Worker. This repository includes `wrangler.jsonc` to serve the root directory as static assets and `.assetsignore` to exclude deployment tooling and documentation from public assets. No server-side Worker script is required.
+
+Use these settings for that screen:
+
+| Setting | Value |
+| --- | --- |
+| Repository | `SteJ20996/Qidolab` |
+| Project name | `qidolab` (lowercase; matches `wrangler.jsonc`) |
+| Production branch | `main` |
+| Build command | Leave empty |
+| Deploy command | `npx wrangler deploy` |
+| Preview command | `npx wrangler preview` (keep the current dashboard default) |
+| Enable Preview builds | On |
+| Protect with Cloudflare Access | Off |
+| Advanced settings → Path | `/` (repository root) |
+| API token | Create new token |
+| API token name | `qidolab-deploy` |
+| Variables | Leave empty |
+
+After deployment succeeds, test the provided `.workers.dev` address. Add `qidolab.com` from the Worker's **Settings > Domains & Routes > Add > Custom Domain**. Cloudflare manages the DNS record and certificate. Follow the Chinese guide for the detailed steps.
+
+Updates to the linked `main` branch deploy automatically. `_headers` retains the site's cache and ES-module response headers.
+
+Workers references:
+
+- https://developers.cloudflare.com/workers/static-assets/
+- https://developers.cloudflare.com/workers/static-assets/binding/
+- https://developers.cloudflare.com/workers/ci-cd/builds/configuration/
+- https://developers.cloudflare.com/workers/configuration/routing/custom-domains/
+
+## Alternative: Cloudflare Pages
 
 Create a new Pages project with Git integration. Use these settings:
 
@@ -43,7 +75,7 @@ First-time visitors start in English. The language menu includes English, 简体
 
 ## Progress and achievements
 
-Progress is stored in this browser for this origin. Moving from the stephenjia.com preview to qidolab.com starts a separate browser save; it does not automatically transfer previous progress.
+Progress is stored in this browser for this origin. Progress saved on an earlier stephenjia.com preview does not automatically transfer to qidolab.com.
 
 - A check marks an original puzzle as solved; a star marks its optional extra step.
 - Solving an extreme challenge earns a crown. It can be attempted before the extra step.
@@ -55,6 +87,6 @@ Question data, solvers and storage-key formats are retained from the reviewed ga
 
 ## Source provenance
 
-The initial standalone source is copied from the `qidolab/` directory of `SteJ20996/SteJ20996.github.io` at commit `39aa0958696cc9ad93eca41487cebac41afca184`. Runtime files are preserved byte for byte; this README is updated for root-level deployment. Earlier development history remains in the original repository: https://github.com/SteJ20996/SteJ20996.github.io/commits/main/qidolab/.
+The initial standalone source is copied from the `qidolab/` directory of `SteJ20996/SteJ20996.github.io` at commit `39aa0958696cc9ad93eca41487cebac41afca184`. Runtime files are preserved byte for byte; this README is updated for root-level deployment. The historical source is available at https://github.com/SteJ20996/SteJ20996.github.io/tree/39aa0958696cc9ad93eca41487cebac41afca184/qidolab/.
 
-The existing preview at https://stephenjia.com/qidolab/ remains available. Future production updates belong in this standalone repository.
+Qidolab source and deployment documentation now live exclusively in this standalone repository. The `qidolab/` and `qidolab-preview/` copies have been removed from the personal-site repository's current branch, and their former stephenjia.com preview addresses are retired. Publish this repository through Cloudflare using the matching Workers or Pages settings above.

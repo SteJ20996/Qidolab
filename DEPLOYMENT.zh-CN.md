@@ -2,7 +2,63 @@
 
 更新日期：2026-10-12。适用于独立仓库 `SteJ20996/Qidolab`。
 
-上线流程：GitHub 保存源码 → Cloudflare Pages 发布 → 绑定 qidolab.com。
+上线流程：GitHub 保存源码 → Cloudflare 发布静态网站 → 绑定 qidolab.com。
+
+## 当前截图：Workers 发布界面
+
+如果页面标题是 `Set up your application`，下面写着 `Configure your Worker project`，并出现 Deploy command、Preview command、API token，就是 Workers 发布界面。直接在这页继续即可。
+
+仓库已加入 `wrangler.jsonc` 和 `.assetsignore`，分别指定网站文件目录、排除部署工具和说明文件。网页内容与答题逻辑保持原样。
+
+### 逐项填写
+
+| 截图中的字段 | 设置 |
+| --- | --- |
+| Repository | 保持 `SteJ20996/Qidolab` |
+| Project name | 改为 `qidolab`，全部小写 |
+| Build command | 留空 |
+| Deploy command | 保持 `npx wrangler deploy` |
+| Preview command | 保持当前默认值 `npx wrangler preview` |
+| Enable Preview builds | 保持开启 |
+| Protect with Cloudflare Access | 保持关闭 |
+| Advanced settings → Path | 保持 `/`，表示仓库根目录 |
+| API token | 保持 `Create new token` |
+| API token name | 填 `qidolab-deploy` |
+| Variable name | 留空 |
+| Variable value | 留空 |
+
+Project name 中的 `Qidolab` 要改成小写 `qidolab`，这是截图里红色提示的原因。GitHub 仓库名称仍可保持 `Qidolab`。
+
+Build command 是可选项，这套网页无需编译。Deploy command 读取仓库里的 Wrangler 配置并发布静态网页。Preview command 用于非生产分支的预览，沿用当前界面的默认命令。
+
+API token 由 Cloudflare 在这个流程中自动创建；这里填写的是名称 `qidolab-deploy`。变量部分无需添加内容。
+
+向下滚动，点击页面的创建或部署按钮。如果出现分支选择，生产分支选 `main`。等待部署完成；部署失败时保存构建日志里的具体报错。
+
+### 发布后检查与绑定域名
+
+1. 打开后台实际提供的 `.workers.dev` 网址，检查 Qidolab 首页、题目和语言菜单。
+2. 打开这个 Worker 的 `Settings → Domains & Routes → Add → Custom Domain`。
+3. 输入 `qidolab.com`，点击 `Add Custom Domain`，按提示确认。
+4. Cloudflare 会配置所需 DNS 记录和证书。等待域名生效后，打开 https://qidolab.com/ ，检查能否正常显示网页且没有证书警告。
+
+正式站应能显示 18 道题。打开一两题，操作互动图、提交答案，再检查后续挑战和查看答案入口。语言菜单应包含 English、简体中文、繁體中文、Español；无痕窗口首次进入默认英文，普通窗口保留已保存的语言偏好。
+
+个人主页仓库里的 `qidolab/` 和 `qidolab-preview/` 已移除，旧的 stephenjia.com 试玩地址已停用。以后以独立仓库和 Cloudflare 发布的网址为准。旧试玩地址的浏览器进度不会自动转移到 qidolab.com。
+
+### 当前界面的常见问题
+
+| 现象 | 检查方式 |
+| --- | --- |
+| Project name 下出现红字 | 使用全部小写的 `qidolab` |
+| Missing entry-point 或找不到静态文件目录 | 确认使用更新后的 `main` 分支，根目录有 `wrangler.jsonc`，Path 为 `/` |
+| 构建命令报错 | Build command 留空；Deploy command 为 `npx wrangler deploy` |
+| 临时网址正常，正式域名打不开 | 检查 Worker 的 Domains & Routes 中是否已添加域名，以及域名、证书状态 |
+| 首次打开不是英文 | 使用无痕窗口检查；普通窗口可能保留上次语言选择 |
+
+## 另一种界面：Cloudflare Pages
+
+下面的步骤仅适用于 Pages 创建界面：该界面有 Framework preset 和 Build output directory。这两套设置分别用于各自的界面。
 
 ## 1. 确认源码已经准备好
 
@@ -67,7 +123,7 @@ qidolab.com 已在 Cloudflare 管理；Pages 项目与域名在同一个账户�
 
 在手机和电脑分别打开正式网址，检查首页、题目、语言切换与保存进度。以后把代码更新合并到这个仓库的 `main` 分支，连接的 Cloudflare Pages 项目会自动部署。
 
-原来的 https://stephenjia.com/qidolab/ 试玩链接继续保留。它和 qidolab.com 使用不同的浏览器存储空间，旧试玩进度不会自动转移到新域名。
+个人主页仓库里的 `qidolab/` 和 `qidolab-preview/` 已移除，旧的 stephenjia.com 试玩地址已停用。以后以这个独立仓库和 Cloudflare Pages 发布的网址为准。旧试玩地址和 qidolab.com 使用不同的浏览器存储空间，旧试玩进度不会自动转移到新域名。
 
 ## 常见问题
 
@@ -81,6 +137,11 @@ qidolab.com 已在 Cloudflare 管理；Pages 项目与域名在同一个账户�
 | 首次打开不是英文 | 使用无痕窗口检查；普通窗口可能保留了之前的语言选择 |
 
 ## 核对过的官方说明
+
+- [Workers 静态网站](https://developers.cloudflare.com/workers/static-assets/)
+- [Workers 静态目录与忽略文件](https://developers.cloudflare.com/workers/static-assets/binding/)
+- [Workers 构建与发布配置](https://developers.cloudflare.com/workers/ci-cd/builds/configuration/)
+- [Workers 自定义域名](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/)
 
 - [Git 仓库连接与发布](https://developers.cloudflare.com/pages/get-started/git-integration/)
 - [静态 HTML 网站发布](https://developers.cloudflare.com/pages/framework-guides/deploy-anything/)

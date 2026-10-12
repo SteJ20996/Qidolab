@@ -1,0 +1,14 @@
+# Deployment tooling and documentation are not public website assets.
+.git/
+.github/
+.wrangler/
+node_modules/
+README.md
+DEPLOYMENT.zh-CN.md
+wrangler.jsonc
+wrangler.toml
+package.json
+package-lock.json
+npm-debug.log
+.assetsignore
+.gitignore
