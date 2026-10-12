@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script src="startup.js"></script>
+<meta name="theme-color" content="#162b4a"><meta name="description" data-i18n-content="welcome.description" content="18 brain games. Try a different move, then choose whether to go further.">
+<title data-i18n="welcome.title">Qidolab · Brain games</title>
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://qidolab.com/">
+<meta property="og:type" content="website"><meta property="og:title" data-i18n-content="welcome.title" content="Qidolab · Brain games"><meta property="og:description" data-i18n-content="welcome.description" content="18 brain games. Try a different move, then choose whether to go further."><meta property="og:url" content="https://qidolab.com/">
+<script type="importmap">{"imports":{"./i18n.mjs":"./i18n.mjs?v=1.1.0","./activities.mjs":"./activities.mjs?v=1.1.0","./josephus.mjs":"./josephus.mjs?v=1.1.0","./topology.mjs":"./topology.mjs?v=1.1.0","./reflection-3d.mjs":"./reflection-3d.mjs?v=1.1.0","./brand-footer.mjs":"./brand-footer.mjs?v=1.1.0","./welcome.mjs":"./welcome.mjs?v=1.1.0","./zh-tw-copy.mjs":"./zh-tw-copy.mjs?v=1.1.0"}}</script>
+<link rel="stylesheet" href="style.css?v=1.1.0">
+<link rel="stylesheet" href="more-games.css">
+<link rel="stylesheet" href="extra-games.css">
+<link rel="stylesheet" href="explore-a.css">
+<link rel="stylesheet" href="explore-b.css">
+<link rel="stylesheet" href="explore-c.css">
+<link rel="stylesheet" href="mobile.css">
+<link rel="stylesheet" href="branches.css">
+<link rel="stylesheet" href="extremes.css">
+<link rel="stylesheet" href="brand-footer.css"><link rel="stylesheet" href="theme.css?v=1.1.0">
+</head>
+<body>
+<header class="topbar"><a class="wordmark" href="./" aria-label="qidolab 首页"><img src="assets/qidolab-lockup.svg" alt="qidolab · Quidence" width="1118" height="404"></a><div class="header-tools"><span class="edition" data-i18n="branch.edition">先玩一题，再说。</span><label class="language-control" for="language-select"><span class="sr-only">语言</span><select id="language-select" aria-label="语言"><option value="en" lang="en" selected>English</option><option value="zh-CN" lang="zh-CN">简体中文</option><option value="zh-TW" lang="zh-TW">繁體中文</option><option value="es-MX" lang="es-MX">Español</option></select></label></div></header>
+<main class="orbit-shell">
+<p class="audience-note" data-i18n="branch.audience">18 个小游戏，挑你顺眼的。卡住了？换个招再来。</p>
+<div class="orbit-stage">
+<svg class="orbit-track" aria-hidden="true" focusable="false"><ellipse cx="50%" cy="50%" rx="50%" ry="50%" /></svg>
+<nav id="activity-orbit" class="activity-nav" aria-label="选择小实验，所选实验会转到正上方">
+<a href="#water" data-activity="water" aria-current="page" style="--slot:0deg"><span class="orbit-number" aria-hidden="true">01</span><span>倒出刚刚好</span></a>
+<a href="#lights" data-activity="lights" style="--slot:20deg"><span class="orbit-number" aria-hidden="true">02</span><span>一按三盏灯</span></a>
+<a href="#coins" data-activity="coins" style="--slot:40deg"><span class="orbit-number" aria-hidden="true">03</span><span>两次找出它</span></a>
+<a href="#numbers" data-activity="numbers" style="--slot:60deg"><span class="orbit-number" aria-hidden="true">04</span><span>拆穿一个规律</span></a>
+<a href="#clock" data-activity="clock" style="--slot:80deg"><span class="orbit-number" aria-hidden="true">05</span><span>绕圈能到吗</span></a>
+<a href="#tiles" data-activity="tiles" style="--slot:100deg"><span class="orbit-number" aria-hidden="true">06</span><span>少两格的拼图</span></a>
+<a href="#sums" data-activity="sums" style="--slot:120deg"><span class="orbit-number" aria-hidden="true">07</span><span>三条边一样多</span></a>
+<a href="#bridge" data-activity="bridge" style="--slot:140deg"><span class="orbit-number" aria-hidden="true">08</span><span data-i18n="bridgeNav">一起过桥</span></a>
+<a href="#takeaway" data-activity="takeaway" style="--slot:160deg"><span class="orbit-number" aria-hidden="true">09</span><span data-i18n="takeawayNav">拿走最后一颗</span></a>
+<a href="#path" data-activity="path" style="--slot:180deg"><span class="orbit-number" aria-hidden="true">10</span><span data-i18n="pathNav">一笔走完</span></a>
+<a href="#search" data-activity="search" style="--slot:200deg"><span class="orbit-number" aria-hidden="true">11</span><span data-i18n="searchNav">缩小范围</span></a>
+<a href="#logic" data-activity="logic" style="--slot:220deg"><span class="orbit-number" aria-hidden="true">12</span><span data-i18n="logicNav">线索排座</span></a>
+<a href="#probability" data-activity="probability" style="--slot:240deg"><span class="orbit-number" aria-hidden="true">13</span><span data-i18n="probabilityNav">概率方格</span></a>
+<a href="#sorting" data-activity="sorting" style="--slot:260deg"><span class="orbit-number" aria-hidden="true">14</span><span data-i18n="sortingNav">排序线路</span></a>
+<a href="#schedule" data-activity="schedule" style="--slot:280deg"><span class="orbit-number" aria-hidden="true">15</span><span data-i18n="scheduleNav">安排工序</span></a>
+<a href="#coloring" data-activity="coloring" style="--slot:300deg"><span class="orbit-number" aria-hidden="true">16</span><span data-i18n="coloringNav">相邻异色</span></a>
+<a href="#fractions" data-activity="fractions" style="--slot:320deg"><span class="orbit-number" aria-hidden="true">17</span><span data-i18n="fractionsNav">拆分分数</span></a>
+<a href="#reflection" data-activity="reflection" style="--slot:340deg"><span class="orbit-number" aria-hidden="true">18</span><span data-i18n="reflectionNav">拓扑拼接</span></a>
+</nav>
+<div class="orbit-center" id="activity-center" tabindex="-1" role="group">
+<div id="activity-water" class="activity-view">
+<section class="intro" aria-labelledby="title">
+<p class="eyebrow"><span></span>想一想，也动动手</p>
+<h1 id="title">差一点，<span>刚刚好。</span></h1>
+<p class="premise">你有 7 L 和 4 L 两只没有刻度的水壶。<br class="mobile-break">你能在其中一个壶里留下<span class="target">恰好 5 升</span>水吗？</p>
+</section>
+<section class="playground" aria-label="水壶谜题">
+<div class="board-top"><span class="experiment-label">水壶实验</span><button id="rules-toggle" class="text-button" aria-expanded="false" aria-controls="rules">怎么玩 <span aria-hidden="true">↗</span></button></div>
+<p class="rule-reminder">每次互倒，要倒到一只空了，或另一只满了。</p>
+<div id="rules" class="rules" hidden>可以任意装满、倒空，或把水倒进另一只壶。每次互倒，都要倒到一只空了，或另一只满了。水源不限，也可以排水；不能凭眼估量。下方数字帮你记住每一步推算出的水量。</div>
+<div class="vessels">
+<div class="jug-group">
+<div class="capacity">大壶 <span>7 L</span></div>
+<div class="vessel large" role="img" id="jug0" aria-label="7 升大壶，当前 0 升"><div class="water" id="water0"><div class="water-surface"></div></div><div class="glass-shine"></div><div class="quantity" id="quantity0">0 <span>L</span></div></div>
+<div class="jug-actions"><button data-action="fill0">装满<span class="sr-only">大壶</span> <span aria-hidden="true">+</span></button><button data-action="empty0">倒空<span class="sr-only">大壶</span> <span aria-hidden="true">−</span></button></div>
+</div>
+<div class="pour-actions"><button data-action="pour01" aria-label="大壶倒入小壶"><span class="arrow" aria-hidden="true">→</span><span>大壶倒入小壶</span></button><button data-action="pour10" aria-label="小壶倒入大壶"><span class="arrow" aria-hidden="true">←</span><span>小壶倒入大壶</span></button></div>
+<div class="jug-group">
+<div class="capacity">小壶 <span>4 L</span></div>
+<div class="vessel small" role="img" id="jug1" aria-label="4 升小壶，当前 0 升"><div class="water" id="water1"><div class="water-surface"></div></div><div class="glass-shine"></div><div class="quantity" id="quantity1">0 <span>L</span></div></div>
+<div class="jug-actions"><button data-action="fill1">装满<span class="sr-only">小壶</span> <span aria-hidden="true">+</span></button><button data-action="empty1">倒空<span class="sr-only">小壶</span> <span aria-hidden="true">−</span></button></div>
+</div>
+</div>
+<div class="status-row"><p id="status" role="status" aria-live="polite">先装满任意一只壶，看看会发生什么。</p><div class="history-controls"><button id="undo" class="text-button" disabled>↶ 撤回</button><button id="reset" class="text-button" disabled>重来</button></div></div>
+</section>
+<section id="success" class="success" hidden aria-labelledby="success-title"><span class="success-mark" aria-hidden="true">✓</span><div><p class="eyebrow">就是这个瞬间</p><h2 id="success-title">5 升。你把“差一点”变成了刚刚好。</h2><p>没有刻度，水壶之间的差也能帮你测量。</p><button id="why-toggle" class="text-button" aria-expanded="false" aria-controls="why">为什么这件事做得到？ ↓</button><div id="why" hidden><p>每次互倒，真正有用的是“还装得下多少”。把一只壶的剩余空间，当作另一只壶的尺子，就能留下原本没有标出来的水量。</p><p>例如，7 升大壶倒满 4 升小壶，会剩下 3 升。倒空小壶，再把这 3 升移进小壶，小壶就只差 1 升才满。这个“差 1 升”，又能帮你量出新的水量。</p><p class="reflection">再想一想：如果换成 8 升和 4 升的壶，仍然只允许装满、倒空、互倒，还能量出 5 升吗？</p><button id="reveal-insight" class="text-button">看看这个问题的解释</button><p id="insight" hidden>不能。从两个空壶开始，这三种操作都只能让每只壶里的水量保持为 4 的倍数，所以到不了 5。这也是一个有力的思路：不只找下一步，也找“每一步都不会改变的规律”。</p></div></div></section>
+<div class="below-board"><section class="hint-section" aria-label="可选提示"><button id="hint" class="hint-button"><span aria-hidden="true">✧</span> 给我一点灵感</button><div id="hint-content" hidden><p id="hint-text"></p><button id="hint-next" class="text-button">再给一点提示 →</button></div></section><details class="history"><summary>我的尝试 <span id="step-count">0 步</span></summary><ol id="history-list"><li class="empty-history">还没有尝试。每一步都可以撤回。</li></ol></details></div>
+<p class="quiet-note">不计时。不用一次想对。<span>尽管试试。</span></p>
+</div>
+<section id="activity-lights" class="activity-view" hidden aria-labelledby="lights-title">
+<div class="intro"><p class="eyebrow"><span></span>每一下，都有连锁反应</p><h1 id="lights-title">一按，<span>三盏灯。</span></h1><p class="premise">六盏灯围成一个圈。<br>试着把它们<span class="target">全部熄灭</span>。</p></div>
+<div class="playground mini-board"><div class="board-top"><span class="experiment-label">翻灯实验</span><span class="board-caption">亮 / 暗，只有两种状态</span></div><p class="rule-reminder">点一盏灯，它自己和左右相邻的灯都会改变状态：亮变暗，暗变亮。灯 1 和灯 6 也相邻。</p>
+<div id="lights-ring" role="group" class="lights-ring" aria-label="六盏环形排列的灯"></div>
+<div class="status-row"><p id="lights-status" role="status" aria-live="polite"></p><div class="history-controls"><button id="lights-undo" class="text-button">↶ 撤回</button><button id="lights-reset" class="text-button">重来</button></div></div></div>
+<div class="mini-below"><button id="lights-hint" class="hint-button">✧ 给我一点灵感</button><p id="lights-hint-text" class="hint-copy" hidden></p></div>
+<div id="lights-insight" class="discovery" hidden><h2>暗下来的那一刻，规律亮了。</h2><p>同一盏灯按两次，等于没有按。先按哪一盏也不影响最后的结果。你可以把一串尝试，整理成“哪些灯按了奇数次”。</p></div>
+<p class="quiet-note">可以撤回。<span>把连锁反应变成你的工具。</span></p>
+</section>
+<section id="activity-coins" class="activity-view" hidden aria-labelledby="coins-title">
+<div class="intro"><p class="eyebrow"><span></span>多一次思考，少一次称量</p><h1 id="coins-title">两次，<span>找出它。</span></h1><p class="premise">8 枚看起来一样的硬币，恰好 1 枚更重。<br>用天平<span class="target">最多称 2 次</span>，确定是哪一枚。</p></div>
+<div class="playground mini-board"><div class="board-top"><span class="experiment-label">天平实验</span><span id="coins-count" class="board-caption">还有 2 次称量</span></div><p class="rule-reminder">先选“放左盘”或“放右盘”，再点硬币来移动它。两盘枚数相同、都不为空时才能称量。确定后，在下方选出重币，再验证判断。</p>
+<div id="coin-destinations" class="placement-tabs" role="group" aria-label="硬币放到哪里"><button data-pan="left" aria-pressed="true">放左盘</button><button data-pan="right" aria-pressed="false">放右盘</button><button data-pan="table" aria-pressed="false">移回桌面</button></div>
+<div id="coin-tray" role="group" class="coin-tray" aria-label="选择要移动的硬币"></div>
+<div class="balance" role="group" aria-label="天平"><div class="pan"><span>左盘</span><strong id="coins-left">空</strong></div><span id="balance-symbol" class="balance-symbol" aria-hidden="true">＝</span><div class="pan"><span>右盘</span><strong id="coins-right">空</strong></div></div>
+<div class="weigh-actions"><button id="coins-weigh" class="primary-button">称一下</button><button id="coins-clear" class="text-button">全部移回桌面</button></div>
+<div class="status-row"><p id="coins-status" role="status" aria-live="polite"></p><button id="coins-new" class="text-button">换一轮</button></div></div>
+<div class="coin-evidence"><p id="coins-candidates"></p><ol id="coins-log"></ol></div>
+<form id="coins-answer" class="answer-form"><label for="coin-choice">我能确定，更重的是</label><select id="coin-choice" name="coin" aria-label="我能确定，更重的是"><option value="">选一枚</option></select><button id="coins-identify" class="hint-button" type="submit">验证我的判断</button></form>
+<div class="mini-below"><button id="coins-hint" class="hint-button">✧ 给我一点灵感</button><p id="coins-hint-text" class="hint-copy" hidden></p></div><div id="coins-insight" class="discovery" hidden><h2>你找到的，是一条确定的线索。</h2><p>天平每次可以给出三种结果：左重、右重、平衡。第一次把 8 枚分成 3、3、2 三组；第二次就只需在最多 3 枚中，拿 1 枚对 1 枚。每个结果，都把可能性缩小。</p></div>
+<p class="quiet-note">每一轮只有一枚重币。<span>找证据，比猜中更有意思。</span></p>
+</section>
+<section id="activity-numbers" class="activity-view" hidden aria-labelledby="numbers-title">
+<div class="intro"><p class="eyebrow"><span></span>看起来总是这样，真的总是吗？</p><h1 id="numbers-title">拆穿<span>一个规律。</span></h1><p class="premise">有人说：任意非负整数 n，代入这个式子，<br>得到的<span class="target">总是质数</span>。请找一个 n，让结果不是质数。</p></div>
+<div class="playground mini-board"><div class="board-top"><span class="experiment-label">反例实验</span><span class="board-caption">一个反例，就足够</span></div><div class="formula" role="math" aria-label="n 的平方加 n 加 11">n² + n + <span>11</span></div><p class="formula-note">质数：大于 1，且正因数只有 1 和它本身。</p>
+<form id="number-form" class="number-form"><label for="number-input">试一个 n</label><input id="number-input" name="n" type="text" inputmode="numeric" autocomplete="off" value="0" aria-describedby="number-range" maxlength="6"><button class="primary-button" type="submit">代入看看 →</button></form><p id="number-range" class="formula-note">输入 0–10000 的整数。范围内逐一试除，给出精确结果。</p><div class="status-row"><p id="number-status" role="status" aria-live="polite">从 0 开始也好，跳着试也好。别急着相信这个规律。</p><button id="number-reset" class="text-button">清空尝试</button></div></div>
+<div id="number-result" class="number-result" hidden></div><div class="mini-below"><button id="number-hint" class="hint-button">✧ 给我一点灵感</button><p id="number-hint-text" class="hint-copy" hidden></p></div>
+<details class="number-history"><summary>我的代入记录 <span id="number-count">0 次</span></summary><ol id="number-log"></ol></details><div id="number-insight" class="discovery" hidden><h2>一个反例，让“总是”停了下来。</h2><p>再多成功的例子，也不能证明“所有整数都成立”。但只要找到一个不成立的例子，就能推翻这句“总是”。</p><p>想再深一点：n² + n = n(n + 1)。什么时候，这一部分也能被 11 整除？</p></div><p class="quiet-note">不是猜答案。<span>亲手检验一个说法。</span></p>
+</section>
+</div>
+</div>
+<p class="orbit-invitation" data-i18n="branch.orbitGuide">选一题开玩。拿下原题后，“再走一步”和“挑战极限”就在外圈等你。想先逛别题也行。</p>
+<p id="completion-guide" class="quiet-note"></p>
+</main>
+<section class="brand-bridge" id="brand-bridge" data-brand-target="quidence" data-bridge-theme="mint" data-no-translate aria-labelledby="bridge-title"><a class="bridge-inner" href="https://www.quidence.com/" aria-labelledby="bridge-title bridge-name" aria-describedby="bridge-description"><div class="bridge-copy"><p class="bridge-achievement" hidden aria-live="polite"></p><h2 class="bridge-title" id="bridge-title">想看看自己对一门学科掌握得怎样？</h2><p class="bridge-description" id="bridge-description">到 Quidence Education 选一门学科，用互动题和项目检验理解，看看哪些地方值得再练一练。</p><p class="bridge-language">目前支持 English · Español。</p></div><div class="bridge-brand"><span class="bridge-name" id="bridge-name">Quidence Education</span><img class="bridge-logo" src="assets/quidence-logo.svg" alt="" aria-hidden="true"><span class="bridge-subbrand">Education</span><span class="bridge-action"><span class="bridge-action-label">进入 Quidence Education</span><span class="bridge-action-arrow" aria-hidden="true">↗</span></span></div></a></section>
+<footer><span>qidolab / 小小的发现</span><span data-i18n="branch.footer">十八个小游戏 · 你来选下一招</span></footer>
+<script type="module" src="app.mjs"></script>
+<script type="module" src="more-games.mjs"></script>
+<script type="module" src="extra-games.mjs"></script>
+<script type="module" src="explore-a.mjs"></script>
+<script type="module" src="explore-b.mjs"></script>
+<script type="module" src="explore-c.mjs"></script>
+<script type="module" src="extremes.mjs"></script>
+<script type="module" src="branches.mjs"></script>
+<script type="module" src="activities.mjs?v=1.1.0"></script>
+<script type="module" src="orbit-layout.mjs"></script>
+<script type="module" src="mobile-navigation.mjs"></script>
+<script type="module" src="footer.mjs"></script><script type="module" src="welcome.mjs?v=1.1.0"></script></body></html>

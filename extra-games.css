@@ -1,0 +1,35 @@
+/* Original graphics and scoped layout for bridge, takeaway and directed-path games. */
+.extra-game .eyebrow>.extra-eyebrow-copy{display:inline;width:auto;height:auto;margin:0;background:none;border-radius:0;vertical-align:baseline}
+.extra-game .board-top{gap:14px}.extra-game .board-caption{text-align:right;line-height:1.5;font-variant-numeric:tabular-nums}
+.extra-game .status-row{align-items:center}.extra-game .status-row p{min-width:0}.extra-game .history-controls{gap:14px;flex-wrap:wrap;justify-content:flex-end}
+.extra-game button:focus-visible{outline:3px solid #138777;outline-offset:4px}.extra-game .playground button:focus-visible{outline-color:#e7c77d}
+.extra-action-row{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin:17px 0 21px}
+.extra-action-row .primary-button{min-height:46px;padding:12px 19px;font-size:12px}
+.extra-history{margin:18px 0;color:#698075;font-size:12px;line-height:1.8}
+.extra-history summary{cursor:pointer;min-height:44px;padding:10px 0}.extra-history summary>span+span{margin-left:10px;color:#8a9b8c;font-size:11px}
+.extra-history ol{margin:8px 0;max-height:none;overflow:visible;padding-left:26px}.extra-history li{padding:5px 0;border-bottom:1px solid #dce4d8}.extra-history>p{font-size:11px;color:#8a9b8c}
+.extra-game .quiet-note{line-height:1.8}
+.bridge-scene{display:grid;grid-template-columns:minmax(0,1fr) 60px minmax(0,1fr);align-items:stretch;max-width:480px;margin:24px auto 8px;gap:6px}
+.bridge-bank{border:1px solid #486c60;border-radius:20px;padding:12px 10px;background:linear-gradient(160deg,#b5e8d20a,#b5e8d202);min-width:0}
+.bridge-bank-heading{display:flex;align-items:center;flex-direction:column;gap:8px;min-height:52px;color:#b8cbbb;text-align:center;font-size:11px;line-height:1.35}
+.bridge-lamp{display:flex;align-items:center;justify-content:center;gap:5px;color:#f3d89d;font-size:9px;line-height:1.3}
+.bridge-lamp:before{content:'';display:block;flex:none;width:7px;height:10px;border:1px solid #f3d89d;border-radius:3px 3px 2px 2px;background:#f3d89d55;box-shadow:0 0 11px #f3d89d55}
+.bridge-people{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-content:start;gap:9px;min-height:116px}
+.bridge-person{display:flex;align-items:center;justify-content:center;gap:4px;min-width:0;min-height:49px;padding:8px 3px;border:1px solid #8eb99f;border-radius:13px;background:#b5e8d214;color:#d7e7c9;font-size:12px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.bridge-person:before{content:'';width:8px;height:18px;flex:none;background:radial-gradient(circle at 50% 4px,#c7ddbd 3px,transparent 3.5px),radial-gradient(ellipse at 50% 18px,#c7ddbd 5px,transparent 5.5px);opacity:.75}
+.bridge-person[aria-pressed=true]{border-color:#f5dfa6;background:#e8d39b;color:#183b36;box-shadow:0 0 0 2px #e8d39b26}
+.bridge-person[aria-pressed=true]:before{filter:brightness(.45)}
+.bridge-person:disabled{opacity:.57}.bridge-art{display:block;width:100%;height:100%;min-height:185px;fill:none;pointer-events:none}
+.bridge-water{stroke:#80b7b3;stroke-width:2;opacity:.25}.bridge-rope{stroke:#799c88;stroke-width:2}.bridge-planks{stroke:#b9c4a4;stroke-width:7;stroke-linecap:round}
+.takeaway-pile{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:12px;max-width:360px;margin:28px auto 24px;padding:18px 14px;border:1px solid #41665e;border-radius:20px;background:radial-gradient(ellipse at center,#9ccf9b08,transparent)}
+.takeaway-token{display:block;width:100%;aspect-ratio:1;border-radius:45% 55% 48% 52%;border:1px solid #d7e4b9;background:radial-gradient(circle at 30% 24%,#e6ebc8,#bcd39f 65%,#87af89);box-shadow:0 3px 4px #07202455,inset 0 1px 2px #ffffd650;transform:rotate(-8deg)}
+.takeaway-token:nth-child(3n){transform:rotate(28deg);border-radius:52% 45% 54% 48%}.takeaway-token:nth-child(3n+1){transform:rotate(11deg)}
+.takeaway-token.is-taken{border:1px dashed #55776a;background:transparent;box-shadow:none;opacity:.3}
+.path-board{position:relative;aspect-ratio:500/340;width:100%;max-width:500px;margin:15px auto 20px;isolation:isolate}
+.path-graph{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+.path-edge{fill:none;stroke:#9bb5a6;stroke-width:3;stroke-linecap:round}.path-edge.is-used{stroke:#e8d39b;stroke-width:4;stroke-dasharray:7 5}
+.path-node{position:absolute;transform:translate(-50%,-50%);display:grid;place-items:center;width:45px;height:45px;border-radius:50%;border:1px solid #668d7a;background:#193b3e;color:#adccba;font-size:18px;font-weight:500;padding:0;box-shadow:0 0 0 5px #102e35}
+.path-node.is-available{background:#c0dec4;border-color:#c0dec4;color:#173a35}.path-node[aria-pressed=true]{background:#e8d39b;border:2px solid #f5e9bd;color:#183b36;box-shadow:0 0 0 5px #e8d39b20}
+.path-node:disabled{opacity:1}
+@media(max-width:560px){.extra-game .status-row{flex-wrap:wrap;gap:0;padding-bottom:8px}.extra-game .history-controls{margin-left:auto}.extra-game .board-top{align-items:flex-start}.extra-game .board-caption{font-size:10px}.bridge-scene{grid-template-columns:minmax(0,1fr) 42px minmax(0,1fr);gap:3px;margin-top:18px}.bridge-bank{padding:12px 7px;border-radius:16px}.bridge-people{gap:7px}.bridge-person{font-size:11px;min-height:48px;gap:3px}.takeaway-pile{gap:10px;padding:15px 12px}.extra-action-row{gap:8px}.extra-action-row .primary-button{padding:12px 15px}.path-node{width:44px;height:44px;font-size:17px}.path-board{margin-top:19px;margin-bottom:24px}}
+@media(max-width:380px){.bridge-scene{grid-template-columns:minmax(0,1fr) 30px minmax(0,1fr)}.bridge-person:before{display:none}.bridge-person{font-size:11px}.bridge-people{gap:5px}.bridge-bank{padding-inline:5px}.bridge-bank-heading{font-size:10px}.bridge-lamp{font-size:8px}.takeaway-pile{gap:8px;padding:14px 11px}.extra-action-row .primary-button{padding:12px 10px}.path-node{width:42px;height:42px}.path-edge{stroke-width:4}.path-edge.is-used{stroke-width:5}}

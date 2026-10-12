@@ -1,0 +1,50 @@
+/* The selected parent is at twelve o'clock; its child extends along that radius. */
+.orbit-stage{--branch-growth:max(0px,calc((var(--orbit-label-height,88px) - 88px)/2));margin-top:calc(84px + var(--branch-growth))}
+.audience-note{max-width:960px;margin:0 auto;color:#4a6358;font-size:12px;line-height:1.8;text-align:center;padding:8px 12px}
+.orbit-extension{position:absolute;left:50%;top:calc(var(--orbit-inset-y) - 100px - var(--branch-growth));transform:translateX(-50%);z-index:4;width:176px;max-width:100%;height:44px}
+.outer-connector{position:absolute;left:50%;top:44px;height:34px;border-left:1px dashed #789181;pointer-events:none}
+.outer-next{display:flex;align-items:center;justify-content:center;width:100%;height:44px;border:1px solid #708d7c;border-radius:24px;background:#edf4e9;color:#24493e;text-decoration:none;font-size:12px;line-height:1.3;text-align:center;padding:5px 10px}
+.outer-next[aria-current]{background:#dcebd9;border-color:#315e4c}
+.next-invite{margin-top:22px;padding:16px 18px;border:1px solid #cbdcc8;border-radius:14px;background:#f0f5ec;font-size:13px;line-height:1.75}
+.next-invite p{margin:0 0 8px;color:#345746}
+.next-actions{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.next-link{display:inline-flex;align-items:center;min-height:44px;color:#246b57;text-decoration:none;font-weight:500}
+.activity-nav a{height:auto;padding-inline:21px}
+.activity-nav a.is-completed .orbit-number::after{content:none}
+.activity-nav a::before,.activity-nav a::after{position:absolute;top:50%;transform:translateY(-50%);width:14px;font-size:13px;line-height:1;color:#345746;letter-spacing:0}
+.activity-nav a.is-completed::before{content:"✓";left:5px}
+.activity-nav a.has-branch-star::after{content:"★";right:5px}
+.success-invitation{position:fixed;inset:0;margin:auto;width:calc(100% - 32px);max-width:430px;height:fit-content;max-height:calc(100dvh - 32px);padding:0;border:1px solid #a9c1ae;border-radius:24px;background:#f6f8ef;color:#24493e;box-shadow:0 18px 70px #102e353d;z-index:20}
+.success-invitation::backdrop{background:#102e3559;backdrop-filter:blur(3px)}
+.success-invitation-card{padding:28px}
+.invitation-symbol{display:grid;place-items:center;width:38px;height:38px;background:#dcebd5;border-radius:50%;color:#285c44;font-size:23px;margin-bottom:14px}
+.success-invitation h2{font-size:23px;font-weight:500;line-height:1.5;margin:0 0 10px}
+.success-invitation p{font-size:14px;line-height:1.85;color:#456252;margin:0 0 20px}
+.success-invitation-actions{display:grid;gap:10px}
+.invitation-later{border:1px solid #bccdbc;border-radius:10px;min-height:46px;padding:10px 16px;background:transparent;color:#385d48;font:inherit;font-size:13px;line-height:1.7}
+.branch-complete{font-size:13px;color:#285c44;background:#e3efd9;padding:12px 16px;border-radius:10px;line-height:1.8}
+.sorting-example{font-size:12px;line-height:1.9;color:#bed8c8;margin:14px 0}
+.branch-back{display:inline-flex;align-items:center;min-height:44px;color:#345746;text-decoration:none;font-size:13px;margin-bottom:12px}
+.branch-view h1{font-size:28px;line-height:1.45;overflow-wrap:anywhere}
+.branch-view .premise{line-height:1.9}
+.branch-quiet{color:#4e665a;font-size:12px;line-height:1.8;margin:14px 0}
+.branch-card{padding:20px;margin:20px 0;border:1px solid #cbdcc8;border-radius:16px;background:#edf3e9;min-width:0}
+.branch-view h2{font-size:16px;line-height:1.75;font-weight:500;margin:0 0 12px}
+.branch-options{display:grid;gap:9px;margin:16px 0}
+.branch-options button{font:inherit;text-align:left;min-height:48px;line-height:1.75;font-size:13px;padding:10px 14px;color:#345746;border:1px solid #b3c9b5;background:#fbfcf8;border-radius:10px}
+.branch-options button[aria-pressed=true]{border-color:#306e55;background:#dcecd8;box-shadow:inset 3px 0 #306e55}
+.branch-button{font:inherit;font-size:13px;line-height:1.6;min-height:46px;padding:11px 18px;border:0;border-radius:10px;background:#244e41;color:#f0f8e9}
+.branch-lines{white-space:pre-line;color:#345746;font-size:13px;line-height:1.9;overflow-wrap:anywhere;margin:0}
+.branch-evidence{background:#e8f0e4}
+#branch-message{font-size:13px;color:#345746;line-height:1.8;margin:16px 0}
+.branch-record{margin:24px 0;padding-top:20px;border-top:1px solid #ccd9c9;color:#345746;font-size:13px;line-height:1.8}
+.branch-record dl{display:grid;grid-template-columns:1fr;gap:6px;margin:12px 0}
+.branch-record dt{color:#4e665a;font-size:12px}.branch-record dd{margin:0 0 8px;overflow-wrap:anywhere}
+.branch-past{font-size:12px;color:#4e665a;line-height:1.9;margin:20px 0}.branch-past summary{min-height:44px;cursor:pointer}.branch-past ol{padding-left:20px}
+.branch-diagram{display:grid;grid-template-columns:repeat(4,1fr);width:min(100%,260px);margin:20px auto;gap:3px}
+.branch-tile{aspect-ratio:1;display:grid;place-items:center;border:1px solid #7b9180;background:#365949;color:#f3f8ed;font-size:22px}
+.branch-tile.light{background:#edf2df;color:#345746}.branch-tile.missing{border:1px dashed #8a9d87;background:transparent;color:#66785c}.branch-tile.isolated{outline:3px solid #b36b38;outline-offset:-3px}
+.branch-weight{padding:8px 4px;text-align:center;background:#edf2e8;border:1px solid #b3c9b5;white-space:pre-line;font-size:12px;color:#345746;line-height:1.7}.branch-weight.in-event{background:#d2e6c7;border-color:#3a7956}
+@media(max-width:979px){.branch-card{padding:16px}.branch-view h1{font-size:26px}.audience-note{font-size:11px;text-align:left;padding-inline:0}}
+@media(prefers-reduced-motion:no-preference){.next-invite{animation:gentle-invite .3s ease-out}@keyframes gentle-invite{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}}
+.chili-ring{margin:18px 0}.chili-ring h3{font-size:16px;font-weight:500;color:#246b59}.chili-ring p{font-size:13px;line-height:1.8;overflow-wrap:anywhere}.chili-ring svg{display:block;width:100%;max-width:520px;height:auto;margin:8px auto}.chili-controls{display:flex;gap:9px;flex-wrap:wrap;margin:14px 0}.chili-controls button{min-height:44px;border:1px solid #739380;border-radius:10px;color:#215745;background:#f2f6ee;padding:10px 14px;font-size:13px;line-height:1.5}.chili-controls button:focus-visible{outline:3px solid #138777;outline-offset:3px}.chili-controls button:disabled{opacity:.55}.chili-ring summary{cursor:pointer;min-height:44px;padding:12px 0;font-size:13px;line-height:1.6}.chili-alive{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:5px;margin:10px 0}.chili-alive span{text-align:center;font-size:13px;line-height:2;border:1px solid #c7d7c8;border-radius:5px;color:#215745}

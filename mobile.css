@@ -1,0 +1,85 @@
+/* Phone/tablet composition only. The accepted desktop starts at 980px. */
+.mobile-back{display:none}
+@media(max-width:979px){
+  body{padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right);padding-bottom:env(safe-area-inset-bottom)}
+  .topbar{padding:12px;gap:8px;flex-wrap:wrap}
+  .topbar .edition{display:none}.wordmark{padding:0;width:300px}
+  .header-tools{min-width:0;margin-left:auto}.language-control{min-width:0}
+  .language-control select,#language-select{font-size:16px;min-height:44px;width:164px;max-width:100%;padding-left:10px;padding-right:29px}
+  .language-control::after{right:12px}
+  .orbit-shell{padding:0 12px 24px;max-width:760px}
+  .orbit-stage{--orbit-inset-x:56px;--orbit-inset-y:48px;--orbit-nav-height:933px;min-width:0;width:100%;height:auto;padding-top:calc(var(--orbit-nav-height) + 12px)}
+  .orbit-track{height:calc(var(--orbit-nav-height) - 2*var(--orbit-inset-y))}
+  .activity-nav{height:var(--orbit-nav-height);transition:none}
+  .activity-nav a{left:calc(50% + (50% - var(--orbit-inset-x))*sin(var(--mobile-slot)));top:calc(50% - (50% - var(--orbit-inset-y))*cos(var(--mobile-slot)));width:108px;height:84px;min-height:84px;padding:6px;gap:4px;font-size:13px;line-height:1.3;letter-spacing:0;overflow-wrap:anywhere;transition:none}
+  .orbit-number{font-size:10px}
+  .orbit-center{position:relative;inset:auto;transform:none;width:100%;max-width:700px;height:auto;max-height:none;overflow:visible;padding:0 0 20px;margin:auto;scroll-margin-top:12px}
+  .mobile-back{display:inline-flex;align-items:center;justify-content:center;min-height:44px;max-width:100%;margin:0 0 20px;border:1px solid #cddccd;border-radius:24px;padding:10px 16px;background:#edf2e9;color:var(--ink);font-size:14px;white-space:normal}
+  .orbit-center h1,html:not([lang=zh-CN]) .orbit-center h1{font-size:30px;overflow-wrap:anywhere}
+  .orbit-center .premise{font-size:14px}.orbit-center .eyebrow{font-size:11px;line-height:1.7;letter-spacing:1px}
+  .orbit-center .playground{padding:18px 14px 0;overflow:visible}
+  .orbit-center button,.orbit-center summary{min-height:44px;min-width:44px}
+  .orbit-center button{white-space:normal;overflow-wrap:anywhere}
+  .orbit-center .text-button{font-size:13px;line-height:1.55}
+  .orbit-center input,.orbit-center select,.orbit-center textarea{font-size:16px;max-width:100%;scroll-margin-block:80px}
+  .orbit-center .thoughts textarea{font-size:16px}
+  .orbit-center .thoughts-helper,.orbit-center .thoughts-status{font-size:12px}
+  .orbit-center .board-top{gap:12px;align-items:flex-start;flex-wrap:wrap}
+  .orbit-center .experiment-label,.orbit-center .board-caption{font-size:12px;line-height:1.6;letter-spacing:.4px}
+  .orbit-center .board-caption{margin-left:auto;text-align:right}
+  .orbit-center .rule-reminder,.orbit-center .rules,.orbit-center .status-row p,.orbit-center .formula-note{font-size:13px;line-height:1.8}
+  .orbit-center .status-row{align-items:flex-start;flex-direction:column;gap:0;padding:12px 0}
+  .orbit-center .status-row p{margin:0;overflow-wrap:anywhere}
+  .orbit-center .history-controls{align-self:flex-end;flex-wrap:wrap;justify-content:flex-end;gap:16px;max-width:100%}
+  .orbit-center .vessels{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px 20px;align-items:end}
+  .orbit-center .jug-group{min-width:0}.orbit-center .jug-group:last-child{grid-column:2;grid-row:1}
+  .orbit-center .pour-actions{grid-column:1/-1;grid-row:2;display:grid;grid-template-columns:1fr 1fr;padding-top:0;gap:10px}
+  .orbit-center .pour-actions button{flex-direction:row;font-size:13px;padding:10px 8px;line-height:1.5}
+  .orbit-center .jug-actions{width:100%;gap:6px}.orbit-center .jug-actions button{padding:8px 3px;font-size:12px}
+  .orbit-center .jug-actions button span[aria-hidden]{display:none}
+  .orbit-center .capacity{font-size:13px}.orbit-center .vessel{height:170px}.orbit-center .vessel.small{height:124px}
+  .orbit-center .below-board{grid-template-columns:1fr;gap:14px}.history summary{text-align:left}
+  .orbit-center .hint-button{font-size:13px;line-height:1.6}.orbit-center .hint-copy{font-size:14px}
+  .orbit-center .quiet-note{font-size:12px;line-height:1.8}.quiet-note span{display:block;margin:0}
+  .orbit-center .lights-ring{width:190px;height:190px;margin:44px auto}.orbit-center .light-node{width:56px;height:56px;font-size:12px}
+  .orbit-center .placement-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+  .orbit-center .placement-tabs button{font-size:12px;padding:9px 5px;line-height:1.4;min-width:0}
+  .orbit-center .coin-tray{grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;max-width:320px}
+  .orbit-center .coin{font-size:11px;width:100%;max-width:64px;min-height:44px;justify-self:center;padding:5px}
+  .orbit-center .balance{gap:10px}.orbit-center .pan{min-width:0;padding:10px 6px}
+  .orbit-center .weigh-actions{gap:10px;flex-wrap:wrap}.orbit-center .answer-form{gap:10px}.answer-form label{width:100%}
+  .orbit-center .number-form{flex-wrap:wrap;gap:10px}.orbit-center .number-form label{width:100%;text-align:center;font-size:14px}
+  .orbit-center .number-form input{width:90px}.orbit-center .number-form .primary-button{padding-inline:12px}
+  .orbit-center .number-result{padding:18px 14px;overflow-wrap:anywhere}
+  .orbit-center .clock-layout{flex-direction:column;gap:8px}.orbit-center .clock-face{--clock-radius:88px;width:224px;height:224px;flex-basis:224px}
+  .orbit-center .clock-point{width:32px;height:32px;font-size:13px}
+  .orbit-center .clock-actions{width:100%;display:flex;flex-direction:row;flex-wrap:wrap;justify-content:center;gap:8px}
+  .orbit-center .clock-actions .primary-button{flex:1;font-size:13px;padding:12px 8px}.orbit-center .clock-actions .more-proof-button{width:100%}
+  .orbit-center .more-options button{font-size:12px;line-height:1.5;padding:9px 10px}
+  .orbit-center .tiles-board{width:100%;max-width:257px}.orbit-center .tile-cell{min-width:44px;min-height:44px}
+  .orbit-center .sums-board{width:100%;max-width:290px;height:auto;aspect-ratio:320/250}.orbit-center .sum-node{width:44px;height:44px;font-size:21px}
+  .orbit-center .sums-totals{gap:6px}.orbit-center .sums-totals>div{flex-direction:column;gap:5px;padding:8px 4px}.orbit-center .sums-totals span{font-size:11px}
+  .orbit-center .bridge-scene{grid-template-columns:minmax(0,1fr) 30px minmax(0,1fr);gap:4px}
+  .orbit-center .bridge-bank{padding:10px 5px}.orbit-center .bridge-people{grid-template-columns:1fr;gap:8px}
+  .orbit-center .bridge-person{font-size:13px;min-height:44px}.orbit-center .bridge-bank-heading{font-size:12px}.orbit-center .bridge-lamp{font-size:11px}
+  .orbit-center .path-node{width:44px;height:44px}.orbit-center .path-board{width:calc(100% - 8px);margin-inline:auto}
+  .orbit-center .extra-action-row .primary-button{font-size:13px;line-height:1.5}
+  .orbit-center .discovery,.orbit-center .success{padding:18px 14px}.orbit-center .discovery p,.orbit-center .success p{font-size:14px;overflow-wrap:anywhere}
+  .orbit-center .history,.orbit-center .number-history,.orbit-center .more-history,.orbit-center .extra-history{font-size:13px;overflow-wrap:anywhere}
+  .orbit-invitation{line-height:1.8;font-size:12px}.orbit-invitation span{display:block;margin:0}
+  footer{flex-wrap:wrap;gap:12px;padding:20px 16px;font-size:10px;line-height:1.6}
+}
+@media(max-width:360px){
+  .orbit-stage{--orbit-inset-x:48px}
+  .activity-nav a{width:96px;font-size:12px}
+}
+
+/* Whole light-state words stay readable, including Spanish. */
+@media(max-width:979px){.orbit-center .light-node{overflow-wrap:normal;word-break:normal;font-size:10px;padding:2px}.orbit-center .light-node::first-line{line-height:1.2}}
+@media(max-width:120px){.orbit-stage{--orbit-inset-x:0px}.activity-nav a{max-width:100%}}
+
+/* Give the enlarged lockup its own row on phones, leaving the full language control tappable. */
+@media(max-width:520px){
+  .topbar{row-gap:16px}
+  .header-tools{width:100%;justify-content:flex-end}
+}
