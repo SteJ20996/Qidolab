@@ -65,6 +65,14 @@ Official references:
 - https://developers.cloudflare.com/pages/configuration/build-configuration/
 - https://developers.cloudflare.com/pages/configuration/custom-domains/
 
+## Qidoball · Echo Court
+
+Play the entertainment game at https://qidolab.com/qidoball/ once this revision is deployed. It includes endless solo play, same-side cooperation, wall practice and local two-player duels, with English, Simplified Chinese and Taiwan Traditional Chinese interfaces.
+
+The five files in `qidoball/` are self-contained static assets. Visitors need no account; scripts, styles, icons and sound use no external runtime service, CDN or remote font. The game uses the same existing Cloudflare deployment as Qidolab. Regional and institutional firewall access still depends on the visitor's network.
+
+This release copies the reviewed Echo Court source at commit `3989645d28ea499180ccbda7687d27245526089c`, including the compact racket and reachable back-court baseline. Later game updates should replace the five files together to keep the rendering and physics versions aligned.
+
 ## Local preview
 
 From the repository root, run `python3 -m http.server 8080` and open http://localhost:8080/. Use an HTTP server because browsers load the game's ES modules through HTTP.
