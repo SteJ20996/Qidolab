@@ -6,7 +6,7 @@ Target domain: https://qidolab.com/
 
 This repository contains the complete static site: 18 original puzzles, optional extra steps, extreme challenges and English, Simplified Chinese, Taiwan Traditional Chinese and Spanish interfaces. All runtime scripts, styles and logos use local relative paths. No installation or compilation is needed. The entry point is `index.html` at the repository root.
 
-The approved warm-cream theme uses warm charcoal, sage and muted apricot on desktop (980px and wider). Narrow screens retain cream, midnight blue and lake blue. The earlier appearance comparison preview is archived in the original repository's history; its controls are not loaded by this production page.
+The warm-cream theme uses warm charcoal, fresh emerald panels, mint controls and muted apricot on desktop (980px and wider). Narrow screens retain cream, midnight blue and lake blue. The earlier appearance comparison preview is archived in the original repository's history; its controls are not loaded by this production page.
 
 ## Cloudflare Workers deployment from GitHub
 

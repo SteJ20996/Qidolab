@@ -4,8 +4,66 @@
 @media(prefers-reduced-motion:no-preference){.activity-nav a.is-fully-completed{animation:gold-arrival .6s ease-out}@keyframes gold-arrival{from{box-shadow:0 0 0 6px #ddb74635}to{box-shadow:0 4px 14px -7px #af7e3a55}}}
 
 
-/* On the larger canvas, use warm neutral depth and sage instead of large blue fields. */
-@media(min-width:980px){:root{--ink:#37423c;--muted:#606559;--mint:#ccd8c7;--line:#d9dccf;--deep:#414b43}body{background:radial-gradient(ellipse at 48% 42%,#dfe5d880,transparent 58%),radial-gradient(ellipse at 82% 8%,#eddfd580,transparent 35%),var(--paper)}.orbit-center{background:transparent}.topbar .edition{color:#675a46;background:#efe9dd;border-color:#d9d0c0}.language-control select,#language-select{background:#f7f4eb;border-color:#d5d5c7}.audience-note{color:#626c5e}.intro h1 span{color:#59624b}.intro .eyebrow>span{background:#a67954}.intro .target{background:linear-gradient(transparent 58%,#dfe5d3 58%)}.activity-nav a:not(.is-fully-completed){color:#4e5e50;background:linear-gradient(140deg,#faf7ee,#f0f1e7);border-color:#d7daca;box-shadow:0 3px 12px -7px #48544618}.activity-nav a:not(.is-fully-completed):hover{background:#e8eddf;border-color:#a9b69d;box-shadow:0 5px 17px -8px #48544630}.activity-nav a:not(.is-fully-completed)[aria-current]{color:#3e533d;background:linear-gradient(140deg,#e7eadc,#dbe4d2);border-color:#a0ae93;box-shadow:0 0 0 3px #a7b79518}.activity-nav a.is-completed:not(.is-fully-completed){background:#e9eee0;border-color:#b7c3a8;color:#435a42}.activity-nav a.is-completed:not(.is-fully-completed)[aria-current]{background:linear-gradient(140deg,#e1e8d6,#d9e3ce);border-color:#99ac87}.activity-nav a:not(.is-fully-completed) .orbit-number{color:#53604d}.activity-nav a.is-completed:not(.is-fully-completed)::before{color:#426047}.activity-nav a.has-branch-star:not(.is-fully-completed)::after{color:#6d5b78}.orbit-stage:not(.all-gold) .orbit-track ellipse{stroke:#bac4b0}.outer-next{background:#e6e9df;border-color:#b1bba7;color:#4a5b46}.outer-next[aria-current]{background:#dbe4d2;border-color:#9aab8d}.outer-next.extreme-link{background:#f0dfcf;border-color:#c7b299;color:#795437!important}.playground{background:radial-gradient(ellipse at 12% 0%,#afbd9d0a,transparent 58%),linear-gradient(145deg,#414b43,#455047 58%,#48524a);border-color:#72816d;box-shadow:0 18px 38px -27px #46533e50,inset 0 1px #e5edda14}.playground .experiment-label,.playground .board-caption,.playground .capacity,.playground .pan span,.playground .formula-note,.playground .status-row p,.playground .history-controls,.playground .text-button,.playground .sorting-sequence,.playground .schedule-ruler,.playground .schedule-station{color:#ccd8c7}.playground .rules,.playground .rule-reminder{color:#d5dfd0;border-left-color:#d8b796}.playground .clock-center span,.playground .logic-slot,.playground .logic-slot-number,.playground .schedule-task:not([aria-pressed=true]) span{color:#ccd8c7}.playground .sorting-step{fill:#ccd8c7}.playground .experiment-label::before{background:#d8b796}.playground .water{background:linear-gradient(180deg,#b6ddca,#83b8a4)}.playground .water-surface{background:#e2f1df}.playground .vessel{border-color:#9bb3a0;border-top-color:#d0ddc7;background:linear-gradient(125deg,#e7f2dc14,#d6e7d707)}.playground .vessel.has-water .quantity{color:#233f33}.playground .jug-actions button,.playground .primary-button,.primary-button,.branch-button{background:#ccd8c7;border-color:#a9b9a0;color:#3b5038}.playground .jug-actions button span[aria-hidden]{color:#52684b}.playground .pour-actions button{background:#dfbea2;border-color:#c3a080;color:#65472f}.playground .placement-tabs button[aria-pressed=true]{background:#d2ddc8;border-color:#a5b697;color:#42533b}.hint-button{background:#ede7da;border-color:#d2c6b2;color:#685944}.success,.discovery,.number-result{background:linear-gradient(125deg,#f0f1e5,#e6eddc);border-color:#c5cfb7;box-shadow:0 7px 22px -18px #4f674a40}.success-mark,.invitation-symbol{background:#ccd8c7;color:#3b5038}.next-invite,.branch-card{background:#edf0e5;border-color:#cbd2bd}.branch-evidence{background:#e5ebdc;border-color:#c0ccb0}.branch-options button[aria-pressed=true]{background:#dfe7d4;border-color:#9bab8a;box-shadow:inset 3px 0 #8b9d7a}.branch-complete{background:#dfe7d4;color:#486044}.success-invitation{background:#f8f5ec;border-color:#c5ceba;box-shadow:0 20px 70px #3947342c}.success-invitation .branch-button{background:#ccd8c7;border-color:#a9b9a0;color:#3b5038}.success-invitation .extreme-button{background:#dfbea2;color:#65472f!important;border-color:#c3a080!important}.success-invitation .invitation-later{background:#eeeee5;border-color:#d2d6c7;color:#616d59}.extreme-view textarea,.number-form input{background:#39473e;border-color:#8da185;color:#eef0e0}.extreme-view .extreme-visual svg{background:#3c493f}.extreme-controls button,.extreme-grid button,.extreme-proof button{background:#e3e9dc;color:#42573d;border-color:#b8c5ac}.extreme-view button[aria-pressed=true],.extreme-view button.selected{background:#f0dfcf;color:#795437;border-color:#c7b299}.extreme-grid button.covered{background:#dfe7d4;color:#486044}.brand-bridge:not([data-bridge-theme=gold]){--bridge-ink:#3c4d3c;--bridge-muted:#586651;--bridge-accent:#52694a;--bridge-background:linear-gradient(115deg,#ede6d7,#dfe5d7 70%,#dae2d4);--bridge-line:#bfc8b3;--bridge-line-hover:#8ea17f}
+/* Desktop: fresh emerald panels and mint controls against the warm cream canvas. */
+@media(min-width:980px){
+:root{--ink:#37423c;--muted:#606559;--mint:#d3f3de;--line:#d9dccf;--deep:#2c6a56}
+body{background:radial-gradient(ellipse at 48% 42%,#dfe5d880,transparent 58%),radial-gradient(ellipse at 82% 8%,#eddfd580,transparent 35%),var(--paper)}
+.orbit-center{background:transparent}
+.topbar .edition{color:#675a46;background:#efe9dd;border-color:#d9d0c0}
+.language-control select,#language-select{background:#f7f4eb;border-color:#d5d5c7}
+.audience-note{color:#626c5e}
+.intro h1 span{color:#59624b}
+.intro .eyebrow>span{background:#a67954}
+.intro .target{background:linear-gradient(transparent 58%,#dfe5d3 58%)}
+.activity-nav a:not(.is-fully-completed){color:#4e5e50;background:linear-gradient(140deg,#faf7ee,#f0f1e7);border-color:#d7daca;box-shadow:0 3px 12px -7px #48544618}
+.activity-nav a:not(.is-fully-completed):hover{background:#e8eddf;border-color:#a9b69d;box-shadow:0 5px 17px -8px #48544630}
+.activity-nav a:not(.is-fully-completed)[aria-current]{color:#3e533d;background:linear-gradient(140deg,#e7eadc,#dbe4d2);border-color:#a0ae93;box-shadow:0 0 0 3px #a7b79518}
+.activity-nav a.is-completed:not(.is-fully-completed){background:#e9eee0;border-color:#b7c3a8;color:#435a42}
+.activity-nav a.is-completed:not(.is-fully-completed)[aria-current]{background:linear-gradient(140deg,#e1e8d6,#d9e3ce);border-color:#99ac87}
+.activity-nav a:not(.is-fully-completed) .orbit-number{color:#53604d}
+.activity-nav a.is-completed:not(.is-fully-completed)::before{color:#426047}
+.activity-nav a.has-branch-star:not(.is-fully-completed)::after{color:#6d5b78}
+.orbit-stage:not(.all-gold) .orbit-track ellipse{stroke:#bac4b0}
+.outer-next{background:#e6e9df;border-color:#b1bba7;color:#4a5b46}
+.outer-next[aria-current]{background:#dbe4d2;border-color:#9aab8d}
+.outer-next.extreme-link{background:#f0dfcf;border-color:#c7b299;color:#795437!important}
+.playground{background:linear-gradient(145deg,#2c6a56,#32765a 58%,#357a5e);color:#ffffff;border-color:#4e9c74;box-shadow:0 18px 38px -27px #2c6a5650,inset 0 1px #d9f8e62b}
+.playground .experiment-label,.playground .board-caption,.playground .capacity,.playground .pan span,.playground .formula-note,.playground .status-row p,.playground .history-controls,.playground .text-button,.playground .sorting-sequence,.playground .schedule-ruler,.playground .schedule-station{color:#ffffff}
+.playground .rules,.playground .rule-reminder{color:#ffffff;border-left-color:#f0c9a1}
+.playground .clock-center span,.playground .logic-slot,.playground .logic-slot-number,.playground .schedule-task:not([aria-pressed=true]) span{color:#ffffff}
+.playground .sorting-step{fill:#ffffff}
+.playground .experiment-label::before{background:#f0c9a1}
+.playground .water{background:linear-gradient(180deg,#a0ebc5,#72d8a7)}
+.playground .water-surface{background:#e4ffef}
+.playground .vessel{border-color:#a3e5c1;border-top-color:#dcf8e6;background:linear-gradient(125deg,#d6ffe91a,#d6ffe908)}
+.playground .vessel.has-water .quantity{color:#174633}
+.playground .jug-actions button,.playground .primary-button,.primary-button,.branch-button{background:#d3f3de;border-color:#94caaa;color:#174633}
+.playground .jug-actions button span[aria-hidden]{color:#275a40}
+.playground .pour-actions button{background:#f0c9a1;border-color:#d4a77b;color:#5e3d27}
+.playground .placement-tabs button[aria-pressed=true]{background:#d3f3de;border-color:#94caaa;color:#174633}
+.hint-button{background:#ede7da;border-color:#d2c6b2;color:#685944}
+.success,.discovery,.number-result{background:linear-gradient(125deg,#f0f1e5,#e6eddc);border-color:#c5cfb7;box-shadow:0 7px 22px -18px #4f674a40}
+.success-mark,.invitation-symbol{background:#d3f3de;color:#174633}
+.next-invite,.branch-card{background:#edf0e5;border-color:#cbd2bd}
+.branch-evidence{background:#e5ebdc;border-color:#c0ccb0}
+.branch-options button[aria-pressed=true]{background:#dfe7d4;border-color:#9bab8a;box-shadow:inset 3px 0 #8b9d7a}
+.branch-complete{background:#dfe7d4;color:#486044}
+.success-invitation{background:#f8f5ec;border-color:#c5ceba;box-shadow:0 20px 70px #3947342c}
+.success-invitation .branch-button{background:#d3f3de;border-color:#94caaa;color:#174633}
+.success-invitation .extreme-button{background:#f0c9a1;color:#5e3d27!important;border-color:#d4a77b!important}
+.success-invitation .invitation-later{background:#eeeee5;border-color:#d2d6c7;color:#616d59}
+.extreme-view textarea,.number-form input{background:#164934;border-color:#8bceab;color:#ffffff}
+.extreme-view .extreme-visual svg{background:#2c6a56}
+.extreme-controls button,.extreme-grid button,.extreme-proof button{background:#e3e9dc;color:#42573d;border-color:#b8c5ac}
+.extreme-view button[aria-pressed=true],.extreme-view button.selected{background:#f0dfcf;color:#795437;border-color:#c7b299}
+.extreme-grid button.covered{background:#dfe7d4;color:#486044}
+.brand-bridge:not([data-bridge-theme=gold]){--bridge-ink:#3c4d3c;--bridge-muted:#586651;--bridge-accent:#52694a;--bridge-background:linear-gradient(115deg,#ede6d7,#dfe5d7 70%,#dae2d4);--bridge-line:#bfc8b3;--bridge-line-hover:#8ea17f}
+/* Light labels and outlines remain distinct on the brighter green panels. */
+.playground .more-options button:not([aria-pressed=true]),.playground .b-outline,.playground .more-proof-button,.playground .bridge-bank-heading,.playground .explore-a-form label,.playground .logic-clues,.playground .logic-clue-state,.playground .probability-axes,.playground .probability-fraction-title,.playground .probability-fraction label,.playground .probability-fraction>span,.playground .sums-totals>div{color:#ffffff}
+.playground .status-row{border-top-color:#b6ebcf40}
+.playground .quantity{color:#ffffff}
+.playground .glass-shine{background:#ffffff36}
+.playground button:focus-visible,.playground input:focus-visible,.playground select:focus-visible{outline-color:#f7d19c}
 }
 
 /* Use locally available Taiwan Traditional fonts; no remote font dependency. */
