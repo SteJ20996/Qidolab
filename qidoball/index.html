@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#f8f3e8">
+  <meta name="description" content="Qidoball Echo Court. Play a solo half court with a net-side rebound wall, dodge your echoes and keep returning. Endless challenges, wall practice and local two-player duels.">
+  <title>Qidoball · Echo Court</title>
+  <link rel="icon" type="image/svg+xml" href="icon.svg">
+  <link rel="stylesheet" href="style.css?v=5">
+  <script src="engine.js?v=5" defer></script>
+  <script src="app.js?v=5" defer></script>
+</head>
+<body>
+<main class="app">
+  <header class="masthead">
+    <a class="brand" href="https://qidolab.com" aria-label="Qidolab">
+      <svg width="30" height="34" viewBox="0 0 32 36" aria-hidden="true"><circle cx="13" cy="13" r="9" fill="none" stroke="currentColor" stroke-width="2.2"/><circle cx="13" cy="13" r="5.8" fill="none" stroke="currentColor" stroke-width=".8"/><path d="M19.5 20 28 30" stroke="currentColor" stroke-width="3.8" stroke-linecap="round"/></svg>
+      <span>qidolab<span class="brand-dot">.</span></span>
+    </a>
+    <div class="header-tools">
+      <span class="small-note" data-i18n="localTag">A court for one more round</span>
+      <select id="language" aria-label="Language"><option value="en">EN</option><option value="zh">简中</option><option value="tw">繁中</option></select>
+    </div>
+  </header>
+  <section class="intro">
+    <div>
+      <p class="eyebrow">QIDOBALL <span> / </span> 01</p>
+      <h1 data-i18n="title">Echo Court<span class="title-dot">.</span></h1>
+      <p class="subtitle" data-i18n="subtitle">Your last shot comes back. Be somewhere else.</p>
+    </div>
+    <div class="mode-picker" role="group" aria-label="Play mode">
+      <button id="endlessMode" class="mode active" aria-pressed="true"><span class="mode-icon">∞</span><span data-i18n="endless">Endless</span></button>
+      <button id="coopMode" class="mode" aria-pressed="false"><span class="mode-icon">⇉</span><span data-i18n="coop">Same-side pair</span></button>
+      <button id="practiceMode" class="mode" aria-pressed="false"><span class="mode-icon">↗</span><span data-i18n="practice">Wall practice</span></button>
+      <button id="localMode" class="mode" aria-pressed="false"><span class="mode-icon">↔</span><span data-i18n="local">Two players</span></button>
+    </div>
+  </section>
+  <div id="challengeBar" class="challenge-bar">
+    <span id="speedStatus" class="speed-badge">Speed ×1.00</span>
+    <span id="nextSpeedStatus">Next boost at 5 returns</span>
+    <span id="trailStatus">Echo trails visible until 20 returns</span>
+  </div>
+  <section class="stage solo" id="stage" aria-label="Echo Court game">
+    <div class="score-strip">
+      <div class="player-card player-left"><span class="avatar-dot coral"></span><div><span id="leftName" class="player-name">YOU</span><span id="leftDetail" class="player-detail">returns</span></div><strong id="leftScore">0</strong></div>
+      <div class="court-info"><span id="modeStatus">ENDLESS CHALLENGE</span><span id="rallyStatus">No limit · 3 chances</span></div>
+      <div class="player-card player-right"><div><span id="rightName" class="player-name">CHANCES</span><span id="rightDetail" class="player-detail">keep moving</span></div><strong id="rightScore" class="hearts">♥ ♥ ♥</strong><span class="avatar-dot mint"></span></div>
+    </div>
+    <canvas id="court" width="1000" height="620" tabindex="0" aria-label="Game court. Return the solid tennis ball and dodge orange echo balls. Use WASD and Space for player one, arrow keys and Enter for player two."></canvas>
+    <div class="stage-toolbar">
+      <div class="echo-pill"><span class="echo-dot"></span><span id="echoStatus" data-i18n="echoWaiting">Echoes are waiting</span></div>
+      <div class="toolbar-buttons">
+        <button id="soundButton" class="icon-button" aria-label="Turn sound on" title="Sound"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path id="soundMark" d="m16 9 5 6m0-6-5 6"/></svg></button>
+        <button id="pauseButton" class="icon-button" aria-label="Pause" title="Pause" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14"/></svg></button>
+        <button id="expandButton" class="icon-button" aria-label="Expand court" title="Expand court"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4H4v5m11-5h5v5M4 15v5h5m11-5v5h-5"/></svg></button>
+      </div>
+    </div>
+    <div class="overlay" id="overlay">
+      <div class="start-card">
+        <div class="ball-mark" aria-hidden="true"><span></span><span></span></div>
+        <p class="card-kicker" id="overlayKicker" data-i18n="welcome">MEET YOUR ECHO</p>
+        <h2 id="overlayTitle" data-i18n="readyTitle">Hit. Move. Repeat.</h2>
+        <p id="overlayText" data-i18n="readyEndless">Back court only. 3 chances, no limit. Speed up every 5 returns to 20, then every 10. Echo trails vanish after 20.</p>
+        <button id="startButton" class="primary-button"><span id="startLabel" data-i18n="start">Let's play</span><span aria-hidden="true">↗</span></button>
+        <button id="restartButton" class="text-button" hidden data-i18n="restart">Start fresh</button>
+        <p id="overlayHint" class="card-hint" data-i18n="readyHint">Back court · Mouse / touch · Auto swing on</p>
+      </div>
+    </div>
+    <div class="point-toast" id="pointToast" aria-live="polite"></div>
+  </section>
+  <div class="touch-actions" id="touchActions">
+    <button id="swingOne" class="swing-button coral-button"><span>P1</span><span data-i18n="swing">Swing</span><span class="button-arrow">↗</span></button>
+    <button id="swingTwo" class="swing-button mint-button" hidden><span>P2</span><span data-i18n="swing">Swing</span><span class="button-arrow">↖</span></button>
+  </div>
+  <section class="under-court">
+    <div class="legend">
+      <span><i class="legend-ball solid"></i><span data-i18n="realLegend">Solid ball: hit it</span></span>
+      <span><i class="legend-ball ghost"></i><span data-i18n="echoLegend">Orange echo: dodge it</span></span>
+      <span id="pathLegendItem"><i class="legend-line"></i><span data-i18n="pathLegend">Dashed path: coming soon</span></span>
+    </div>
+    <button id="resetButton" class="reset-button"><span aria-hidden="true">↻</span><span data-i18n="reset">Reset court</span></button>
+  </section>
+  <section class="controls-row">
+    <div class="control-note"><span class="control-dot coral"></span><span>P1</span><kbd>W A S D</kbd><span class="key-separator">+</span><kbd>Space</kbd></div>
+    <div class="control-note" id="p2Controls" hidden><span class="control-dot mint"></span><span>P2</span><kbd>↑ ← ↓ →</kbd><span class="key-separator">+</span><kbd>Enter</kbd></div>
+    <p data-i18n="touchHint">Move in the back court with your mouse or touch. Auto swing starts on.</p>
+  </section>
+  <details class="settings" id="settings">
+    <summary><span data-i18n="settings">Tune the court</span><span class="settings-caret">+</span></summary>
+    <div class="settings-grid">
+      <label class="toggle-option"><span><span data-i18n="echoSetting">Echo balls</span><small data-i18n="echoSettingHint">Earlier shots return as hazards</small></span><input id="echoToggle" type="checkbox" checked><span class="switch" aria-hidden="true"></span></label>
+      <label class="toggle-option"><span><span data-i18n="assistSetting">Auto swing</span><small data-i18n="assistSettingHint">Focus on moving and dodging</small></span><input id="assistToggle" type="checkbox" checked><span class="switch" aria-hidden="true"></span></label>
+      <label class="slider-option"><span><span data-i18n="delaySetting">Echo delay</span><output id="delayValue" for="delaySlider">1.8s</output></span><input id="delaySlider" type="range" min="0.8" max="3.2" step="0.2" value="1.8"></label>
+      <label class="pace-option"><span data-i18n="paceSetting">Pace</span><select id="paceSelect"><option value="chill" data-i18n="chill">Easygoing</option><option value="quick" data-i18n="quick">Quick</option></select></label>
+    </div>
+  </details>
+  <footer><span>qidoball <span class="footer-dot"> / </span> qidolab</span><span data-i18n="footer">A little tennis. A little trouble.</span></footer>
+</main>
+</body>
+</html>
