@@ -18,6 +18,7 @@ export const COPY={
  bounds:['All intermediate values must be whole numbers from 0 to 99. Division must be exact.','中间数必须是 0–99 的整数；除法必须整除。','中間數必須是 0–99 的整數；除法必須整除。','Todos los valores intermedios deben ser enteros de 0 a 99. La división debe ser exacta.'],
  selectStep:['1. Pick the step to replace','1. 选中要替换的那一步','1. 選取要替換的那一步','1. Elige el paso que cambiarás'],
  selectCard:['2. Choose its replacement','2. 选一张卡替换它','2. 選一張卡替換它','2. Elige la tarjeta nueva'],
+ stepTitle:['Step','步骤','步驟','Paso'],
  step:['Step {n}','第 {n} 步','第 {n} 步','Paso {n}'],
  checkpoint:['Checkpoint: {lane}, after step {step}, must be {value}.','检查点：{lane} 在第 {step} 步后必须为 {value}。','檢查點：{lane} 在第 {step} 步後必須為 {value}。','Control: {lane} debe valer {value} tras el paso {step}.'],
  checkpointShort:['Checkpoint','检查点','檢查點','Control'],
