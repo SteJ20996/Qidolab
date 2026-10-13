@@ -4,7 +4,9 @@ export const locales = ['zh-CN', 'en', 'es-MX', 'zh-TW'];
 export let locale = 'en';
 try { const saved = localStorage.getItem('quidence-locale-v1'); if (locales.includes(saved)) locale = saved; } catch {}
 function withTaiwanCopy(entries){
-  return Object.fromEntries(Object.entries(entries).map(([key,copies])=>[key,{...copies,'zh-TW':copies['zh-TW']??toTaiwanText(copies['zh-CN']??'')} ]));
+  // Source-keyed entries may omit zh-CN: their key is the original copy.
+  // Never turn a missing regional field into a blank label or control.
+  return Object.fromEntries(Object.entries(entries).map(([key,copies])=>[key,{...copies,'zh-TW':copies['zh-TW']??toTaiwanText(copies['zh-CN']??key)} ]));
 }
 const dictionary = withTaiwanCopy(translations);
 export function registerTranslations(entries) { Object.assign(dictionary, withTaiwanCopy(entries)); }
@@ -62,9 +64,20 @@ export function translateDOM(root = document) {
       const sources = attributeSources.get(element) || {};
       for (const attribute of translatedAttributes) {
         const explicit = element.getAttribute(`data-i18n-${attribute}`), current = element.getAttribute(attribute);
-        if (explicit !== null) sources[attribute] = explicit;
-        else if (!(attribute in sources) && dictionary[current]) sources[attribute] = current;
-        if (attribute in sources) element.setAttribute(attribute, t(sources[attribute]));
+        let source = sources[attribute];
+        if (explicit !== null) source = {key: explicit};
+        else {
+          // Game renderers own live labels (jug amounts, scale results, etc.).
+          // If they changed an attribute, do not restore its cached initial copy
+          // when another module translates the page after loading.
+          if (source && current !== source.value) source = undefined;
+          if (!source && dictionary[current]) source = {key: current};
+        }
+        if (source) {
+          const value = t(source.key);
+          element.setAttribute(attribute, value);
+          sources[attribute] = {key: source.key, value};
+        } else delete sources[attribute];
       }
       attributeSources.set(element, sources);
     });
