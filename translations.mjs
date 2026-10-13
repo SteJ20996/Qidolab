@@ -172,4 +172,4 @@ const entries = [
 ["拆分分数", "Split a fraction", "Separa la fracción"],
 ["拓扑拼接", "Topology lab", "Laboratorio de topología"]
 ];
-export default Object.fromEntries(entries.map(([key, en, es]) => [key, {en, 'es-MX': es}]));
+export default Object.fromEntries(entries.map(([key, en, es]) => [key, {'zh-CN': key, en, 'es-MX': es}]));

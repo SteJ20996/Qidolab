@@ -81,6 +81,12 @@ From the repository root, run `python3 -m http.server 8080` and open http://loca
 
 First-time visitors start in English. The language menu includes English, 简体中文, 繁體中文 (`zh-TW`, Taiwan usage), and Español. A valid saved preference remains in use on return visits. Taiwan copy is stored locally in `zh-tw-copy.mjs`, prepared offline from authored text using OpenCC with interface/math terminology edits. The game never loads a conversion library or translation service from a CDN.
 
+### Regression checks
+
+Run `npm ci --ignore-scripts` and `npm test` with Node.js 24. The test-only jsdom dependency is not loaded by the site or published as a static asset. Checks cover nonempty regional copy and placeholders, all 18 original activities in all four languages, moves and undo/reset, and the 18 extra steps and extreme challenges. Language changes must preserve game saves, predictions, reviews and answer drafts; invalid answers and viewing solutions must not award crowns. GitHub Actions runs these checks for pull requests and main.
+
+These are application DOM tests, not pixel/layout or real-device browser certification. Inspect the deployed preview for visual layout and native controls.
+
 ## Progress and achievements
 
 Progress is stored in this browser for this origin. Progress saved on an earlier stephenjia.com preview does not automatically transfer to qidolab.com.

@@ -4,7 +4,9 @@ export const locales = ['zh-CN', 'en', 'es-MX', 'zh-TW'];
 export let locale = 'en';
 try { const saved = localStorage.getItem('quidence-locale-v1'); if (locales.includes(saved)) locale = saved; } catch {}
 function withTaiwanCopy(entries){
-  return Object.fromEntries(Object.entries(entries).map(([key,copies])=>[key,{...copies,'zh-TW':copies['zh-TW']??toTaiwanText(copies['zh-CN']??'')} ]));
+  // Source-keyed entries may omit zh-CN: their key is the original copy.
+  // Never turn a missing regional field into a blank label or control.
+  return Object.fromEntries(Object.entries(entries).map(([key,copies])=>[key,{...copies,'zh-TW':copies['zh-TW']??toTaiwanText(copies['zh-CN']??key)} ]));
 }
 const dictionary = withTaiwanCopy(translations);
 export function registerTranslations(entries) { Object.assign(dictionary, withTaiwanCopy(entries)); }
