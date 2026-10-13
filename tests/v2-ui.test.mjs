@@ -10,6 +10,19 @@ function setup(hash='#24/1',saved=null){const dom=new JSDOM(html,{url:'https://q
 function guess(ui,s){[...s].forEach((v,i)=>ui.input(i,v));ui.submit();}
 function solve(ui,numbers){for(const m of solve24(initialCards(numbers))){ui.click(`[data-card="${m.left}"]`);ui.click(`[data-card="${m.right}"]`);ui.click(`[data-op="${m.op}"]`);}}
 function saved(ui){return JSON.parse(ui.w.localStorage.getItem('qidolab-v2-progress-v1'));}
+test('before scripts load, static labels remain visible and controls wait for a ready puzzle',()=>{
+  const dom=new JSDOM(html,{url:'https://qidolab.test/2/'}),d=dom.window.document;
+  for(const el of d.querySelectorAll('[data-text]'))assert.equal(el.textContent,COPY[el.dataset.text][0]);
+  assert.equal(d.querySelector('#game-24 .tab-icon').textContent,'24');
+  assert.ok(d.querySelector('#play [role="status"]').textContent.includes('Loading'));
+  assert.ok(d.getElementById(d.querySelector('#play').getAttribute('aria-labelledby')));
+  for(const el of d.querySelectorAll('[data-game],[data-mode],#language'))assert.equal(el.disabled,true);
+  const app=createApp(d);
+  for(const el of d.querySelectorAll('[data-game],[data-mode],#language'))assert.equal(el.disabled,false);
+  assert.ok(d.querySelector('[data-card]'));
+  assert.doesNotMatch(d.querySelector('#play').textContent,/Loading your puzzle/);
+  app.destroy();dom.window.close();
+});
 test('every string and parameter exists in all four languages',()=>{
   for(const [key,variants] of Object.entries(COPY)){assert.equal(variants.length,4,key);for(const text of variants)assert.ok(text.trim(),key);const tokens=s=>[...s.matchAll(/\{(\w+)\}/g)].map(m=>m[1]).sort();for(const text of variants)assert.deepEqual(tokens(text),tokens(variants[0]),key);}
 });

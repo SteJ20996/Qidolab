@@ -33,6 +33,7 @@ export function createApp(doc=document) {
     $('#rounds').innerHTML=progress[game].map((r,i)=>`<button type="button" data-round="${i}" ${i===round?'aria-current="step"':''} class="${r.solved?'done':''} ${r.solved&&(r.usedHint||r.revealed)?'helped':''}" aria-label="${esc(t('roundLabel',{n:i+1,state:stateLabel(r)}))}">${String(i+1).padStart(2,'0')}</button>`).join('');
     const {puzzle,round:r}=current();
     $('#play').innerHTML=game==='twentyfour'?render24(puzzle,r):renderCode(puzzle,r);
+    all('[data-game],[data-mode],#language').forEach(el=>el.disabled=false);
     showStorage();
     if(focus)doc.getElementById(focus)?.focus({preventScroll:true});
   }
