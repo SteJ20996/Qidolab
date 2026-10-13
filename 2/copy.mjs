@@ -15,6 +15,7 @@ export const COPY = {
  free:['Keep playing','无限换题','無限換題','Juego libre'],
  freeRound:['FRESH NUMBERS','换个数字，继续想','換個數字，繼續想','NÚMEROS NUEVOS'],
  freeNote:['New numbers, same rules. Every 24 puzzle has a solution.','换数字，玩法不变。每道 24 点题都有解。','換數字，玩法不變。每道 24 點題都有解。','Otros números, las mismas reglas. Cada reto de 24 tiene solución.'],
+ freeNoteCode:['A new secret every time. Choose four or five digits, and follow the clues.','每次换一个新密码。选四位或五位，循着线索慢慢推理。','每次換一個新密碼。選四位或五位，循著線索慢慢推理。','Una clave nueva cada vez. Elige cuatro o cinco dígitos y sigue las pistas.'],
  newPuzzle:['New numbers ↻','换一组数字 ↻','換一組數字 ↻','Nuevos números ↻'],
  newCode:['New secret ↻','换一个密码 ↻','換一個密碼 ↻','Nueva clave ↻'],
  previousPuzzle:['Previous puzzle','上一题','上一題','Reto anterior'],

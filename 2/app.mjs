@@ -27,7 +27,7 @@ export function createApp(doc=document) {
     all('[data-game]').forEach(el=>el.setAttribute('aria-pressed',String(el.dataset.game===game)));
     all('[data-mode]').forEach(el=>el.setAttribute('aria-pressed',String(el.dataset.mode===mode)));
     all('[data-length]').forEach(el=>{el.textContent=t('digits',{n:el.dataset.length});el.setAttribute('aria-pressed',String(Number(el.dataset.length)===length));});
-    $('#code-length').hidden=game!=='code'||mode!=='free';$('#free-note').hidden=mode!=='free';$('.collection-panel').hidden=mode!=='starter';
+    $('#code-length').hidden=game!=='code'||mode!=='free';$('#free-note').hidden=mode!=='free';$('#free-note').textContent=t(game==='code'?'freeNoteCode':'freeNote');$('.collection-panel').hidden=mode!=='starter';
     $('#collection-title').textContent=t('rounds');$('#progress').textContent=t('progress',{n:progress[game].filter(r=>r.solved).length});
     $('#rounds').setAttribute('aria-label',t('rounds'));
     $('#rounds').innerHTML=progress[game].map((r,i)=>`<button type="button" data-round="${i}" ${i===round?'aria-current="step"':''} class="${r.solved?'done':''} ${r.solved&&(r.usedHint||r.revealed)?'helped':''}" aria-label="${esc(t('roundLabel',{n:i+1,state:stateLabel(r)}))}">${String(i+1).padStart(2,'0')}</button>`).join('');

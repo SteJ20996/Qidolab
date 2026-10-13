@@ -104,3 +104,9 @@ Question data, solvers and storage-key formats are retained from the reviewed ga
 The initial standalone source is copied from the `qidolab/` directory of `SteJ20996/SteJ20996.github.io` at commit `39aa0958696cc9ad93eca41487cebac41afca184`. Runtime files are preserved byte for byte; this README is updated for root-level deployment. The historical source is available at https://github.com/SteJ20996/SteJ20996.github.io/tree/39aa0958696cc9ad93eca41487cebac41afca184/qidolab/.
 
 Qidolab source and deployment documentation now live exclusively in this standalone repository. The `qidolab/` and `qidolab-preview/` copies have been removed from the personal-site repository's current branch, and their former stephenjia.com preview addresses are retired. Publish this repository through Cloudflare using the matching Workers or Pages settings above.
+
+## Qidolab 2
+
+The `/2/` collection adds Make 24 and number-code deduction in four languages. Each game has ten starter rounds and free play with fresh generated puzzles. Free 24-point puzzles are checked for exact solvability before display; codes support four or five distinct digits, including a leading zero. Progress is browser-local and separate from the original collection.
+
+Run `npm ci --ignore-scripts` and `npm test` for the original and v2 checks. Serve the repository with any static HTTP server to preview it. Implementation provenance and rights-review limits are documented in `docs/qidolab-2-provenance.md`.
