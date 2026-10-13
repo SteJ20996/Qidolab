@@ -1,6 +1,6 @@
-# Four additional Just One More concepts — playable review build
+# Four additional Just One More concepts — release
 
-2026-10-13. User requested development of the remaining four ideas after approving the first two. This branch introduces `/next/` as a standalone preview; it does not add unfinished concepts to the production menus or merge them automatically.
+2026-10-13. User requested development of the remaining four ideas after approving the first two. The user approved the playable preview for release. `/next/` is now linked from the shared eight-game Just One More menu on all three collection pages; its existing storage key is retained.
 
 ## Playable scope
 

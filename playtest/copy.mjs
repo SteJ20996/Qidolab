@@ -1,5 +1,6 @@
 export const LANGUAGES=['en','zh-CN','zh-TW','es-MX'];
 export const COPY={
+ echo:['After You','迟到一步','遲到一步','Un paso después'],mixed:['Mixed Signals','线索串台','線索串台','Pistas cruzadas'],tally:['Two-Way Tally','横竖两笔账','橫豎兩筆帳','Cuentas cruzadas'],both:['Both Ways','反着也得通','反著也得通','De ida y vuelta'],
  title:["Qidolab · Just One More", "Qidolab · 数字不打烊", "Qidolab · 數字不打烊", "Qidolab · ¡Una más!"],
  preview:["TWO MORE GAMES · 6 ROUNDS EACH", "两种新玩法 · 每种 6 关", "兩種新玩法 · 每種 6 關", "DOS JUEGOS MÁS · 6 RETOS CADA UNO"],
  heading:["A different twist. Another go.", "换个玩法，再来一局。", "換個玩法，再來一局。", "Otra idea. Otra partida."],

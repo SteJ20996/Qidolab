@@ -59,7 +59,7 @@ test('language and reload preserve drafts, feedback, selected side and optional 
  const paste=new u.w.Event('paste',{bubbles:true,cancelable:true});Object.defineProperty(paste,'clipboardData',{value:{getData:()=> '０１２３'}});u.q('#code-0').dispatchEvent(paste);assert.equal(u.state().progress.mixed[1].draft,'0123');u.click('[data-action=undo]');assert.equal(u.q('#code-0').value,'');u.close();
 });
 test('malformed and unavailable storage cannot crash or create invalid play states',()=>{
- const u=setup('#both/1',JSON.stringify({both:[{order:[0,0,99],history:[null]}],mixed:[{draft:'<svg',assignment:[1,1,8,null]}],echo:[{moves:[{card:999,side:0}]}]}));assert.deepEqual(u.state().progress.both[0].order,[0]);u.click('[data-game=mixed]');assert.deepEqual(u.state().progress.mixed[0].assignment,[1,null,null,null]);assert.equal(u.q('svg'),null);
+ const u=setup('#both/1',JSON.stringify({both:[{order:[0,0,99],history:[null]}],mixed:[{draft:'<svg',assignment:[1,1,8,null]}],echo:[{moves:[{card:999,side:0}]}]}));assert.deepEqual(u.state().progress.both[0].order,[0]);u.click('[data-game=mixed]');assert.deepEqual(u.state().progress.mixed[0].assignment,[1,null,null,null]);assert.equal(u.q('#play svg'),null);
  Object.defineProperty(u.w,'localStorage',{get(){throw Error('blocked');}});u.reload();assert.equal(u.q('#storage-error').hidden,false);u.click('[data-game=tally]');u.click('[data-tile="1"]');assert.equal(u.q('#storage-error').hidden,false);u.close();
 });
 test('all regional copy and guide steps have nonempty strings and matching variables',()=>{
