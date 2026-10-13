@@ -33,6 +33,20 @@ const input = (id, value) => {$(id).value = value; $(id).dispatchEvent(new Event
 const submit = id => $(id).dispatchEvent(new Event('submit', {bubbles: true, cancelable: true}));
 const saved = id => JSON.parse(localStorage.getItem('quidence-' + id + '-v1'));
 
+test('page IDs are unique and the Quidence link names its own heading in every language', () => {
+  const ids = [...document.querySelectorAll('[id]')].map(el => el.id);
+  assert.equal(new Set(ids).size, ids.length, 'duplicate IDs break labels and game selectors');
+  for (const language of locales) {
+    setLocale(language);
+    const bridge = $('brand-bridge');
+    const title = $(bridge.getAttribute('aria-labelledby'));
+    assert.ok(bridge.contains(title));
+    assert.ok(title.textContent.trim());
+    assert.notEqual(title, $('bridge-title'), 'the promotion must not use the bridge puzzle title');
+    for (const id of bridge.querySelector('a').getAttribute('aria-labelledby').split(' ')) assert.ok(bridge.contains($(id)));
+  }
+});
+
 test('each original accepts moves, keeps them through language changes, and supports its reset/undo path', () => {
   const scenarios = {
     lights() {choose('#lights-ring button'); assert.equal(saved('lights').length, 1); return 'lights-undo';},
@@ -76,7 +90,12 @@ test('all 18 originals render named controls, working hints and language changes
       route(id);
       assert.equal($('activity-' + id).hidden, false, `${language}/${id}: visible`);
       if (['en', 'es-MX'].includes(language)) {
-        const leaked = $('activity-' + id).textContent.match(/.{0,25}[\u3400-\u9fff].{0,25}/);
+        const walker = document.createTreeWalker($('activity-' + id), window.NodeFilter.SHOW_TEXT);
+        const visibleText = [];
+        for (let node = walker.nextNode(); node; node = walker.nextNode()) {
+          if (!node.parentElement.closest('[hidden]')) visibleText.push(node.data);
+        }
+        const leaked = visibleText.join(' ').match(/.{0,25}[\u3400-\u9fff].{0,25}/);
         assert.equal(leaked, null, `${language}/${id}: untranslated copy ${leaked?.[0]}`);
       }
       assert.ok(text(id === 'water' ? 'title' : id + '-title'), `${language}/${id}: title`);
