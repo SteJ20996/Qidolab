@@ -105,8 +105,10 @@ The initial standalone source is copied from the `qidolab/` directory of `SteJ20
 
 Qidolab source and deployment documentation now live exclusively in this standalone repository. The `qidolab/` and `qidolab-preview/` copies have been removed from the personal-site repository's current branch, and their former stephenjia.com preview addresses are retired. Publish this repository through Cloudflare using the matching Workers or Pages settings above.
 
-## Qidolab 2
+## Just One More / ¡Una más! / 数字不打烊
 
-The `/2/` collection adds Make 24 and number-code deduction in four languages. Each game has ten starter rounds and free play with fresh generated puzzles. Free 24-point puzzles are checked for exact solvability before display; codes support four or five distinct digits, including a leading zero. Progress is browser-local and separate from the original collection.
+The collection names are **Think Again! / Dale una vuelta / 十八般脑洞** (the original 18) and **Just One More / ¡Una más! / 数字不打烊** (repeatable puzzles). Qidolab remains the umbrella brand.
+
+The `/2/` path is retained for existing links and browser progress. This collection adds Make 24 and number-code deduction in four languages. Each game has ten starter rounds and free play with fresh generated puzzles. Free 24-point puzzles are checked for exact solvability before display; codes support four or five distinct digits, including a leading zero. Progress is browser-local and separate from the original collection.
 
 Run `npm ci --ignore-scripts` and `npm test` for the original and v2 checks. Serve the repository with any static HTTP server to preview it. Implementation provenance and rights-review limits are documented in `docs/qidolab-2-provenance.md`.

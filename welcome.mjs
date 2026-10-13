@@ -1,7 +1,9 @@
 import {registerTranslations,locales,translateDOM} from './i18n.mjs';
 
 const metadata={
-  title:['Qidolab · 脑力小游戏','Qidolab · Brain games','Qidolab · Juegos de ingenio','Qidolab · 腦力小遊戲'],
+  title:['Qidolab · 十八般脑洞','Qidolab · Think Again!','Qidolab · Dale una vuelta','Qidolab · 十八般腦洞'],
+  collectionName:['十八般脑洞','Think Again!','Dale una vuelta','十八般腦洞'],
+  moreName:['数字不打烊','Just One More','¡Una más!','數字不打烊'],
   description:['18 个脑力小游戏。试试你的招，换条路，再看看要不要挑战下一层。','18 brain games. Try a different move, then choose whether to go further.','18 juegos de ingenio. Prueba otra jugada y decide si quieres ir más allá.','18 個腦力小遊戲。試試你的方法，換條路，再看看要不要挑戰下一關。']
 };
 registerTranslations(Object.fromEntries(Object.entries(metadata).map(([name,values])=>['welcome.'+name,Object.fromEntries(locales.map((language,index)=>[language,values[index]]))])));

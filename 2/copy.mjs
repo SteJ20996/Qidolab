@@ -1,10 +1,11 @@
 export const LANGUAGES = ['en','zh-CN','zh-TW','es-MX'];
 // All four variants are authored together so missing regional copy fails tests.
 export const COPY = {
- title:['Qidolab 2 · Numbers & secrets','Qidolab 2 · 数字与密码','Qidolab 2 · 數字與密碼','Qidolab 2 · Números y claves'],
+ title:['Qidolab · Just One More','Qidolab · 数字不打烊','Qidolab · 數字不打烊','Qidolab · ¡Una más!'],
  language:['Language','语言','語言','Idioma'],
- back:['The original 18 ↗','回到原版 18 题 ↗','回到原版 18 題 ↗','Los 18 originales ↗'],
- collection:['COLLECTION 02','第二辑','第二輯','COLECCIÓN 02'],
+ back:['Think Again! ↗','十八般脑洞 ↗','十八般腦洞 ↗','Dale una vuelta ↗'],
+ collection:['QIDOLAB','QIDOLAB','QIDOLAB','QIDOLAB'],
+ name:['Just One More','数字不打烊','數字不打烊','¡Una más!'],
  heading:['A few numbers. A new possibility.','几个数字，换个想法。','幾個數字，換個想法。','Pocos números. Otra posibilidad.'],
  intro:['Make 24, or crack a secret. Start with ten rounds, then keep playing with new numbers.','算出 24，或解开密码。从十关入门开始，也能不断换数字、一直玩。','算出 24，或解開密碼。從十關入門開始，也能不斷換數字、一直玩。','Forma 24 o descifra una clave. Empieza con diez rondas y sigue jugando con nuevos números.'],
  game24:['Make 24','算 24 点','算 24 點','Forma 24'],
@@ -76,7 +77,7 @@ export const COPY = {
  storageError:['Progress could not be saved. Keep this page open; reloading may lose your latest moves.','暂时无法保存进度。请先保持页面打开，刷新可能丢失最新操作。','暫時無法儲存進度。請先保持頁面開啟，重新整理可能遺失最新操作。','No se pudo guardar el progreso. Mantén la página abierta; al recargar podrías perder las últimas jugadas.'],
  resetNotice:['Moves reset. Your completed-round marks stay saved.','本次操作已重置，已完成的关卡标记保留。','本次操作已重設，已完成的關卡標記保留。','Jugadas reiniciadas. Se conservan las marcas de rondas resueltas.'],
  original:['Looking for jugs, lights and the other puzzles?','想玩倒水、翻灯和其他题目？','想玩倒水、翻燈和其他題目？','¿Buscas las jarras, las luces y los otros juegos?'],
- visitOriginal:['Explore the original Qidolab →','回到 Qidolab 原版 →','回到 Qidolab 原版 →','Explora Qidolab original →'],
+ visitOriginal:['Explore Think Again! →','去玩十八般脑洞 →','去玩十八般腦洞 →','Explora Dale una vuelta →'],
  footer:['Small experiments. Room to think.','小小的实验，慢慢想通。','小小的實驗，慢慢想通。','Pequeños experimentos. Espacio para pensar.']
 };
 export function translate(key,language='en',params={}) {

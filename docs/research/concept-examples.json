@@ -1,0 +1,204 @@
+{
+  "echo": {
+    "start": [
+      2,
+      7
+    ],
+    "cards": [
+      [
+        "+",
+        3
+      ],
+      [
+        "*",
+        2
+      ],
+      [
+        "-",
+        2
+      ]
+    ],
+    "target": [
+      6,
+      15
+    ],
+    "solutions": 2,
+    "order": [
+      0,
+      1,
+      2
+    ],
+    "sides": [
+      0,
+      1,
+      0
+    ],
+    "trace": [
+      [
+        5,
+        7
+      ],
+      [
+        5,
+        17
+      ],
+      [
+        6,
+        17
+      ],
+      [
+        6,
+        15
+      ]
+    ],
+    "choices_exhausted": 48
+  },
+  "two_way": {
+    "start": [
+      3,
+      8
+    ],
+    "cards": [
+      [
+        "+",
+        4
+      ],
+      [
+        "*",
+        2
+      ],
+      [
+        "-",
+        3
+      ],
+      [
+        "*",
+        3
+      ]
+    ],
+    "target": [
+      16,
+      63
+    ],
+    "order": [
+      3,
+      2,
+      1,
+      0
+    ],
+    "solutions": 1,
+    "orders_exhausted": 24
+  },
+  "mixed_clues": {
+    "digits": "012345",
+    "no_repeats": true,
+    "secret": "0425",
+    "guesses": [
+      "3025",
+      "1452",
+      "0245",
+      "3140"
+    ],
+    "unordered_feedback": [
+      [
+        2,
+        0
+      ],
+      [
+        3,
+        1
+      ],
+      [
+        3,
+        2
+      ],
+      [
+        4,
+        2
+      ]
+    ],
+    "mapping_in_guess_order": [
+      [
+        3,
+        2
+      ],
+      [
+        3,
+        1
+      ],
+      [
+        4,
+        2
+      ],
+      [
+        2,
+        0
+      ]
+    ],
+    "candidate_codes_exhausted": 360,
+    "solutions": 1
+  },
+  "double_ledger": {
+    "pairs_horizontal_vertical": [
+      [
+        1,
+        4
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        3,
+        6
+      ]
+    ],
+    "row_targets": [
+      4,
+      8,
+      16
+    ],
+    "column_targets": [
+      9,
+      12,
+      11
+    ],
+    "flips": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      1,
+      1
+    ],
+    "solutions": 1,
+    "orientations_exhausted": 512
+  }
+}
