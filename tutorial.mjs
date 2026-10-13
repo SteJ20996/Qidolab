@@ -1,4 +1,4 @@
-import {UI,LESSONS,localize} from './tutorial-copy.mjs?v=1';
+import {UI,LESSONS,localize} from './tutorial-copy.mjs?v=2';
 const KEY='qidolab-how-to-v1';
 export function createTutorial(doc){
  const host=doc.getElementById('how-to');if(!host)return {sync(){},destroy(){}};
@@ -39,7 +39,7 @@ export function createTutorial(doc){
   if(!open){host.innerHTML=`<button type="button" class="tour-watch" data-tour="open">▶ ${esc(t('watch'))}</button>`;if(focus)host.querySelector('button').focus({preventScroll:true});return;}
   const lesson=LESSONS[game][step];
   host.innerHTML=`<section class="tour-panel" aria-labelledby="tour-title"><div class="tour-top"><span>${esc(t(game))} · ${esc(t('step').replace('{n}',step+1).replace('{total}',LESSONS[game].length))}</span><button type="button" data-tour="close">${esc(t('skip'))}</button></div><p class="tour-example">${esc(t('demo'))}</p><div class="tour-content" aria-live="polite" aria-atomic="true"><h3 id="tour-title" tabindex="-1">${esc(localize(lesson[0],lang))}</h3><p class="tour-explain">${esc(localize(lesson[1],lang))}</p><div class="tour-scene">${scene()}</div></div><div class="tour-controls"><button type="button" data-tour="back" ${step===0?'disabled':''}>${esc(t('back'))}</button><button type="button" data-tour="replay">↻ ${esc(t('replay'))}</button><button type="button" class="tour-next" data-tour="${step===LESSONS[game].length-1?'close':'next'}">${esc(t(step===LESSONS[game].length-1?'done':'next'))}</button></div></section>`;
-  if(focus)host.querySelector('#tour-title').focus({preventScroll:true});
+  if(focus){host.querySelector('#tour-title').focus({preventScroll:true});host.scrollIntoView?.({block:'start',behavior:'instant'});}
  }
  function click(e){const b=e.target.closest('[data-tour]');if(!b||!host.contains(b)||b.disabled)return;const action=b.dataset.tour;
   if(action==='open'){open=true;step=0;}else if(action==='close'){open=false;seen[game]=true;try{win.localStorage.setItem(KEY,JSON.stringify(seen));}catch{}}

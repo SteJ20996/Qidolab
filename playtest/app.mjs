@@ -1,4 +1,4 @@
-import {createTutorial} from '../tutorial.mjs?v=1';
+import {createTutorial} from '../tutorial.mjs?v=2';
 import {PATCH,BORROW} from './puzzles.mjs';
 import {patchState,solvePatch,opText,initialBorrow,borrowStep,replayBorrow,borrowWon,solveBorrow} from './engine.mjs';
 import {LANGUAGES,t as translate} from './copy.mjs';

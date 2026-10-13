@@ -1,4 +1,4 @@
-import {createTutorial} from '../tutorial.mjs?v=1';
+import {createTutorial} from '../tutorial.mjs?v=2';
 import {ROUNDS24,CODES,OPS,SYMBOL,initialCards,replay24,combine,won24,solve24,valueText,calculate,scoreCode,validGuess,candidateCodes,filterCandidates,fresh24,freshCode,restoreProgress,generate24,generateCode} from './engine.mjs';
 import {LANGUAGES,translate} from './copy.mjs';
 
