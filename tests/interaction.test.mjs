@@ -61,6 +61,25 @@ test('page IDs are unique and the Quidence link names its own heading in every l
   }
 });
 
+test('localized collection names keep their nested link labels and decorative arrow', () => {
+  const names = {
+    en: ['Think Again!', 'Just One More'],
+    'zh-CN': ['十八般脑洞', '数字不打烊'],
+    'zh-TW': ['十八般腦洞', '數字不打烊'],
+    'es-MX': ['Dale una vuelta', '¡Una más!']
+  };
+  for (const language of [...locales, ...locales].reverse()) {
+    setLocale(language);
+    translateDOM();
+    const [original, more] = names[language];
+    assert.equal(document.querySelector('.collection-name').textContent, original);
+    assert.equal(document.querySelector('.v2-link [data-i18n]').textContent, more);
+    assert.equal(document.querySelector('.v2-link [aria-hidden]').textContent, '↗');
+    assert.equal(document.querySelector('.v2-link').getAttribute('href'), './2/');
+    assert.ok(document.querySelector('[data-i18n="branch.audience"]').textContent.trim());
+  }
+});
+
 test('each original accepts moves, keeps them through language changes, and supports its reset/undo path', () => {
   const scenarios = {
     lights() {choose('#lights-ring button'); assert.equal(saved('lights').length, 1); return 'lights-undo';},
