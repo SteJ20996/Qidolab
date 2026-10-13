@@ -1,15 +1,17 @@
 export const LANGUAGES=['en','zh-CN','zh-TW','es-MX'];
 export const COPY={
- title:['Qidolab · Two little experiments','Qidolab · 两个玩法实验','Qidolab · 兩個玩法實驗','Qidolab · Dos experimentos'],
- preview:['PLAYTEST · 6 ROUNDS EACH','玩法试玩 · 每种 6 关','玩法試玩 · 每種 6 關','PRUEBA · 6 RETOS POR JUEGO'],
- heading:['Two ideas. Your turn to try.','两个新点子，轮到你试试。','兩個新點子，輪到你試試。','Dos ideas. Te toca probarlas.'],
- intro:['Try the warm-ups, then jump to any round. No timer. Undo freely.','先玩热身题，也可以跳到任意一关。不计时，随时撤回。','先玩熱身題，也可以跳到任意一關。不計時，隨時撤回。','Empieza con los retos fáciles o elige cualquiera. Sin reloj; puedes deshacer.'],
+ title:["Qidolab · Just One More", "Qidolab · 数字不打烊", "Qidolab · 數字不打烊", "Qidolab · ¡Una más!"],
+ preview:["TWO MORE GAMES · 6 ROUNDS EACH", "两种新玩法 · 每种 6 关", "兩種新玩法 · 每種 6 關", "DOS JUEGOS MÁS · 6 RETOS CADA UNO"],
+ heading:["A different twist. Another go.", "换个玩法，再来一局。", "換個玩法，再來一局。", "Otra idea. Otra partida."],
+ intro:["These two games each have six fixed rounds. Try the warm-ups, then jump to any round. No timer. Undo freely.", "这两种玩法各有六道固定关卡。先玩热身题，也可以跳到任意一关。不计时，随时撤回。", "這兩種玩法各有六道固定關卡。先玩熱身題，也可以跳到任意一關。不計時，隨時撤回。", "Estos dos juegos tienen seis retos fijos cada uno. Empieza por los fáciles o elige cualquiera. Sin reloj; puedes deshacer."],
+ game24:['Make 24','算 24 点','算 24 點','Forma 24'],
+ gameCode:['Crack the code','数字密码','數字密碼','Descifra la clave'],
  patch:['Patch the Past','改一处，救全局','改一處，救全局','Un cambio lo arregla'],
  borrow:['Borrow & Return','借来的数字','借來的數字','Prestado por un rato'],
  patchShort:['One edit. Two timelines.','只改一处，两条路线','只改一處，兩條路線','Un cambio, dos recorridos'],
  borrowShort:['Borrow once. Return it in time.','借一次，记得还','借一次，記得還','Pide una vez. Luego devuelve.'],
  back:['Back to Just One More ↗','返回数字不打烊 ↗','返回數字不打烊 ↗','Volver a ¡Una más! ↗'],
- language:['Language','语言','語言','Idioma'], games:['Choose an experiment','选择玩法','選擇玩法','Elige un experimento'],
+ language:['Language','语言','語言','Idioma'], games:["Choose a game", "选择游戏", "選擇遊戲", "Elige un juego"],
  round:['Round {n} / 6','第 {n} / 6 关','第 {n} / 6 關','Reto {n} / 6'],roundLabel:['Round {n}','第 {n} 关','第 {n} 關','Reto {n}'],
  easy:['Warm-up','热身','熱身','Para empezar'], deeper:['A little trickier','再想一步','再想一步','Un poco más difícil'],
  rules:['How to play','怎么玩','怎麼玩','Cómo jugar'],
@@ -50,8 +52,8 @@ export const COPY={
  solutionFromStart:['One route from the start:','从起点出发的一种走法：','從起點出發的一種走法：','Una ruta desde el inicio:'],
  helpNote:['Solutions do not mark a round complete. Any valid route is accepted.','查看解法不会自动过关。符合规则的解法都接受。','查看解法不會自動過關。符合規則的解法都接受。','Ver la solución no completa el reto. Se acepta cualquier ruta válida.'],
  solved:['Solved','已解开','已解開','Resuelto'],helped:['Solved with help','借助提示解开','借助提示解開','Resuelto con ayuda'],assisted:['Help viewed','已看过提示或解法','已看過提示或解法','Ayuda consultada'],
- saved:['Preview progress stays in this browser. The main games keep their own progress.','试玩进度保存在此浏览器，与正式游戏进度分开。','試玩進度儲存在此瀏覽器，與正式遊戲進度分開。','El avance de la prueba se guarda aquí, separado de los juegos principales.'],
- storageError:['Progress could not be saved here. You can still play.','此浏览器无法保存进度，但仍然可以试玩。','此瀏覽器無法儲存進度，但仍然可以試玩。','No se pudo guardar el avance. Aun así puedes jugar.'],
- footer:['Which one makes you want another round? Tell me back in the chat.','哪一种让你想再来一局？试玩后回聊天里告诉我。','哪一種讓你想再來一局？試玩後回聊天裡告訴我。','¿Cuál te invita a jugar otra ronda? Cuéntamelo en el chat.']
+ saved:["Progress stays in this browser. No account, no timer.", "进度保存在此浏览器。不用账号，不计时。", "進度儲存在此瀏覽器。不用帳號，不計時。", "Tu avance se guarda en este navegador. Sin cuenta ni reloj."],
+ storageError:["Progress could not be saved here. You can still play.", "此浏览器无法保存进度，但仍然可以玩。", "此瀏覽器無法儲存進度，但仍然可以玩。", "No se pudo guardar el avance. Aun así puedes jugar."],
+ footer:["Small experiments. Room to think.", "小小的实验，慢慢想通。", "小小的實驗，慢慢想通。", "Pequeños retos. Espacio para pensar."]
 };
 export function t(key,language,params={}){const i=Math.max(0,LANGUAGES.indexOf(language));return COPY[key][i].replace(/\{(\w+)\}/g,(_,k)=>String(params[k]??''));}

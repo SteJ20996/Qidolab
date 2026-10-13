@@ -1,0 +1,7 @@
+/* The same four destinations on both Just One More pages. */
+nav.jom-games{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px;margin:24px 0;max-width:none}
+nav.jom-games>button,nav.jom-games>a{display:flex;align-items:center;justify-content:center;gap:10px;min-width:0;min-height:98px;padding:15px 12px;border:1.5px solid #52634c;border-radius:19px;background:#fffdf3;color:#324730;box-shadow:2px 3px 0 #b0b9a3;text-decoration:none;transform:none;font-family:inherit;font-size:17px;font-weight:700;line-height:1.35;overflow-wrap:anywhere;text-align:left}
+nav.jom-games>button::before{display:none}nav.jom-games>button[aria-pressed=true]{background:#d6e8b4;color:#324730;box-shadow:2px 3px 0 #52634c}
+nav.jom-games .game-symbol,nav.jom-games .tab-icon{flex:0 0 34px;min-width:34px;width:34px;height:38px;display:grid;place-items:center;margin:0;border:0;background:none;box-shadow:none;font-size:25px;letter-spacing:0;color:inherit}
+nav.jom-games strong{font-size:17px;line-height:1.35;display:block}nav.jom-games small{display:block;font-size:11px;font-weight:400;line-height:1.5;margin-top:4px}
+@media(max-width:760px){nav.jom-games{grid-template-columns:repeat(2,minmax(0,1fr))}nav.jom-games>button,nav.jom-games>a{min-height:82px;font-size:16px;padding:13px 10px;justify-content:flex-start}nav.jom-games strong{font-size:16px}}

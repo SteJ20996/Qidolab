@@ -1,6 +1,6 @@
-# Two arithmetic prototypes — playtest only
+# Two arithmetic games — playtest and release record
 
-2026-10-13. The user asked to try JOM-05 and JOM-06 before deciding whether to include them. This branch adds `/playtest/` only; no production menus or existing game modules change. Keep its PR in draft.
+2026-10-13. The user asked to try JOM-05 and JOM-06 before deciding whether to include them. Initial work was isolated at `/playtest/`. After reviewing the animated guides, the user approved merging and going live on 2026-10-13. The production entry is `/2/experiments/`; it reuses the tested renderer and engines, and all four games now share a navigation menu. Old preview links remain valid.
 
 ## What is playable
 
@@ -25,4 +25,4 @@ All four Just One More games now have a first-visit, five-step animated walkthro
 
 Patch explicitly explains shared operations, replacement versus addition, checkpoints, both targets, and restarting each attempt from the original strip. Code guessing distinguishes total correct digits from correctly placed digits. Chinese warm-up labels now use 热身 / 熱身.
 
-This remains on the preview branch pending playtesting; no production merge is included.
+Release authorized on 2026-10-13 after the user approved this version. The six-concept list includes four unimplemented proposals (JOM-01 through JOM-04); the release contains the existing two games plus JOM-05 and JOM-06, for four playable games total.
