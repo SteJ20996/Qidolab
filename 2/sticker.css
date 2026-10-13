@@ -86,8 +86,7 @@ body[data-look=sticker] .mode-tabs{border:1px dashed #9fac8b;background:#f7f8e7}
 body[data-look=sticker] .difficulty{background:#e7efc8;border:1px solid #9daa7f}
 body[data-look=sticker] .code-inputs input{border:2px solid #52634c;border-radius:14px;box-shadow:3px 4px 0 #b4c59b}
 
-@media(max-width:1120px){
-}
+
 
 @media(max-width:800px){.play-grid{grid-template-columns:minmax(0,1fr)}
 .sidebar{grid-template-columns:1fr 1fr}
@@ -113,8 +112,10 @@ body[data-look=sticker] .code-inputs input{border:2px solid #52634c;border-radiu
 .mode-tabs button{font-size:11px}
 }
 
-@media(prefers-reduced-motion:no-preference){
-}
 
 
 
+
+
+/* Starting numbers must remain readable on the light playing surface. */
+.start-line{color:#52694d;margin-top:15px;font-size:11px}
