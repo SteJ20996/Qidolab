@@ -13,7 +13,7 @@ function saved(ui){return JSON.parse(ui.w.localStorage.getItem('qidolab-v2-progr
 test('before scripts load, static labels remain visible and controls wait for a ready puzzle',()=>{
   const dom=new JSDOM(html,{url:'https://qidolab.test/2/'}),d=dom.window.document;
   for(const el of d.querySelectorAll('[data-text]'))assert.equal(el.textContent,COPY[el.dataset.text][0]);
-  assert.equal(d.querySelector('#game-24 .tab-icon').textContent,'24');
+  assert.equal(d.querySelector('#game-24 .tab-icon img').getAttribute('src'),'/assets/games/twentyfour.svg?v=1');
   assert.ok(d.querySelector('#play [role="status"]').textContent.includes('Loading'));
   assert.ok(d.getElementById(d.querySelector('#play').getAttribute('aria-labelledby')));
   for(const el of d.querySelectorAll('[data-game],[data-mode],#language'))assert.equal(el.disabled,true);
@@ -62,8 +62,8 @@ test('language changes keep button labels, icons, selected cards and expanded he
     assert.equal(ui.q('h1').textContent,COPY.heading[i]);
     assert.equal(ui.q('#game-24 [data-text]').textContent,COPY.game24[i]);
     assert.equal(ui.q('#game-code [data-text]').textContent,COPY.gameCode[i]);
-    assert.equal(ui.q('#game-24 .tab-icon').textContent,'24');
-    assert.equal(ui.q('#game-code .tab-icon').textContent,'••••');
+    assert.equal(ui.q('#game-24 .tab-icon img').getAttribute('src'),'/assets/games/twentyfour.svg?v=1');
+    assert.equal(ui.q('#game-code .tab-icon img').getAttribute('src'),'/assets/games/code.svg?v=1');
     assert.equal(ui.d.querySelectorAll('[data-card][aria-pressed="true"]').length,2);
     assert.equal(ui.q('#answer').getAttribute('aria-expanded'),'true');
     assert.equal(ui.q('#answer').textContent,COPY.hideSolution[i]);
