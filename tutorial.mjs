@@ -1,6 +1,7 @@
-import {UI,LESSONS,localize} from './tutorial-copy.mjs?v=2';
+import {UI as BASE_UI,LESSONS as BASE_LESSONS,localize} from './tutorial-copy.mjs?v=2';
 const KEY='qidolab-how-to-v1';
-export function createTutorial(doc){
+export function createTutorial(doc,extension={}){
+ const UI={...BASE_UI,...extension.names},LESSONS={...BASE_LESSONS,...extension.lessons};
  const host=doc.getElementById('how-to');if(!host)return {sync(){},destroy(){}};
  const win=doc.defaultView,session={};let game,lang,step=0,open=false,seen={};
  try{const raw=JSON.parse(win.localStorage.getItem(KEY)||'{}');if(raw&&typeof raw==='object')seen=raw;}catch{}
@@ -10,6 +11,7 @@ export function createTutorial(doc){
  const label=s=>`<p class="tour-label">${esc(s)}</p>`;
  const note=s=>`<p class="tour-note">${esc(s)}</p>`;
  function scene(){
+  if(extension.scenes?.[game])return extension.scenes[game]({step,t,chip,flow,label,note,esc});
   if(game==='patch'){
    const changed=step>=3;
    let h=label(t('shared'))+flow(['+1','×2',changed?'×2':'−1']);
