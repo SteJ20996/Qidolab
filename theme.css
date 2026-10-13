@@ -70,3 +70,5 @@ body{background:radial-gradient(ellipse at 48% 42%,#dfe5d880,transparent 58%),ra
 html[lang=zh-TW] body{font-family:'Noto Sans TC','PingFang TC','Microsoft JhengHei',system-ui,sans-serif}
 
 .v2-link{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:8px 14px;border:1px solid #a9c6ae;border-radius:24px;background:#e2efdd;color:#244f3b;font-size:13px;white-space:nowrap;text-decoration:none}.v2-link:hover{background:#d5eacd}.v2-link:focus-visible{outline:3px solid #b46630;outline-offset:4px}
+.v2-link>[aria-hidden]{flex-shrink:0}
+@media(max-width:640px){.header-tools{flex-wrap:wrap;justify-content:flex-end}.header-tools .language-control{flex-shrink:0}.v2-link{white-space:normal;max-width:100%}.v2-link>[data-i18n]{min-width:0;overflow-wrap:anywhere}}

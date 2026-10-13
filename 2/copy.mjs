@@ -61,7 +61,7 @@ export const COPY = {
  repeated:['Use each digit at most once in a guess.','同一次猜测里，数字不能重复。','同一次猜測裡，數字不能重複。','No repitas dígitos en el mismo intento.'],
  duplicate:['You already tried this code. Change a digit or its position.','这个组合已经试过了。换个数字或位置试试。','這個組合已經試過了。換個數字或位置試試。','Ya probaste esta clave. Cambia un dígito o su posición.'],
  limit:['This round has 1,000 recorded guesses. Start over to continue.','本关已记录 1000 次猜测。重新开始后可以继续。','本關已紀錄 1000 次猜測。重新開始後可以繼續。','Esta ronda tiene 1000 intentos registrados. Reinicia para continuar.'],
- result:['{present} digits belong; {placed} of them are in the right place.','{present} 个数字正确，其中 {placed} 个位置也正确。','{present} 個數字正確，其中 {placed} 個位置也正確。','{present} dígitos pertenecen a la clave; {placed} de ellos están bien colocados.'],
+ result:['Correct digits: {present}; correctly placed among them: {placed}.','{present} 个数字正确，其中 {placed} 个位置也正确。','{present} 個數字正確，其中 {placed} 個位置也正確。','Dígitos correctos: {present}; de ellos, bien colocados: {placed}.'],
  codeWin:['Unlocked. The secret is {code}.','解开了，密码是 {code}。','解開了，密碼是 {code}。','Resuelta. La clave es {code}.'],
  ledger:['Your clues','你的线索','你的線索','Tus pistas'],
  attempt:['Guess','猜测','猜測','Intento'],present:['Correct digits','数字正确','數字正確','Dígitos correctos'],placed:['Also in place','其中位置正确','其中位置正確','Además, bien colocados'],

@@ -37,3 +37,54 @@ test('free puzzles change, undo a new puzzle, preserve both code lengths and rel
 test('storage failure leaves games playable and shows an explicit warning',()=>{
   const ui=setup();Object.defineProperty(ui.w,'localStorage',{get(){throw new Error('blocked');}});ui.reload();assert.equal(ui.q('#save-error').hidden,false);solve(ui,ROUNDS24[0]);assert.ok(ui.q('.win'));ui.close();
 });
+
+test('language changes keep button labels, icons, selected cards and expanded help intact',()=>{
+  const ui=setup('#24/1');
+  ui.click('[data-card="0"]');ui.click('[data-card="1"]');
+  ui.click('[data-action="hint"]');ui.click('[data-action="answer"]');
+  const before=saved(ui);
+  for(const [i,language] of LANGUAGES.entries()){
+    ui.change('#language',language);
+    assert.equal(ui.d.title,COPY.title[i]);
+    assert.equal(ui.q('h1').textContent,COPY.name[i]);
+    assert.equal(ui.q('#game-24 [data-text]').textContent,COPY.game24[i]);
+    assert.equal(ui.q('#game-code [data-text]').textContent,COPY.gameCode[i]);
+    assert.equal(ui.q('#game-24 .tab-icon').textContent,'24');
+    assert.equal(ui.q('#game-code .tab-icon').textContent,'••••');
+    assert.equal(ui.d.querySelectorAll('[data-card][aria-pressed="true"]').length,2);
+    assert.equal(ui.q('#answer').getAttribute('aria-expanded'),'true');
+    assert.equal(ui.q('#answer').textContent,COPY.hideSolution[i]);
+    assert.equal(ui.q('#help-answer').hidden,false);
+    assert.ok(ui.q('#help-answer').textContent.includes('24'));
+    assert.ok(ui.q('.help-output').textContent.trim());
+    for(const el of ui.d.querySelectorAll('button,input,select')){
+      const name=el.getAttribute('aria-label')||el.textContent||el.closest('label')?.textContent;
+      assert.ok(name?.trim(),`${language}: unnamed ${el.outerHTML}`);
+      assert.doesNotMatch(name,/\{\w+\}|undefined|Missing copy:/);
+    }
+    assert.deepEqual(saved(ui),before,'changing language keeps puzzle progress');
+  }
+  ui.close();
+});
+
+test('code errors, clues and revealed answers stay translated across all four languages',()=>{
+  const ui=setup('#code/3');
+  ui.submit();
+  for(const [i,language] of LANGUAGES.entries()){
+    ui.change('#language',language);
+    assert.equal(ui.q('#code-message').textContent,COPY.incomplete[i].replace('{n}','4'));
+  }
+  guess(ui,'0123'); // Secret 0497: one correct digit, also in the correct place.
+  ui.click('[data-action="hint"]');ui.click('[data-action="answer"]');
+  const before=saved(ui);
+  for(const [i,language] of LANGUAGES.entries()){
+    ui.change('#language',language);
+    assert.equal(ui.q('#code-message').textContent,COPY.result[i].replace('{present}','1').replace('{placed}','1'));
+    assert.equal(ui.q('.ledger tbody td').textContent,'0123');
+    assert.equal(ui.q('#answer').textContent,COPY.hideCode[i]);
+    assert.equal(ui.q('#help-answer').textContent,COPY.answerCode[i].replace('{code}','0497'));
+    assert.equal(ui.q('#help-answer').hidden,false);
+    assert.deepEqual(saved(ui),before);
+  }
+  ui.close();
+});
