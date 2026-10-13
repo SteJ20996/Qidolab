@@ -1,13 +1,14 @@
 export const LANGUAGES = ['en','zh-CN','zh-TW','es-MX'];
 // All four variants are authored together so missing regional copy fails tests.
 export const COPY = {
+ echo:['After You','迟到一步','遲到一步','Un paso después'],mixed:['Mixed Signals','线索串台','線索串台','Pistas cruzadas'],tally:['Two-Way Tally','横竖两笔账','橫豎兩筆帳','Cuentas cruzadas'],both:['Both Ways','反着也得通','反著也得通','De ida y vuelta'],
  title:['Qidolab · Just One More','Qidolab · 数字不打烊','Qidolab · 數字不打烊','Qidolab · ¡Una más!'],
  language:['Language','语言','語言','Idioma'],
  back:['Think Again! ↗','十八般脑洞 ↗','十八般腦洞 ↗','Dale una vuelta ↗'],
  collection:['QIDOLAB','QIDOLAB','QIDOLAB','QIDOLAB'],
  name:['Just One More','数字不打烊','數字不打烊','¡Una más!'],
  heading:['A few numbers. A new possibility.','几个数字，换个想法。','幾個數字，換個想法。','Pocos números. Otra posibilidad.'],
- intro:["Four ways to play: make 24, crack a code, fix two routes, or borrow a number. Pick a game and try its step-by-step demo.", "四种玩法：算 24 点、猜密码、修好两条路线，或借一个数。选好游戏，先看分步演示。", "四種玩法：算 24 點、猜密碼、修好兩條路線，或借一個數。選好遊戲，先看分步示範。", "Cuatro formas de jugar: forma 24, descifra una clave, arregla dos recorridos o pide un número prestado. Elige un juego y mira su ejemplo paso a paso."],
+ intro:["Eight ways to play with numbers. Pick a game and start with its step-by-step demo.","八种数字玩法。选好游戏，先看分步演示。","八種數字玩法。選好遊戲，先看分步示範。","Ocho formas de jugar con números. Elige un juego y empieza con su ejemplo paso a paso."],
  gamePatch:['Patch the Past','改一处，救全局','改一處，救全局','Un cambio lo arregla'],
  gameBorrow:['Borrow & Return','借来的数字','借來的數字','Prestado por un rato'],
  game24:['Make 24','算 24 点','算 24 點','Forma 24'],
