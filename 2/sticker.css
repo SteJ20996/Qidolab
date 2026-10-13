@@ -94,6 +94,8 @@ body[data-look=sticker] .code-inputs input{border:2px solid #52634c;border-radiu
 }
 
 @media(max-width:560px){.topbar{padding:16px 18px 10px}
+main{padding:0 16px}
+.mode-tabs button,.length-tabs button,.rounds button,.operations button,.plain-action,.next{min-height:44px}
 .logo img{width:151px}
 .language select{min-width:115px;font-size:13px;max-width:142px}
 .intro{padding:0 0 20px}
