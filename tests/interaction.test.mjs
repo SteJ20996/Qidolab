@@ -15,12 +15,16 @@ window.matchMedia = () => ({matches: false, addEventListener() {}, removeEventLi
 window.HTMLElement.prototype.scrollIntoView = function () {};
 window.HTMLDialogElement.prototype.showModal = function () {this.open = true;};
 window.HTMLDialogElement.prototype.close = function () {this.open = false;};
+localStorage.setItem('quidence-locale-v1', 'zh-TW');
+localStorage.setItem('quidence-water-v1', JSON.stringify([
+  {action: 'fill0', state: [7, 0]}, {action: 'pour01', state: [3, 4]}
+]));
 for (const script of document.querySelectorAll('script[type="module"][src]')) {
   // Geometry needs a real browser; this suite exercises the application DOM.
   if (script.getAttribute('src') === 'orbit-layout.mjs') continue;
   await import(new URL('../' + script.getAttribute('src').split('?')[0], import.meta.url));
 }
-const {locales, setLocale} = await import('../i18n.mjs');
+const {locales, setLocale, translateDOM} = await import('../i18n.mjs');
 const {visibleActivities} = await import('../catalog.mjs');
 const $ = id => document.getElementById(id);
 const click = id => {assert.ok($(id), id); assert.equal($(id).disabled, false, `${id} enabled`); $(id).click();};
@@ -32,6 +36,16 @@ const choose = selector => {const el = document.querySelector(selector); assert.
 const input = (id, value) => {$(id).value = value; $(id).dispatchEvent(new Event('input', {bubbles: true}));};
 const submit = id => $(id).dispatchEvent(new Event('submit', {bubbles: true, cancelable: true}));
 const saved = id => JSON.parse(localStorage.getItem('quidence-' + id + '-v1'));
+
+test('cold startup restores Traditional Chinese and announces the saved water amounts', () => {
+  assert.equal(document.documentElement.lang, 'zh-TW');
+  assert.equal($('language-select').value, 'zh-TW');
+  assert.match(text('title'), /剛剛好/);
+  assert.match(text('quantity0'), /^3/);
+  assert.match(text('quantity1'), /^4/);
+  assert.match($('jug0').getAttribute('aria-label'), /當前 3 升/);
+  assert.match($('jug1').getAttribute('aria-label'), /當前 4 升/);
+});
 
 test('page IDs are unique and the Quidence link names its own heading in every language', () => {
   const ids = [...document.querySelectorAll('[id]')].map(el => el.id);
@@ -128,6 +142,11 @@ test('water fill, pour, undo, reset, history and hints work in every language', 
     document.querySelector('[data-action="pour01"]').click();
     assert.match(text('quantity0'), /^3/);
     assert.match(text('quantity1'), /^4/);
+    const labels = [$('jug0').getAttribute('aria-label'), $('jug1').getAttribute('aria-label')];
+    assert.match(labels[0], /3/);
+    assert.match(labels[1], /4/);
+    translateDOM();
+    assert.deepEqual([$('jug0').getAttribute('aria-label'), $('jug1').getAttribute('aria-label')], labels, 'later modules must not restore the initial empty-jug labels');
     assert.ok(text('status'));
     assert.equal($('history-list').children.length, 2);
     const before = saves();
@@ -143,6 +162,22 @@ test('water fill, pour, undo, reset, history and hints work in every language', 
     assert.ok(text('hint-text'));
   }
   assert.deepEqual(errors, []);
+});
+
+test('repeated DOM translation preserves live accessible values but keeps translating static labels', () => {
+  setLocale('zh-CN');
+  const fixture = document.createElement('div');
+  fixture.innerHTML = '<div id="live-copy" aria-label="7 升大壶，当前 0 升"></div><button title="怎么玩">?</button>';
+  document.body.append(fixture);
+  translateDOM(fixture);
+  const live = fixture.firstElementChild;
+  live.setAttribute('aria-label', '7 升大壺，當前 3 升');
+  translateDOM(fixture);
+  assert.equal(live.getAttribute('aria-label'), '7 升大壺，當前 3 升');
+  setLocale('en');
+  assert.equal(live.getAttribute('aria-label'), '7 升大壺，當前 3 升', 'the game owns the current dynamic value');
+  assert.equal(fixture.querySelector('button').title, 'How to play');
+  fixture.remove();
 });
 
 test('all 18 extra steps and extremes retain answers across all languages', async () => {
