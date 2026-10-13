@@ -6,4 +6,11 @@ nav.jom-games .game-symbol,nav.jom-games .tab-icon{flex:0 0 34px;min-width:34px;
 nav.jom-games strong{font-size:17px;line-height:1.35;display:block}nav.jom-games small{display:block;font-size:11px;font-weight:400;line-height:1.5;margin-top:4px}
 @media(max-width:760px){nav.jom-games{grid-template-columns:repeat(2,minmax(0,1fr))}nav.jom-games>button,nav.jom-games>a{min-height:82px;font-size:16px;padding:13px 10px;justify-content:flex-start}nav.jom-games strong{font-size:16px}}
 
-nav.jom-games .code-icon{font-size:18px;letter-spacing:0;white-space:nowrap}
+/* Decorative, locally drawn SVG stickers. Never replace translated labels. */
+nav.jom-games .game-symbol,nav.jom-games .tab-icon{flex:0 0 54px;min-width:54px;width:54px;height:54px;overflow:visible}
+nav.jom-games .game-art{display:block;width:100%;height:100%;max-width:none;object-fit:contain;pointer-events:none;transition:transform .18s ease}
+nav.jom-games>button>span:last-child,nav.jom-games>a>span:last-child{min-width:0;overflow-wrap:normal}
+@media(hover:hover) and (prefers-reduced-motion:no-preference){nav.jom-games>a:hover .game-art,nav.jom-games>button:hover .game-art{transform:rotate(-5deg) translateY(-2px)}}
+@media(max-width:760px){nav.jom-games .game-symbol,nav.jom-games .tab-icon{flex-basis:44px;min-width:44px;width:44px;height:44px}nav.jom-games>button,nav.jom-games>a{min-height:98px;gap:8px}}
+@media(max-width:380px){nav.jom-games .game-symbol,nav.jom-games .tab-icon{flex-basis:36px;min-width:36px;width:36px;height:36px}nav.jom-games>button,nav.jom-games>a,nav.jom-games strong{font-size:15px}}
+@media(prefers-reduced-motion:reduce){nav.jom-games .game-art{transition:none}}
