@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <script src="startup.js"></script>
-<meta name="theme-color" content="#162b4a"><meta name="description" data-i18n-content="welcome.description" content="18 brain games. Try a different move, then choose whether to go further.">
+<meta name="theme-color" content="#fffdf3"><meta name="description" data-i18n-content="welcome.description" content="18 brain games. Try a different move, then choose whether to go further.">
 <title data-i18n="welcome.title">Qidolab · Think Again!</title>
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png?v=1702287fff8a">
 <link rel="icon" type="image/svg+xml" sizes="any" href="assets/favicon.svg?v=14ddb818c191">
@@ -22,9 +22,18 @@
 <link rel="stylesheet" href="branches.css">
 <link rel="stylesheet" href="extremes.css">
 <link rel="stylesheet" href="brand-footer.css"><link rel="stylesheet" href="theme.css?v=1.2.1">
+<link rel="stylesheet" href="sticker-original.css?v=1"><link rel="stylesheet" href="collection.css?v=1">
 </head>
-<body>
-<header class="topbar"><a class="wordmark" href="./" aria-label="qidolab 首页"><img src="assets/qidolab-lockup.svg" alt="qidolab · Quidence" width="1118" height="404"></a><div class="header-tools"><a class="v2-link" href="./2/"><span data-i18n="welcome.moreName">Just One More</span> <span aria-hidden="true">↗</span></a><span class="edition" data-i18n="branch.edition">先玩一题，再说。</span><label class="language-control" for="language-select"><span class="sr-only">语言</span><select id="language-select" aria-label="语言"><option value="en" lang="en" selected>English</option><option value="zh-CN" lang="zh-CN">简体中文</option><option value="zh-TW" lang="zh-TW">繁體中文</option><option value="es-MX" lang="es-MX">Español</option></select></label></div></header>
+<body class="sticker-original">
+<header class="topbar"><a class="wordmark" href="./" aria-label="qidolab 首页"><img src="assets/qidolab-lockup.svg" alt="qidolab · Quidence" width="1118" height="404"></a><div class="header-tools"><label class="language-control" for="language-select"><span class="sr-only">语言</span><select id="language-select" aria-label="语言"><option value="en" lang="en" selected>English</option><option value="zh-CN" lang="zh-CN">简体中文</option><option value="zh-TW" lang="zh-TW">繁體中文</option><option value="es-MX" lang="es-MX">Español</option></select></label></div></header>
+<nav class="collection-switch" aria-label="Collections">
+<a class="collection-choice original-choice" data-collection="original" href="./" aria-current="page">
+<span class="collection-art" aria-hidden="true"><svg viewBox="0 0 96 88" fill="none"><path class="art-blob" d="M15 24C18 8 38 5 55 10C78 3 91 24 84 46C94 66 77 83 53 76C32 85 8 72 12 52C3 43 4 30 15 24Z"/><path class="art-line" d="M63 55 79 74" stroke-width="9" stroke-linecap="round"/><circle class="art-lens" cx="43" cy="37" r="24" stroke-width="3"/><circle class="art-eye" cx="34" cy="35" r="2.8"/><circle class="art-eye" cx="49" cy="35" r="2.8"/><path class="art-smile" d="M36 45q6 6 12 0" stroke-width="2.5" stroke-linecap="round"/><path class="art-shine" d="M29 26q5-5 10-5" stroke-width="3" stroke-linecap="round"/></svg></span>
+<span class="collection-copy"><strong data-collection-text="originalName">Think Again!</strong><span data-collection-text="originalDesc">18 little challenges</span></span><span class="collection-state" aria-hidden="true">✓</span></a>
+<a class="collection-choice more-choice" data-collection="more" href="./2/">
+<span class="collection-art" aria-hidden="true"><svg viewBox="0 0 96 88" fill="none"><path class="art-blob" d="M15 24C18 8 38 5 55 10C78 3 91 24 84 46C94 66 77 83 53 76C32 85 8 72 12 52C3 43 4 30 15 24Z"/><rect class="art-lens" x="21" y="17" width="51" height="51" rx="16" stroke-width="3" transform="rotate(-7 47 43)"/><circle class="art-eye" cx="36" cy="33" r="2.8"/><circle class="art-eye" cx="54" cy="31" r="2.8"/><path class="art-smile" d="M39 43q8 6 14-2" stroke-width="2.5" stroke-linecap="round"/><path class="art-line" d="M77 11v12m-6-6h12M15 66v10m-5-5h10" stroke-width="3" stroke-linecap="round"/><path class="art-line" d="m36 58 6-2m11 0 5-1" stroke-width="3" stroke-linecap="round"/></svg></span>
+<span class="collection-copy"><strong data-collection-text="moreName">Just One More</strong><span data-collection-text="moreDesc">New numbers. Another go.</span></span><span class="collection-state" aria-hidden="true">↗</span></a>
+</nav>
 <main class="orbit-shell">
 <p class="audience-note"><span class="collection-name" data-i18n="welcome.collectionName">Think Again!</span><span aria-hidden="true"> · </span><span data-i18n="branch.audience">18 个小游戏，挑你顺眼的。卡住了？换个招再来。</span></p>
 <div class="orbit-stage">
@@ -126,5 +135,5 @@
 <script type="module" src="activities.mjs?v=1.1.0"></script>
 <script type="module" src="orbit-layout.mjs"></script>
 <script type="module" src="mobile-navigation.mjs"></script>
-<script type="module" src="footer.mjs"></script><script type="module" src="welcome.mjs?v=1.2.0"></script></body></html>
+<script type="module" src="footer.mjs"></script><script type="module" src="welcome.mjs?v=1.2.0"></script><script type="module" src="collection-nav.mjs?v=1"></script></body></html>
 
