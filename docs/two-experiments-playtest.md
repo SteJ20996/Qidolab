@@ -18,3 +18,11 @@ These prototypes were implemented in this repository from the earlier concept de
 ## Feedback to seek
 
 Can the player explain the rule without reading it twice? Does the checkpoint change how they think? Does borrowing create an interesting timing choice beyond ordinary operation ordering? Do rounds 4–6 invite another attempt? Only decide on formal integration after the user's playtest.
+
+## Guided demos (2026-10-13)
+
+All four Just One More games now have a first-visit, five-step animated walkthrough: Make 24, Crack the code, Patch the Past, and Borrow & Return. Each uses an independent example, with four-language text, back/next, skip, animation replay, and a permanent reopen button. Demos never modify puzzle moves, guesses, assistance flags, or completion. Dismissal is remembered per game on this browser; blocked storage still permits playing. Reduced-motion preferences show the same information without animation.
+
+Patch explicitly explains shared operations, replacement versus addition, checkpoints, both targets, and restarting each attempt from the original strip. Code guessing distinguishes total correct digits from correctly placed digits. Chinese warm-up labels now use 热身 / 熱身.
+
+This remains on the preview branch pending playtesting; no production merge is included.

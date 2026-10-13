@@ -1,8 +1,10 @@
+import {createTutorial} from '../tutorial.mjs?v=1';
 import {PATCH,BORROW} from './puzzles.mjs';
 import {patchState,solvePatch,opText,initialBorrow,borrowStep,replayBorrow,borrowWon,solveBorrow} from './engine.mjs';
 import {LANGUAGES,t as translate} from './copy.mjs';
 const KEY='qidolab-two-experiments-v1';
 export function createApp(doc=document){
+ const tutorial=createTutorial(doc);
  const win=doc.defaultView,$=s=>doc.querySelector(s),all=s=>[...doc.querySelectorAll(s)];
  let language='en',game='patch',index=0,notice='',hint=false,answer=false,storageFailed=false,raw={};
  const blank=()=>({moves:[],repair:null,selected:null,attempts:[],assisted:false,solved:false,helped:false});
@@ -43,14 +45,15 @@ export function createApp(doc=document){
   return header()+`<div class="play-panel"><div class="borrow-layout"><div><div class="borrow-top"><div class="value-card"><p>${t('value')}</p><strong class="big-value">${s.value}</strong><span class="goal ${s.value===p.goal?'good':''}">${t('target',{n:p.goal})}</span></div><div class="debt-card"><p>${t('debt')}</p><strong class="big-value">${debt}</strong><p class="debt-caption">${t(s.returned?'returned':s.borrowed?'returnAction':'notBorrowed',{n:p.loan})}</p></div></div><div class="number-actions"><button type="button" data-action="borrow" ${s.borrowed||won?'disabled':''}>+ ${t('borrowAction',{n:p.loan})}</button><button type="button" data-action="return" ${!s.borrowed||s.returned||won?'disabled':''}>− ${t('returnAction',{n:p.loan})}</button></div><h3 class="label">${t('cards')}</h3><div class="operation-cards">${p.cards.map((op,i)=>`<button type="button" data-card="${i}" ${s.used.includes(i)||won?'disabled':''}><strong>${opText(op)}</strong>${s.used.includes(i)?`<small>✓ ${t('used')}</small>`:''}</button>`).join('')}</div><p class="card-count">${t('cardCount',{n:s.used.length,total:p.cards.length})}</p><p class="attempt-status ${won?'won':''} ${notice?'notice':''}" role="status">${esc(status)}</p></div><aside class="step-history"><h3>${t('history')}</h3>${rows?`<ol>${rows}</ol>`:`<p class="empty-history">${t('emptyHistory')}</p>`}</aside></div>${bottom()}</div>`+help(p);
  }
  function render(){const focus=doc.activeElement?.dataset;const focusKey=focus?['slot','choice','card','action'].find(k=>focus[k]!==undefined):null;const focusValue=focusKey?focus[focusKey]:null;
-  doc.documentElement.lang=language;doc.title=t('title');all('[data-text]').forEach(e=>e.textContent=t(e.dataset.text));$('#language').value=language;
+  tutorial.sync(game,language);
+    doc.documentElement.lang=language;doc.title=t('title');all('[data-text]').forEach(e=>e.textContent=t(e.dataset.text));$('#language').value=language;
   $('.game-switch').setAttribute('aria-label',t('games'));all('[data-game]').forEach(e=>{e.disabled=false;e.setAttribute('aria-pressed',String(e.dataset.game===game));});
   $('#rounds').innerHTML=progress[game].map((r,i)=>`<button type="button" data-round="${i}" ${i===index?'aria-current="step"':''} aria-label="${t('roundLabel',{n:i+1})}${r.solved?': '+t(r.helped?'helped':'solved'):''}">${String(i+1).padStart(2,'0')}${r.solved?`<span class="round-mark" aria-hidden="true">${r.helped?'☆':'✓'}</span>`:''}</button>`).join('');
   $('#rounds').setAttribute('aria-label',t('round',{n:index+1}));$('#play').innerHTML=game==='patch'?renderPatch(puzzle(),record()):renderBorrow(puzzle(),record());
   $('#storage-error').hidden=!storageFailed;$('#storage-error').textContent=t('storageError');
   if(focusKey)all(`[data-${focusKey}]`).find(e=>e.dataset[focusKey]===focusValue && !e.disabled)?.focus({preventScroll:true});
  }
- function click(event){const b=event.target.closest('button');if(!b||b.disabled)return;const d=b.dataset;
+ function click(event){const b=event.target.closest('button');if(!b||b.disabled)return;const d=b.dataset;if(d.tour)return;
   if(d.game){game=d.game==='borrow'?'borrow':'patch';index=0;navigate();return;}
   if(d.round!==undefined){index=Math.max(0,Math.min(5,Number(d.round)));navigate();return;}
   const p=puzzle(),r=record();notice='';
@@ -67,6 +70,6 @@ export function createApp(doc=document){
  }
  function change(event){if(event.target.id!=='language')return;language=LANGUAGES.includes(event.target.value)?event.target.value:'en';const url=new URL(win.location.href);url.searchParams.set('lang',language);win.history.replaceState(null,'',url);save();render();}
  doc.addEventListener('click',click);doc.addEventListener('change',change);win.addEventListener('hashchange',route);route();
- return {destroy(){doc.removeEventListener('click',click);doc.removeEventListener('change',change);win.removeEventListener('hashchange',route);},getState:()=>({game,index,language,progress}),render};
+ return {destroy(){tutorial.destroy();doc.removeEventListener('click',click);doc.removeEventListener('change',change);win.removeEventListener('hashchange',route);},getState:()=>({game,index,language,progress}),render};
 }
 if(typeof document!=='undefined'&&document.querySelector('#play'))createApp(document);

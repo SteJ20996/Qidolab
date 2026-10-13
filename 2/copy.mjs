@@ -30,7 +30,7 @@ export const COPY = {
  solved:['Solved','已解开','已解開','Resuelta'],
  helped:['Solved with help','借助提示解开','藉助提示解開','Resuelta con ayuda'],
  progress:['{n} of 10 solved','已解开 {n} / 10 关','已解開 {n} / 10 關','{n} de 10 resueltas'],
- easy:['Warm-up','热身','暖身','Para empezar'],
+ easy:['Warm-up','热身','熱身','Para empezar'],
  medium:['A different route','换条路','換條路','Otro camino'],
  hard:['Fractions welcome','分数也能帮忙','分數也能幫忙','Las fracciones ayudan'],
  objective24:['Four cards. Exactly 24.','四张牌，刚好 24。','四張牌，剛好 24。','Cuatro cartas. Exactamente 24.'],
