@@ -4,13 +4,22 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Qidolab · Just One More</title>
 <meta name="description" content="Make 24 or crack a number code. Unlimited fresh numbers and twenty starter puzzles in English, Simplified Chinese, Traditional Chinese and Spanish.">
-<meta name="theme-color" content="#f7f3ea"><link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#fffdf3"><link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 <link rel="canonical" href="https://qidolab.com/2/"><link rel="stylesheet" href="style.css?v=2.1.1">
+<link rel="stylesheet" href="sticker.css?v=1"><link rel="stylesheet" href="../collection.css?v=1">
 </head>
-<body>
-<header class="topbar"><a class="logo" href="../" aria-label="Qidolab"><img src="../assets/qidolab-lockup.svg" width="1118" height="404" alt="Qidolab · Quidence"></a><div class="top-tools"><a href="../" data-text="back">Think Again! ↗</a><label class="language"><span data-text="language">Language</span><select id="language" disabled><option value="en">English</option><option value="zh-CN">简体中文</option><option value="zh-TW">繁體中文</option><option value="es-MX">Español</option></select></label></div></header>
+<body data-look="sticker">
+<header class="topbar"><a class="logo" href="../" aria-label="Qidolab"><img src="../assets/qidolab-lockup.svg" width="1118" height="404" alt="Qidolab · Quidence"></a><div class="top-tools"><label class="language"><span data-text="language">Language</span><select id="language" disabled><option value="en">English</option><option value="zh-CN">简体中文</option><option value="zh-TW">繁體中文</option><option value="es-MX">Español</option></select></label></div></header>
+<nav class="collection-switch" aria-label="Collections">
+<a class="collection-choice original-choice" data-collection="original" href="../">
+<span class="collection-art" aria-hidden="true"><svg viewBox="0 0 96 88" fill="none"><path class="art-blob" d="M15 24C18 8 38 5 55 10C78 3 91 24 84 46C94 66 77 83 53 76C32 85 8 72 12 52C3 43 4 30 15 24Z"/><path class="art-line" d="M63 55 79 74" stroke-width="9" stroke-linecap="round"/><circle class="art-lens" cx="43" cy="37" r="24" stroke-width="3"/><circle class="art-eye" cx="34" cy="35" r="2.8"/><circle class="art-eye" cx="49" cy="35" r="2.8"/><path class="art-smile" d="M36 45q6 6 12 0" stroke-width="2.5" stroke-linecap="round"/><path class="art-shine" d="M29 26q5-5 10-5" stroke-width="3" stroke-linecap="round"/></svg></span>
+<span class="collection-copy"><strong data-collection-text="originalName">Think Again!</strong><span data-collection-text="originalDesc">18 little challenges</span></span><span class="collection-state" aria-hidden="true">↗</span></a>
+<a class="collection-choice more-choice" data-collection="more" href="./" aria-current="page">
+<span class="collection-art" aria-hidden="true"><svg viewBox="0 0 96 88" fill="none"><path class="art-blob" d="M15 24C18 8 38 5 55 10C78 3 91 24 84 46C94 66 77 83 53 76C32 85 8 72 12 52C3 43 4 30 15 24Z"/><rect class="art-lens" x="21" y="17" width="51" height="51" rx="16" stroke-width="3" transform="rotate(-7 47 43)"/><circle class="art-eye" cx="36" cy="33" r="2.8"/><circle class="art-eye" cx="54" cy="31" r="2.8"/><path class="art-smile" d="M39 43q8 6 14-2" stroke-width="2.5" stroke-linecap="round"/><path class="art-line" d="M77 11v12m-6-6h12M15 66v10m-5-5h10" stroke-width="3" stroke-linecap="round"/><path class="art-line" d="m36 58 6-2m11 0 5-1" stroke-width="3" stroke-linecap="round"/></svg></span>
+<span class="collection-copy"><strong data-collection-text="moreName">Just One More</strong><span data-collection-text="moreDesc">New numbers. Another go.</span></span><span class="collection-state" aria-hidden="true">✓</span></a>
+</nav>
 <main>
-<section class="intro"><p class="eyebrow" data-text="collection">QIDOLAB</p><h1 data-text="name">Just One More</h1><h2 data-text="heading">A few numbers. A new possibility.</h2><p data-text="intro">Make 24, or crack a secret. Start with ten rounds, then keep playing with new numbers.</p></section>
+<section class="intro"><h1 data-text="heading">A few numbers. A new possibility.</h1><p data-text="intro">Make 24, or crack a secret. Start with ten rounds, then keep playing with new numbers.</p></section>
 <nav class="game-tabs" aria-label="Games"><button id="game-24" type="button" data-game="twentyfour" aria-pressed="true" disabled><span class="tab-icon" aria-hidden="true">24</span><span data-text="game24">Make 24</span></button><button id="game-code" type="button" data-game="code" aria-pressed="false" disabled><span class="tab-icon code-icon" aria-hidden="true">••••</span><span data-text="gameCode">Crack the code</span></button></nav>
 <div class="mode-bar"><div class="mode-tabs" id="modes"><button type="button" data-mode="starter" data-text="starter" disabled>Ten starter rounds</button><button type="button" data-mode="free" data-text="free" disabled>Keep playing</button></div><div id="code-length" class="length-tabs" hidden><span data-text="length">Code length</span><button type="button" data-length="4"></button><button type="button" data-length="5"></button></div></div>
 <p id="free-note" class="free-note" data-text="freeNote" hidden>New numbers, same rules. Every 24 puzzle has a solution.</p>
@@ -24,4 +33,4 @@
 <footer><span>QIDOLAB</span><span data-text="footer">Small experiments. Room to think.</span></footer>
 <script type="importmap">{"imports":{"./engine.mjs":"./engine.mjs?v=2.0.0","./copy.mjs":"./copy.mjs?v=2.1.1"}}</script>
 <script type="module" src="app.mjs?v=2.1.2"></script>
-</body></html>
+<script type="module" src="../collection-nav.mjs?v=1"></script></body></html>

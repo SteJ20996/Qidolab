@@ -1,0 +1,27 @@
+/* Shared navigation: native links, large targets, and room for translated labels. */
+:root{--ui-font:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang TC','Microsoft JhengHei',sans-serif}
+body,html[lang=zh-TW] body{font-family:var(--ui-font)}
+.topbar{max-width:1192px;padding:18px 36px 20px;gap:20px}
+.topbar .wordmark img,.topbar .logo img{display:block;width:185px;height:auto}
+.topbar .header-tools,.topbar .top-tools{gap:0;flex-shrink:0}
+.topbar select{background-color:#fffdf7;color:#39493d;min-height:44px}
+.collection-switch{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;max-width:1052px;margin:7px auto 30px;padding:0;font-family:var(--ui-font)}
+.collection-switch .collection-choice{position:relative;display:flex;align-items:center;text-align:left;gap:20px;min-width:0;width:100%;padding:13px 54px 13px 20px;min-height:111px;border:2px solid #52634c;border-radius:18px 25px 20px 24px;color:#39493d;background:#fffaf0;box-shadow:3px 4px 0 #b5bda5;isolation:isolate;text-decoration:none;transform:rotate(-1deg)}
+.collection-switch .more-choice{transform:rotate(.8deg)}
+.collection-switch .collection-choice[aria-current=page]{background:#cce6c7;box-shadow:4px 5px 0 #52634c}
+.collection-switch .collection-choice::before{content:'';width:62px;height:18px;position:absolute;left:47%;top:-10px;background:#f0dbaaac;border:1px solid #dbc79a70;transform:rotate(-4deg);pointer-events:none}
+.collection-copy{display:grid;gap:6px;min-width:0}
+.collection-switch .collection-copy strong{font-size:27px;font-weight:730;letter-spacing:-.035em;line-height:1.2;overflow-wrap:anywhere}
+.collection-copy>span{font-size:13px;color:#5b6c54;line-height:1.4}
+.collection-state{position:absolute;right:20px;top:20px;width:27px;height:27px;display:grid;place-items:center;font-size:16px;color:#52634c;background:#eff2e4;border:1.5px solid #52634c;border-radius:50%;line-height:1}
+.collection-choice[aria-current=page] .collection-state{color:#fff;background:#355b46}
+.collection-art{width:84px;flex:0 0 84px}
+.collection-art svg{display:block;width:100%;height:78px}
+.art-blob{fill:#f7dfbb}.more-choice .art-blob{fill:#acd3a7}.art-lens{fill:#fff9ed;stroke:#3b654f}.art-line,.art-smile{stroke:#3b654f}.art-eye{fill:#3b654f}.art-shine{stroke:#fff}.more-choice .art-lens{fill:#f4fbdc}
+.collection-choice:focus-visible{outline:3px solid #a45c28;outline-offset:7px}
+@media(hover:hover){.collection-switch .collection-choice:hover{background:#e1eed5;transform:translateY(-2px)}}
+@media(max-width:1120px){.collection-switch{margin-left:34px;margin-right:34px}.collection-switch .collection-choice{gap:13px}.collection-art{width:70px;flex-basis:70px}.collection-switch .collection-copy strong{font-size:25px}}
+@media(max-width:800px){.topbar{padding:17px 25px 20px}.collection-switch{margin-left:24px;margin-right:24px;gap:14px}.collection-switch .collection-choice{padding:16px 40px 16px 15px;gap:10px;min-height:104px}.collection-art{width:54px;flex-basis:54px}.collection-art svg{height:59px}.collection-state{right:12px;top:13px;width:22px;height:22px;font-size:13px}.collection-switch .collection-copy strong{font-size:22px}.collection-copy>span{font-size:12px}}
+@media(max-width:560px){.topbar{padding:16px 18px 15px;gap:12px}.topbar .wordmark img,.topbar .logo img{width:151px}.topbar select,.topbar #language-select{width:115px;min-width:0;max-width:142px;font-size:13px;padding-left:12px;padding-right:36px}.collection-switch{margin:12px 16px 25px;gap:13px}.collection-switch .collection-choice{min-height:156px;flex-direction:column;align-items:flex-start;padding:11px 15px 15px;gap:6px;border-radius:20px;transform:none}.collection-art{height:49px;width:54px;flex-basis:auto}.collection-art svg{height:49px}.collection-switch .collection-copy strong{font-size:21px;line-height:1.2}.collection-copy>span{font-size:12px;line-height:1.45}.collection-state{right:12px;top:16px}.collection-switch .collection-choice::before{left:40%;width:42px;height:14px;top:-8px}}
+@media(max-width:360px){.topbar .wordmark img,.topbar .logo img{width:136px}.collection-switch .collection-copy strong{font-size:19px}.collection-switch .collection-choice{padding-left:12px;padding-right:12px}}
+@media(prefers-reduced-motion:no-preference){.collection-choice{transition:transform .16s}}

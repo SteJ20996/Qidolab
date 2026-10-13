@@ -1,0 +1,120 @@
+/* Selected paper-sticker direction for the numeric games. */
+:root{--paper:#fff9ee;--ink:#23493d;--muted:#5c7065;--line:#d9e4d3;--mint:#d4efd9;--serif:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang TC','Microsoft JhengHei',sans-serif;font-family:var(--serif)}
+
+body{background:#fff9ee;color:var(--ink);font-family:var(--serif)}
+
+button,input,select{font-family:inherit}
+button,a{-webkit-tap-highlight-color:transparent}
+button:focus-visible,a:focus-visible,select:focus-visible{outline:3px solid #af692b;outline-offset:5px}
+
+.topbar{padding:18px 36px 14px;max-width:1192px}
+.logo img{width:185px}
+.top-tools{gap:0}
+.language select{min-width:126px;background-color:#fffdf7;border-color:#dce3d6}
+
+main{max-width:1120px;padding:0 34px}
+.intro{padding:0 0 20px}
+.intro h1{font-family:var(--serif);font-size:32px;font-weight:680;letter-spacing:-.045em;line-height:1.2;margin:3px 0 10px}
+.intro>p:last-child{font-size:13px;line-height:1.6;margin:0 auto;max-width:720px}
+.game-tabs{margin-bottom:20px;gap:12px}
+.game-tabs button{min-height:49px;font-size:14px;border-radius:18px;border-color:#dae2ce;padding:10px 23px;gap:11px;background:#fffdf7;box-shadow:0 3px 0 #e5e8dc}
+.game-tabs button[aria-pressed=true]{background:#325b46;border-color:#325b46;box-shadow:0 3px 0 #1b3d2b;color:#fff}
+.tab-icon{font-family:inherit;font-size:23px;font-weight:700}
+.code-icon{font-size:15px}
+.mode-bar{margin-bottom:14px}
+.mode-tabs{background:#eff0df;border:1px solid #dde1ce;border-radius:16px;padding:4px}
+.mode-tabs button,.length-tabs button{font-size:12px;min-height:35px;padding:8px 13px}
+.mode-tabs button[aria-pressed=true]{border-radius:11px}
+.free-note{margin:0 0 13px;font-size:11px}
+.collection-panel{margin-bottom:19px}
+.rounds button{min-height:40px}
+.collection-top{margin-bottom:11px}
+.play-grid{grid-template-columns:minmax(0,1fr) 268px;gap:23px}
+.game-board{color:var(--ink);background:#e7f2de;border:1.5px solid #c7dcbe;padding:25px 28px;border-radius:29px;box-shadow:0 6px 0 #cbdaba,0 16px 35px -28px #5b755b}
+.board-meta{margin-bottom:18px;color:#526d51;font-size:10px;font-weight:600;letter-spacing:.08em}
+.difficulty{background:#f7f9e9;border-color:#becfb7;color:#46654b;padding:4px 10px}
+.game-board h2{font-family:var(--serif);font-size:26px;font-weight:700;letter-spacing:-.035em;margin-bottom:10px;line-height:1.3}
+.rules{color:#426044;font-size:12px;line-height:1.75}
+.mini-card{background:#f5faed;border-color:#c3d4b7;color:#52694d;min-width:24px;height:25px;font-size:11px}
+.cards{gap:13px;margin:22px 0 17px}
+.cards button{min-height:97px;border:1.5px solid #b7cba8;background:#fffef6;color:#284d3b;border-radius:20px;box-shadow:0 5px 0 #afc3a0;font-family:var(--serif);font-weight:700;font-size:35px;padding:22px 6px 17px}
+.cards button[aria-pressed=true]{background:#fff0c4;border-color:#b18a4b;box-shadow:0 7px 0 #bca477}
+.card-expression{font-family:var(--serif);font-weight:450;font-size:10px}
+.pick-status{color:#405d42;font-size:12px;min-height:27px}
+.operations{gap:11px;max-width:292px}
+.operations button{background:#faffed;border-color:#afc7a0;border-radius:14px;height:43px;box-shadow:0 3px 0 #c2d5b2;color:#365c43;font-weight:650}
+.swap{color:#496045;min-height:30px;margin-top:13px;font-size:11px}
+.board-bottom{border-color:#b8ceb0;margin-top:19px;padding-top:16px}
+.plain-action{color:#38553e;border-color:#a5bea0;font-size:11px;background:#ffffff50;min-height:36px;padding:8px 15px}
+.win{background:#f8f4cb;color:#3d583b}
+.notice{color:#765020}
+.side-card{background:#fffdf6;border:1.5px solid #e2dcc7;border-radius:24px;padding:22px;box-shadow:0 4px 0 #ebe5d3}
+.side-card h3{font-size:13px}
+.sidebar{gap:20px}
+.hint-button{background:#fae7c6;border-color:#dfc39c;border-radius:14px;color:#745330;font-size:12px;min-height:41px}
+.hint-button.secondary{color:#576950;background:#f6f7ec;border-color:#d6ddc7}
+.empty,.clue-note{font-size:12px;line-height:1.75}
+.help-note{font-size:10px;line-height:1.7}
+.help-output{background:#eef2db}
+.next{background:#365a43;font-size:12px}
+.submit-guess{background:#426b4b;color:#fff;border-color:#426b4b;border-radius:14px;box-shadow:0 3px 0 #2b4d32}
+.code-inputs input{border-radius:18px;border-color:#b0c9a4;background:#fffef5;box-shadow:0 4px 0 #c7d6b5;font-family:inherit;font-size:31px;font-weight:650}
+.form-caption{color:#50664b}
+.ledger-wrap{border-radius:23px;background:#fffdf6}
+.privacy{margin:25px 0}
+.original{margin-top:24px}
+.original a{white-space:normal}
+.help-flag{color:#6b633c}
+.trail{font-size:12px}
+.lights-shelf{background:#fcf0d4;border-color:#e4d3b6;box-shadow:0 5px 0 #e4d4b5}
+.pattern-shelf{background:#e9e8f6;border-color:#d0cfe0;box-shadow:0 5px 0 #d6d3e3}
+
+body[data-look=sticker]{--ink:#39493d;--muted:#677060;--paper:#fffdf3;background-color:var(--paper);background-image:radial-gradient(#d4d8bd 0.7px,transparent 0.7px);background-size:20px 20px}
+body[data-look=sticker] .game-tabs button{border:1.5px solid #52634c;box-shadow:2px 3px 0 #b0b9a3;background:#fffdf3}
+body[data-look=sticker] .game-tabs button[aria-pressed=true]{color:#324730;background:#d6e8b4;box-shadow:2px 3px 0 #52634c}
+body[data-look=sticker] .game-board{border:2px solid #52634c;background:#f8fbeb;border-radius:20px 29px 22px 26px;box-shadow:6px 6px 0 #ccd7b6}
+body[data-look=sticker] .board-meta{color:#5b704f}
+body[data-look=sticker] .game-board h2{display:table;background:linear-gradient(transparent 57%,#dfedbd 57%);padding-right:12px}
+body[data-look=sticker] .cards button{border:2px solid #52634c;border-radius:15px;box-shadow:3px 4px 0 #b4c59b;background:#e5efca}
+body[data-look=sticker] .cards button:nth-child(2n){background:#fae9c3}
+body[data-look=sticker] .cards button[aria-pressed=true]{background:#f2dcb1;box-shadow:3px 6px 0 #b8a77c}
+body[data-look=sticker] .operations button{border:1.5px solid #52634c;background:#fffdf2;box-shadow:2px 3px 0 #bdcba7;border-radius:11px}
+body[data-look=sticker] .side-card{border:1.5px solid #71795b;border-radius:13px 18px 15px 16px;background:#fff4d8;box-shadow:3px 4px 0 #dbd3b5}
+body[data-look=sticker] .hint-button{border-color:#b5a778;background:#f2deab;border-radius:10px}
+body[data-look=sticker] .side-card:nth-child(2){background:#fffef6}
+body[data-look=sticker] .mode-tabs{border:1px dashed #9fac8b;background:#f7f8e7}
+body[data-look=sticker] .difficulty{background:#e7efc8;border:1px solid #9daa7f}
+body[data-look=sticker] .code-inputs input{border:2px solid #52634c;border-radius:14px;box-shadow:3px 4px 0 #b4c59b}
+
+@media(max-width:1120px){
+}
+
+@media(max-width:800px){.play-grid{grid-template-columns:minmax(0,1fr)}
+.sidebar{grid-template-columns:1fr 1fr}
+.topbar{padding:17px 25px}
+}
+
+@media(max-width:560px){.topbar{padding:16px 18px 10px}
+.logo img{width:151px}
+.language select{min-width:115px;font-size:13px;max-width:142px}
+.intro{padding:0 0 20px}
+.intro h1{font-size:26px;line-height:1.2;margin-bottom:10px}
+.intro>p:last-child{font-size:12px;line-height:1.7}
+.game-tabs button{padding:10px 14px;font-size:13px;border-radius:15px}
+.tab-icon{font-size:21px}
+.code-icon{font-size:15px}
+.game-board{padding:23px 17px}
+.game-board h2{font-size:23px}
+.rules{font-size:12px}
+.cards{gap:10px}
+.cards button{min-height:92px;font-size:29px;border-radius:15px}
+.sidebar{grid-template-columns:1fr}
+.top-tools{min-width:0}
+.mode-tabs button{font-size:11px}
+}
+
+@media(prefers-reduced-motion:no-preference){
+}
+
+
+

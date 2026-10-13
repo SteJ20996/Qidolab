@@ -1,0 +1,22 @@
+/* Paper-sticker frame for the original puzzles. Game-state colours stay distinct. */
+:root{--paper:#fffdf3;--ink:#39493d;--muted:#5d6e5c;--mint:#d3f3de;--line:#d9dfcf;--deep:#35745c}
+body.sticker-original{background-color:var(--paper);background-image:radial-gradient(#d4d8bd .7px,transparent .7px);background-size:20px 20px}
+.intro h1,.intro h2,.branch-title,.extreme-title{font-family:var(--ui-font);font-weight:700}
+.intro h1 span{color:#4f6e43}.intro .target{background:linear-gradient(transparent 58%,#dfedbd 58%)}
+.audience-note{color:#5d6e5c}
+.activity-nav a:not(.is-fully-completed){color:#43533d;background:#fffdf3;border:1.5px solid #a1ad91;border-radius:17px 22px 18px 21px;box-shadow:2px 3px 0 #d7ddc8}
+.activity-nav a:not(.is-fully-completed):hover,.activity-nav a:not(.is-fully-completed)[aria-current]{color:#324730;background:#d6e8b4;border-color:#52634c;box-shadow:3px 4px 0 #9fab87}
+.activity-nav a:not(.is-fully-completed) .orbit-number{color:#5d6e5c}
+.playground{background:#35745c;border:2px solid #52634c;border-radius:20px 29px 22px 26px;box-shadow:5px 6px 0 #ccd7b6;color:#fff}
+.playground .experiment-label,.playground .board-caption,.playground .capacity,.playground .pan span,.playground .formula-note,.playground .status-row p,.playground .history-controls,.playground .text-button,.playground .rules,.playground .rule-reminder,.playground .quantity{color:#fff}
+.playground .quantity{opacity:1}.playground .vessel.has-water .quantity{color:#174633}
+.playground .water{background:linear-gradient(180deg,#a0ebc5,#72d8a7)}
+.playground .vessel{border-color:#b6e6c4;border-top-color:#e3f6dc}
+.playground .jug-actions button,.playground .primary-button,.primary-button,.branch-button{background:#e5efca;border:1.5px solid #52634c;color:#324730;border-radius:12px;box-shadow:2px 3px 0 #274c36}
+.playground .jug-actions button span[aria-hidden]{color:#324730}
+.playground .pour-actions button{background:#fae9c3;border:1.5px solid #52634c;color:#604c2f;border-radius:12px;box-shadow:2px 3px 0 #274c36}
+.hint-button{background:#fae9c3;border:1.5px solid #b5a778;color:#604c2f;border-radius:12px;box-shadow:2px 3px 0 #dbd3b5}
+.success,.discovery,.number-result,.next-invite,.branch-card{background:#f3f6e7;border:1.5px solid #a1b28e;border-radius:16px 21px 18px 17px;box-shadow:3px 4px 0 #d5ddc5}
+.outer-next{background:#e5efca;border-color:#9bad87;color:#3d5738}.outer-next.extreme-link{background:#fae9c3;border-color:#b5a778;color:#604c2f!important}
+.brand-bridge:not([data-bridge-theme=gold]){--bridge-ink:#39493d;--bridge-muted:#5d6e5c;--bridge-accent:#526b42;--bridge-background:#eff3e1;--bridge-line:#adb99c;--bridge-line-hover:#758d63}
+@media(max-width:560px){.playground{box-shadow:3px 4px 0 #ccd7b6;border-radius:18px}.intro h1{letter-spacing:-.03em}.activity-nav a:not(.is-fully-completed){box-shadow:2px 3px 0 #d7ddc8}}

@@ -59,7 +59,7 @@ test('language changes keep button labels, icons, selected cards and expanded he
   for(const [i,language] of LANGUAGES.entries()){
     ui.change('#language',language);
     assert.equal(ui.d.title,COPY.title[i]);
-    assert.equal(ui.q('h1').textContent,COPY.name[i]);
+    assert.equal(ui.q('h1').textContent,COPY.heading[i]);
     assert.equal(ui.q('#game-24 [data-text]').textContent,COPY.game24[i]);
     assert.equal(ui.q('#game-code [data-text]').textContent,COPY.gameCode[i]);
     assert.equal(ui.q('#game-24 .tab-icon').textContent,'24');

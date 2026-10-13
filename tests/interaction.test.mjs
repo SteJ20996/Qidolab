@@ -73,9 +73,9 @@ test('localized collection names keep their nested link labels and decorative ar
     translateDOM();
     const [original, more] = names[language];
     assert.equal(document.querySelector('.collection-name').textContent, original);
-    assert.equal(document.querySelector('.v2-link [data-i18n]').textContent, more);
-    assert.equal(document.querySelector('.v2-link [aria-hidden]').textContent, '↗');
-    assert.equal(document.querySelector('.v2-link').getAttribute('href'), './2/');
+    assert.equal(document.querySelector('[data-collection=more] [data-collection-text=moreName]').textContent, more);
+    assert.equal(document.querySelector('[data-collection=more] .collection-state').textContent, '↗');
+    assert.equal(document.querySelector('[data-collection=more]').getAttribute('href'), './2/');
     assert.ok(document.querySelector('[data-i18n="branch.audience"]').textContent.trim());
   }
 });
