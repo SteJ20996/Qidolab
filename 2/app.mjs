@@ -1,8 +1,10 @@
+import {createTutorial} from '../tutorial.mjs?v=2';
 import {ROUNDS24,CODES,OPS,SYMBOL,initialCards,replay24,combine,won24,solve24,valueText,calculate,scoreCode,validGuess,candidateCodes,filterCandidates,fresh24,freshCode,restoreProgress,generate24,generateCode} from './engine.mjs';
 import {LANGUAGES,translate} from './copy.mjs';
 
 export function createApp(doc=document) {
-  const win=doc.defaultView, $=s=>doc.querySelector(s), all=s=>[...doc.querySelectorAll(s)];
+  const tutorial=createTutorial(doc);
+ const win=doc.defaultView, $=s=>doc.querySelector(s), all=s=>[...doc.querySelectorAll(s)];
   const storageKey='qidolab-v2-progress-v1';
   let language='en',raw=null,storageFailed=false;
   try{language=win.localStorage.getItem('quidence-locale-v1')||'en';raw=win.localStorage.getItem(storageKey);}catch{storageFailed=true;}
@@ -21,6 +23,7 @@ export function createApp(doc=document) {
   const stateLabel=r=>r.solved?t(r.usedHint||r.revealed?'helped':'solved'):t((r.moves?.length||r.guesses?.length)?'inProgress':'ready');
   function render(){
     const focus=doc.activeElement?.id;
+    tutorial.sync(game,language);
     doc.documentElement.lang=language;doc.title=t('title');
     all('[data-text]').forEach(el=>el.textContent=t(el.dataset.text));$('#language').value=language;
     $('.game-tabs').setAttribute('aria-label',t('games'));$('#modes').setAttribute('aria-label',t('mode'));$('#modes').setAttribute('role','group');
@@ -56,7 +59,7 @@ export function createApp(doc=document) {
     return `<div class="play-grid"><div><div class="game-board">${meta(secret)}<h2 id="round-title">${t('codeTitle',{n:secret.length})}</h2><p class="rules">${t('rulesCode')}</p><form id="code-form" novalidate><div class="code-inputs" style="--digits:${secret.length}">${Array.from({length:secret.length},(_,i)=>`<input type="text" id="digit-${i}" data-digit="${i}" inputmode="numeric" pattern="[0-9]" maxlength="1" autocomplete="off" spellcheck="false" aria-label="${t('digit',{n:i+1,total:secret.length})}" aria-describedby="input-caption" value="${r.draft[i]?.trim()||''}" ${won?'disabled':''}>`).join('')}</div><button class="submit-guess" type="submit" ${won?'disabled':''}>${t('guess')}</button><p id="input-caption" class="form-caption">${t('enterCode',{n:secret.length})}</p></form><div id="code-message" role="status">${notice?`<p class="notice">${t(notice,{n:secret.length})}</p>`:won?`<p class="win">${t('codeWin',{code:secret})}</p>`:last?`<p class="notice">${t('result',scoreCode(secret,last))}</p>`:''}</div><div class="board-bottom"><button class="plain-action" type="button" data-action="restart">${t('restart')}</button></div></div>${controls()}<section class="ledger-wrap"><h3>${t('ledger')}</h3>${r.guesses.length?`<div class="ledger-scroll"><table class="ledger"><thead><tr><th scope="col">${t('attempt')}</th><th scope="col">${t('present')}</th><th scope="col">${t('placed')}</th></tr></thead><tbody>${[...r.guesses].reverse().map(g=>{const s=scoreCode(secret,g);return `<tr><td>${g}</td><td><span class="count-pill">${s.present}</span></td><td><span class="count-pill placed">${s.placed}</span></td></tr>`;}).join('')}</tbody></table></div>`:`<p class="empty">${t('noGuesses')}</p>`}</section></div><aside class="sidebar"><section class="side-card"><h3>${t('ledger')}</h3><p class="clue-note">${t('legend')}</p><p class="clue-note">${t('example')}</p></section>${help(r,esc(helpText))}</aside></div>`;
   }
   function click(event){
-    const el=event.target.closest('button');if(!el||el.disabled)return;
+    const el=event.target.closest('button');if(!el||el.disabled||el.dataset.tour)return;
     if(el.dataset.game){game=el.dataset.game;navigate();return;}
     if(el.dataset.mode){mode=el.dataset.mode;navigate();return;}
     if(el.dataset.length){length=Number(el.dataset.length);navigate();return;}
@@ -86,6 +89,6 @@ export function createApp(doc=document) {
   function change(event){if(event.target.id!=='language')return;language=LANGUAGES.includes(event.target.value)?event.target.value:'en';try{win.localStorage.setItem('quidence-locale-v1',language);}catch{}render();}
   doc.addEventListener('click',click);doc.addEventListener('input',input);doc.addEventListener('paste',paste);doc.addEventListener('keydown',keydown);doc.addEventListener('submit',submit);doc.addEventListener('change',change);win.addEventListener('popstate',parseRoute);win.addEventListener('hashchange',parseRoute);
   parseRoute();save();
-  return {destroy(){doc.removeEventListener('click',click);doc.removeEventListener('input',input);doc.removeEventListener('paste',paste);doc.removeEventListener('keydown',keydown);doc.removeEventListener('submit',submit);doc.removeEventListener('change',change);win.removeEventListener('popstate',parseRoute);win.removeEventListener('hashchange',parseRoute);}};
+  return {destroy(){tutorial.destroy();doc.removeEventListener('click',click);doc.removeEventListener('input',input);doc.removeEventListener('paste',paste);doc.removeEventListener('keydown',keydown);doc.removeEventListener('submit',submit);doc.removeEventListener('change',change);win.removeEventListener('popstate',parseRoute);win.removeEventListener('hashchange',parseRoute);}};
 }
 if(typeof document!=='undefined'&&document.getElementById('play'))createApp();
