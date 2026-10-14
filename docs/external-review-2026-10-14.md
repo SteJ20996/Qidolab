@@ -8,14 +8,14 @@ Baseline: `a958070931fae47b5b34c556eaf4d8f076b485df`. These changes implement ac
 | 8 | Script CSP with exact inline/importmap hashes, self-only frames and SAMEORIGIN. A generator and test detect stale hashes. Inline styles remain allowed because game layouts use them. |
 | 14 | Traditional conversion table requested only when Traditional Chinese is needed. Initial load waits safely; failed loading keeps a usable language and a retry message; newer language choices win over slow earlier requests. |
 | 15, 16 | White coin-control labels on a solid dark green background, 13px coin/tab labels, and larger secondary instructions while retaining the existing palette. Disabled controls retain their separate state. |
-| 19, 20 | Taiwan Undo wording uses 復原. Default homepage text and accessible labels are English before JavaScript; explicit source keys preserve four-language switching. Dynamic jug labels remain owned by the game renderer. |
+| 19, 20 | Taiwan Undo wording uses 復原. Default homepage text and accessible labels are English before JavaScript; explicit source keys preserve four-language switching. Dynamic jug labels, restored move counts, feedback and hint labels remain owned by the game renderer. |
 | 21, 24 | Direct language URLs, language-specific canonical/alternate links, sitemap entries and differentiated page titles/descriptions for the four public collections. These improve discoverability; they do not guarantee indexing. Hash game routes are preserved. |
 | 22 | Qidoball language names use English / 简体中文 / 繁體中文. Its Spanish scope remains unchanged; the reserve game is not added to the sitemap. |
 | 23, 28, 29 | Preserve all ten confirmed English/Spanish sentence boundaries; clean the prototype footer and supply the missing deployment guide. The prototype keeps noindex. |
 
 ## Checks
 
-Run `npm ci --ignore-scripts`, `npm run build:metadata`, `npm run build:headers`, then `npm test`. Existing suites cover game mathematics, all forty newer rounds, hints, undo, language changes and saved progress. Added checks cover static English, sentence boundaries, CSP hashes, language URL/canonical consistency, slow language changes and unavailable Traditional copy.
+Run `npm ci --ignore-scripts`, `npm run build:metadata`, `npm run build:headers`, then `npm test`. Existing suites cover game mathematics, all forty newer rounds, hints, undo, language changes and saved progress. Added checks cover static English, sentence boundaries, CSP hashes, language URL/canonical consistency, slow language changes and unavailable Traditional copy. Browser preview verification caught an initial-translation overwrite of restored move counts and feedback; the correction is covered by cold-start and late-translation assertions.
 
 ## Conditions retained
 
