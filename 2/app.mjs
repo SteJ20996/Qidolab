@@ -1,3 +1,4 @@
+import {syncLanguageURL} from '../language-url.mjs';
 import {createTutorial} from '../tutorial.mjs?v=2';
 import {ROUNDS24,CODES,OPS,SYMBOL,initialCards,replay24,combine,won24,solve24,valueText,calculate,scoreCode,validGuess,candidateCodes,filterCandidates,fresh24,freshCode,restoreProgress,generate24,generateCode} from './engine.mjs';
 import {LANGUAGES,translate} from './copy.mjs';
@@ -8,6 +9,7 @@ export function createApp(doc=document) {
   const storageKey='qidolab-v2-progress-v1';
   let language='en',raw=null,storageFailed=false;
   try{language=win.localStorage.getItem('quidence-locale-v1')||'en';raw=win.localStorage.getItem(storageKey);}catch{storageFailed=true;}
+  const requested=new URL(win.location.href).searchParams.get('lang');if(LANGUAGES.includes(requested))language=requested;
   if(!LANGUAGES.includes(language))language='en';
   const progress=restoreProgress(raw),previous={};
   let game='twentyfour',mode='free',round=0,length=4,selected=[],hint=false,answer=false,notice=null;
@@ -24,7 +26,7 @@ export function createApp(doc=document) {
   function render(){
     const focus=doc.activeElement?.id;
     tutorial.sync(game,language);
-    doc.documentElement.lang=language;doc.title=t('title');
+    doc.documentElement.lang=language;doc.title=t('title');syncLanguageURL(doc,language);
     all('[data-text]').forEach(el=>el.textContent=t(el.dataset.text));$('#language').value=language;
     $('.game-tabs').setAttribute('aria-label',t('games'));$('#modes').setAttribute('aria-label',t('mode'));$('#modes').setAttribute('role','group');
     all('[data-game]').forEach(el=>el.setAttribute('aria-pressed',String(el.dataset.game===game)));

@@ -1,3 +1,4 @@
+import {syncLanguageURL} from '../language-url.mjs';
 import {createTutorial} from '../tutorial.mjs?v=2';
 import {PATCH,BORROW} from './puzzles.mjs';
 import {patchState,solvePatch,opText,initialBorrow,borrowStep,replayBorrow,borrowWon,solveBorrow} from './engine.mjs';
@@ -46,7 +47,7 @@ export function createApp(doc=document){
  }
  function render(){const focus=doc.activeElement?.dataset;const focusKey=focus?['slot','choice','card','action'].find(k=>focus[k]!==undefined):null;const focusValue=focusKey?focus[focusKey]:null;
   tutorial.sync(game,language);
-    doc.documentElement.lang=language;doc.title=t('title');all('[data-text]').forEach(e=>e.textContent=t(e.dataset.text));$('#language').value=language;
+    doc.documentElement.lang=language;doc.title=t('title');syncLanguageURL(doc,language);all('[data-text]').forEach(e=>e.textContent=t(e.dataset.text));$('#language').value=language;
   $('.game-switch').setAttribute('aria-label',t('games'));all('[data-game]').forEach(e=>{e.disabled=false;e.setAttribute('aria-pressed',String(e.dataset.game===game));});
   $('#rounds').innerHTML=progress[game].map((r,i)=>`<button type="button" data-round="${i}" ${i===index?'aria-current="step"':''} aria-label="${t('roundLabel',{n:i+1})}${r.solved?': '+t(r.helped?'helped':'solved'):''}">${String(i+1).padStart(2,'0')}${r.solved?`<span class="round-mark" aria-hidden="true">${r.helped?'☆':'✓'}</span>`:''}</button>`).join('');
   $('#rounds').setAttribute('aria-label',t('round',{n:index+1}));$('#play').innerHTML=game==='patch'?renderPatch(puzzle(),record()):renderBorrow(puzzle(),record());

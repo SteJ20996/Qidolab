@@ -2,6 +2,12 @@
   "name": "qidolab",
   "private": true,
   "type": "module",
-  "scripts": {"test": "node --test tests/*.test.mjs"},
-  "devDependencies": {"jsdom": "^26.1.0"}
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "build:headers": "node scripts/build-headers.mjs",
+    "build:metadata": "node scripts/build-metadata.mjs"
+  },
+  "devDependencies": {
+    "jsdom": "^26.1.0"
+  }
 }

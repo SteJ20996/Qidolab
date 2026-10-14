@@ -1,2 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>https://qidolab.com/</loc></url><url><loc>https://qidolab.com/2/</loc></url><url><loc>https://qidolab.com/2/experiments/</loc></url><url><loc>https://qidolab.com/next/</loc></url></urlset>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://qidolab.com/?lang=en</loc></url>
+  <url><loc>https://qidolab.com/?lang=zh-CN</loc></url>
+  <url><loc>https://qidolab.com/?lang=zh-TW</loc></url>
+  <url><loc>https://qidolab.com/?lang=es-MX</loc></url>
+  <url><loc>https://qidolab.com/2/?lang=en</loc></url>
+  <url><loc>https://qidolab.com/2/?lang=zh-CN</loc></url>
+  <url><loc>https://qidolab.com/2/?lang=zh-TW</loc></url>
+  <url><loc>https://qidolab.com/2/?lang=es-MX</loc></url>
+  <url><loc>https://qidolab.com/2/experiments/?lang=en</loc></url>
+  <url><loc>https://qidolab.com/2/experiments/?lang=zh-CN</loc></url>
+  <url><loc>https://qidolab.com/2/experiments/?lang=zh-TW</loc></url>
+  <url><loc>https://qidolab.com/2/experiments/?lang=es-MX</loc></url>
+  <url><loc>https://qidolab.com/next/?lang=en</loc></url>
+  <url><loc>https://qidolab.com/next/?lang=zh-CN</loc></url>
+  <url><loc>https://qidolab.com/next/?lang=zh-TW</loc></url>
+  <url><loc>https://qidolab.com/next/?lang=es-MX</loc></url>
+</urlset>
