@@ -1,16 +1,27 @@
 import translations from './translations.mjs';
-import {toTaiwanText} from './zh-tw-copy.mjs';
+import {syncLanguageURL} from './language-url.mjs';
 export const locales = ['zh-CN', 'en', 'es-MX', 'zh-TW'];
 export let locale = 'en';
 try { const saved = localStorage.getItem('quidence-locale-v1'); if (locales.includes(saved)) locale = saved; } catch {}
-function withTaiwanCopy(entries){
-  // Source-keyed entries may omit zh-CN: their key is the original copy.
-  // Never turn a missing regional field into a blank label or control.
-  return Object.fromEntries(Object.entries(entries).map(([key,copies])=>[key,{...copies,'zh-TW':copies['zh-TW']??toTaiwanText(copies['zh-CN']??key)} ]));
+try {const requested=new URL(location.href).searchParams.get('lang');if(locales.includes(requested))locale=requested;}catch{}
+let taiwanCopy=null,taiwanPromise=null,localeRequest=0;
+function loadTaiwanCopy(){
+ if(taiwanCopy)return Promise.resolve();
+ if(!taiwanPromise)taiwanPromise=import('./zh-tw-copy.mjs').then(module=>{taiwanCopy=module.toTaiwanText;}).catch(error=>{taiwanPromise=null;throw error;});
+ return taiwanPromise;
 }
-const dictionary = withTaiwanCopy(translations);
-export function registerTranslations(entries) { Object.assign(dictionary, withTaiwanCopy(entries)); }
-export function regionalCopy(copy,language=locale){return language==='zh-TW'?toTaiwanText(copy):String(copy);}
+function languageError(){
+ if(typeof document==='undefined'||!document.body)return;
+ let note=document.getElementById('language-load-error');
+ if(!note){note=document.createElement('p');note.id='language-load-error';note.className='language-load-error';note.setAttribute('role','status');document.body.prepend(note);}
+ note.textContent='繁體中文暫時無法載入，請重新選取以再試一次。 The selected language could not load. Please select it again to retry.';
+}
+// Wait only for an initially selected Traditional Chinese locale. Other visitors
+// never request the conversion table. Failed loading leaves the games usable.
+if(locale==='zh-TW')try{await loadTaiwanCopy();}catch{locale='en';languageError();}
+const dictionary = {...translations};
+export function registerTranslations(entries) { Object.assign(dictionary, entries); }
+export function regionalCopy(copy,language=locale){return language==='zh-TW'&&taiwanCopy?taiwanCopy(copy):String(copy);}
 const pluralRules = {en: new Intl.PluralRules('en'), 'es-MX': new Intl.PluralRules('es-MX')};
 // Apply singular agreement while placeholders still identify the relevant quantity.
 // This is intentionally limited to the count nouns used by these activities.
@@ -40,7 +51,8 @@ export function formatCountCopy(copy, params = {}, language = locale) {
   return result;
 }
 export function t(key, params = {}) {
-  const copy = dictionary[key]?.[locale] ?? key;
+  const entry=dictionary[key];
+  const copy = locale==='zh-TW' ? (entry?.['zh-TW']??regionalCopy(entry?.['zh-CN']??key)) : (entry?.[locale]??key);
   return formatCountCopy(copy, params).replace(/\{(\w+)\}/g, (match, name) => params[name] ?? match);
 }
 const textSources = new WeakMap(), attributeSources = new WeakMap();
@@ -85,14 +97,24 @@ export function translateDOM(root = document) {
   if (document.documentElement) document.documentElement.lang = locale;
   const select = document.getElementById?.('language-select'); if (select) select.value = locale;
 }
-export function setLocale(next) {
-  if (!locales.includes(next) || next === locale) return;
+export async function setLocale(next) {
+  if (!locales.includes(next)) return locale;
+  const request=++localeRequest,select=typeof document!=='undefined'?document.getElementById?.('language-select'):null;
+  if(next==='zh-TW'&&!taiwanCopy){
+    select?.setAttribute('aria-busy','true');
+    try{await loadTaiwanCopy();}catch{if(request===localeRequest){if(select)select.value=locale;select?.removeAttribute('aria-busy');languageError();}return locale;}
+    if(request!==localeRequest)return locale;
+  }
+  select?.removeAttribute('aria-busy');
+  if(typeof document!=='undefined')document.getElementById?.('language-load-error')?.remove();
   const previous = locale; locale = next;
   try { localStorage.setItem('quidence-locale-v1', locale); } catch {}
-  translateDOM();
+  if(typeof document!=='undefined'){translateDOM();syncLanguageURL(document,locale);}
   if (typeof window !== 'undefined') window.dispatchEvent(new CustomEvent('languagechange', {detail: {locale, previous}}));
+  return locale;
 }
 if (typeof document !== 'undefined') {
   translateDOM();
+  syncLanguageURL(document,locale);
   document.getElementById?.('language-select')?.addEventListener('change', event => setLocale(event.target.value));
 }

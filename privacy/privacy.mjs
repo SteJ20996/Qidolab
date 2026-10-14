@@ -1,0 +1,3 @@
+const select=document.getElementById('privacy-language'),languages=['en','zh-CN','zh-TW','es-MX'];
+function show(language){if(!languages.includes(language))language='en';document.documentElement.lang=language;select.value=language;for(const section of document.querySelectorAll('main>section'))section.hidden=section.lang!==language;document.title=document.querySelector('section:not([hidden]) h1').textContent+' · Qidolab';const url=new URL(location.href);url.searchParams.set('lang',language);history.replaceState(history.state,'',url);document.querySelector('header>a').href='../?lang='+language;}
+show(new URL(location.href).searchParams.get('lang'));select.addEventListener('change',()=>show(select.value));

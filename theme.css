@@ -72,3 +72,14 @@ html[lang=zh-TW] body{font-family:'Noto Sans TC','PingFang TC','Microsoft JhengH
 .v2-link{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:8px 14px;border:1px solid #a9c6ae;border-radius:24px;background:#e2efdd;color:#244f3b;font-size:13px;white-space:nowrap;text-decoration:none}.v2-link:hover{background:#d5eacd}.v2-link:focus-visible{outline:3px solid #b46630;outline-offset:4px}
 .v2-link>[aria-hidden]{flex-shrink:0}
 @media(max-width:640px){.header-tools{flex-wrap:wrap;justify-content:flex-end}.header-tools .language-control{flex-shrink:0}.v2-link{white-space:normal;max-width:100%}.v2-link>[data-i18n]{min-width:0;overflow-wrap:anywhere}}
+
+/* Readable active controls and secondary instructions at every viewport. */
+html .orbit-center .playground .coin{color:#fff;background:#245840;font-size:13px;line-height:1.4}
+.playground .coin:hover:not(:disabled){background:#1d4936}
+.playground .placement-tabs button{font-size:13px}
+.orbit-center .rule-reminder,.orbit-center .hint-copy,.orbit-center .quiet-note,.closing-note,.mini-footer{font-size:13px;line-height:1.65}
+.playground .experiment-label,.playground .board-caption,.playground .text-button{font-size:12px}
+footer{font-size:12px;line-height:1.6;flex-wrap:wrap;gap:12px}
+.language-load-error{padding:12px 20px;background:#fff3df;color:#56381d;line-height:1.6}
+
+html .orbit-center .playground .jug-actions button,html .orbit-center .playground .pour-actions button{font-size:13px;line-height:1.4}

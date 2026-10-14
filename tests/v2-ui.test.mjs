@@ -58,7 +58,7 @@ test('language changes keep button labels, icons, selected cards and expanded he
   const before=saved(ui);
   for(const [i,language] of LANGUAGES.entries()){
     ui.change('#language',language);
-    assert.equal(ui.d.title,COPY.title[i]);
+    assert.ok(ui.d.title.startsWith(COPY.title[i]), 'title retains the collection name and identifies its games');
     assert.equal(ui.q('h1').textContent,COPY.heading[i]);
     assert.equal(ui.q('#game-24 [data-text]').textContent,COPY.game24[i]);
     assert.equal(ui.q('#game-code [data-text]').textContent,COPY.gameCode[i]);

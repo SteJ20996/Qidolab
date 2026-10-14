@@ -45,6 +45,8 @@ test('cold startup restores Traditional Chinese and announces the saved water am
   assert.match(text('quantity1'), /^4/);
   assert.match($('jug0').getAttribute('aria-label'), /當前 3 升/);
   assert.match($('jug1').getAttribute('aria-label'), /當前 4 升/);
+  assert.equal(text('step-count'), '2 步');
+  assert.match(text('status'), /已接上/);
 });
 
 test('page IDs are unique and the Quidence link names its own heading in every language', () => {
@@ -105,6 +107,10 @@ test('each original accepts moves, keeps them through language changes, and supp
     for (const [id, act] of Object.entries(scenarios)) {
       route(id);
       const undo = act();
+      const liveIds = id === 'coins' ? ['coins-count', 'coins-left', 'coins-right'] : id === 'numbers' ? ['number-status', 'number-count'] : [];
+      const liveValues = liveIds.map(text);
+      translateDOM();
+      assert.deepEqual(liveIds.map(text), liveValues, `${language}/${id}: later translation keeps live values`);
       const before = saves();
       setLocale(locales[(locales.indexOf(language) + 1) % locales.length]);
       assert.deepEqual(saves(), before, `${language}/${id}: saved state after switching language`);
@@ -164,7 +170,9 @@ test('water fill, pour, undo, reset, history and hints work in every language', 
     const labels = [$('jug0').getAttribute('aria-label'), $('jug1').getAttribute('aria-label')];
     assert.match(labels[0], /3/);
     assert.match(labels[1], /4/);
+    const liveCopy = [text('status'), text('step-count')];
     translateDOM();
+    assert.deepEqual([text('status'), text('step-count')], liveCopy, 'later translation must preserve current progress copy');
     assert.deepEqual([$('jug0').getAttribute('aria-label'), $('jug1').getAttribute('aria-label')], labels, 'later modules must not restore the initial empty-jug labels');
     assert.ok(text('status'));
     assert.equal($('history-list').children.length, 2);

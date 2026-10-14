@@ -2,6 +2,8 @@
   Cache-Control: public, max-age=0, must-revalidate
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: SAMEORIGIN
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'sha256-ArHZiIfI4QxO7MzJuJvNzYrv6rFd/q8D1rbXX2cP6oA=' 'sha256-F+b77zlCJKm0Ax1pQDaoJKobf72NeZnncJSkx+HReks=' 'sha256-HEhCCQ7nH0E/hcsRPbMz9n2PPUG/rfbI8uEUphXaeEQ=' 'sha256-X3qy7T+MHs8aaZbbRDxo9b7AgCklEs/TFPFsmO+5vdw=' 'sha256-Z6rU4SKBjiDJVSr5F0bT5c/o4GxGsCkj0McdFIQ6a4E='; script-src-attr 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'
 
 /*.mjs
   Content-Type: text/javascript; charset=utf-8
