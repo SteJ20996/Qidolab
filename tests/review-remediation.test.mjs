@@ -34,6 +34,7 @@ test('language URLs keep the game route and expose matching canonical and altern
  for(const route of Object.keys(pages))for(const lang of languageCodes){
   const dom=new JSDOM(fs.readFileSync(new URL('.'+route+'index.html',root),'utf8'),{url:'https://qidolab.test'+route+'?campaign=sample#coins'}),d=dom.window.document;
   syncLanguageURL(d,lang);const url=new URL(dom.window.location.href);
+  assert.equal(dom.window.localStorage.getItem('quidence-locale-v1'),lang);
   assert.equal(url.hash,'#coins');assert.equal(url.searchParams.get('campaign'),'sample');assert.equal(url.searchParams.get('lang'),lang);
   assert.equal(d.querySelector('link[rel=canonical]').href,'https://qidolab.com'+route+'?lang='+lang);
   assert.equal(d.querySelectorAll('link[hreflang]').length,5);assert.ok(d.querySelector('meta[name=description]').content.length>20);dom.window.close();

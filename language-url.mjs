@@ -8,6 +8,8 @@ const pages={
 const privacyLabels={en:'Privacy and local progress','zh-CN':'隐私与本地进度','zh-TW':'隱私與本機進度','es-MX':'Privacidad y progreso local'};
 export function syncLanguageURL(doc,language){
  const win=doc.defaultView;if(!win?.location||!languageCodes.includes(language))return;
+ // A language opened directly by URL must also carry into the next collection.
+ try{if(win.localStorage.getItem('quidence-locale-v1')!==language)win.localStorage.setItem('quidence-locale-v1',language);}catch{}
  const url=new URL(win.location.href);url.searchParams.set('lang',language);
  if(url.href!==win.location.href)win.history.replaceState(win.history.state,'',url);
  const route=url.pathname.replace(/index\.html$/,'');const copy=pages[route]?.[language];
