@@ -116,3 +116,13 @@ Run `npm ci --ignore-scripts` and `npm test` for the original and v2 checks. Ser
 ## 2026-10-14 · Reviewed improvements
 
 See [the corrected review implementation](docs/external-review-2026-10-14.md) for scope and remaining conditions. Public collections have shareable language URLs, the homepage has an English fallback before JavaScript, Traditional copy loads on demand, and all game entries link to [privacy and local progress](privacy/). Run `npm run build:metadata` after metadata changes and `npm run build:headers` after changing an inline script/importmap, then `npm test`.
+
+## Licensing and rights / 版权与授权
+
+This project is not offered under an open-source license. See [LICENSE](LICENSE) for the scoped proprietary notice covering implementation code and brand artwork only to the extent owned by Yizhen Jia. Ordinary use of the official website remains permitted as described there.
+
+Questions, teaching text, solutions, educational illustrations, game instructions/copy, and translations are excluded from this notice pending separate provenance review, including when embedded in code. Their exclusion is not a reuse license or an originality claim. Third-party terms, valid prior grants, GitHub platform rights, and applicable legal exceptions remain unchanged; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+
+本次声明仅涵盖 Yizhen Jia 拥有相应权利的程序实现及品牌素材，保留相关权利；题目、教学文字、解答、教学插图、游戏说明及文案、翻译暂不纳入，待另行核查。排除不代表允许转载，也不代表已经确认原创。第三方授权及已有合法授权不受影响，网站正常使用不变。
+
+Permission requests / 授权联系：hello@quidence.com

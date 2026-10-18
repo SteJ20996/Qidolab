@@ -1,0 +1,56 @@
+Qidolab — Proprietary code and brand notice
+Copyright (c) 2026 Yizhen Jia. All rights reserved within the scope below.
+
+1. Scope
+This notice applies only to copyrightable software implementation (including
+application logic, UI layout/style code, and build/test tooling) and brand
+artwork in this repository to the extent that Yizhen Jia owns the applicable
+rights. It is not a blanket ownership claim over every file or asset.
+
+2. Content excluded pending separate review
+Questions, problem statements, worked solutions, teaching text, educational
+illustrations, game instructions, game narrative/copy, and their translations
+are excluded from this notice's ownership assertion and licensing terms.
+This exclusion applies even when that content is embedded in source code,
+HTML, JSON, tests, or generated files. Their provenance and permissions remain
+subject to separate review. This notice neither grants reuse permission for
+that content nor declares it original, non-infringing, or public domain.
+Existing third-party rights and any applicable permissions remain unchanged.
+
+3. Reserved rights and ordinary website use
+No open-source license is granted for the covered implementation or brand
+artwork. Except as permitted below, by applicable law, or by a separate
+authorization, copying, modifying, redistributing, sublicensing, selling, or
+deploying the covered materials requires prior written permission from
+Yizhen Jia.
+
+Visitors may load and execute the covered client-side code as needed to use
+the official qidolab.com website through its intended interface,
+including the ordinary browser caching needed for that use. This does not
+grant permission to operate a copy of the website or redistribute its code.
+This notice does not impose new licensing terms on the excluded content.
+
+4. Third-party and existing rights
+Third-party code, dependencies, fonts, icons, assets, and contributions remain
+subject to their own licenses and rights. Their terms take precedence for
+those materials. Preserve all required copyright, license, and attribution
+notices. See THIRD_PARTY_NOTICES.md for initial dependency references.
+
+Nothing here restricts rights granted by GitHub's applicable terms (including
+viewing and forking public repositories), applicable law, or valid prior
+licenses or agreements. This notice does not retroactively revoke earlier
+grants. No exclusive rights are claimed in mathematical facts, ideas,
+algorithms as such, game rules as such, or material not protected by law.
+
+5. Brand identity
+No trademark license or permission to imply endorsement is granted.
+This statement does not assert trademark registration and does not restrict
+lawful descriptive reference to the project.
+
+6. Warranty
+To the extent permitted by applicable law, covered materials are provided
+"as is", without warranties, including merchantability, fitness for a
+particular purpose, or non-infringement. Mandatory legal rights are unaffected.
+
+Permission requests: hello@quidence.com
+Notice added: 2026-10-18
