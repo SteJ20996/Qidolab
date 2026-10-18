@@ -1,0 +1,4 @@
+footer:has(.footer-contact){flex-wrap:wrap}
+footer .footer-contact{box-sizing:border-box;width:100%;margin:0;text-align:center;font-size:max(11px,1em);line-height:1.6;letter-spacing:.01em;color:#39594d}
+footer .footer-contact a{color:inherit;text-decoration:underline;text-underline-offset:2px;overflow-wrap:anywhere}
+footer.standalone-contact{max-width:920px;margin:0 auto;padding:10px 24px 28px;text-align:center}
