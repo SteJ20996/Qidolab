@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#fffdf3"><link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 <link rel="canonical" href="https://qidolab.com/2/?lang=en"><link rel="stylesheet" href="style.css?v=2.1.1">
 <link rel="stylesheet" href="sticker.css?v=3"><link rel="stylesheet" href="../collection.css?v=1">
-<link rel="stylesheet" href="../tutorial.css?v=2"><link rel="stylesheet" href="../games-nav.css?v=3"><link rel="alternate" hreflang="en" href="https://qidolab.com/2/?lang=en"><link rel="alternate" hreflang="zh-CN" href="https://qidolab.com/2/?lang=zh-CN"><link rel="alternate" hreflang="zh-TW" href="https://qidolab.com/2/?lang=zh-TW"><link rel="alternate" hreflang="es-MX" href="https://qidolab.com/2/?lang=es-MX"><link rel="alternate" hreflang="x-default" href="https://qidolab.com/2/?lang=en"><link rel="stylesheet" href="../footer-contact.css"></head>
+<link rel="stylesheet" href="../tutorial.css?v=2"><link rel="stylesheet" href="../games-nav.css?v=3"><link rel="alternate" hreflang="en" href="https://qidolab.com/2/?lang=en"><link rel="alternate" hreflang="zh-CN" href="https://qidolab.com/2/?lang=zh-CN"><link rel="alternate" hreflang="zh-TW" href="https://qidolab.com/2/?lang=zh-TW"><link rel="alternate" hreflang="es-MX" href="https://qidolab.com/2/?lang=es-MX"><link rel="alternate" hreflang="x-default" href="https://qidolab.com/2/?lang=en"><link rel="stylesheet" href="../footer-contact.css"><link rel="stylesheet" href="footer-play.css?v=1"></head>
 <body data-look="sticker">
 <header class="topbar"><a class="logo" href="../" aria-label="Qidolab"><img src="../assets/qidolab-lockup.svg" width="1118" height="404" alt="Qidolab · Quidence"></a><div class="top-tools"><label class="language"><span data-text="language">Language</span><select id="language" disabled=""><option value="en">English</option><option value="zh-CN">简体中文</option><option value="zh-TW">繁體中文</option><option value="es-MX">Español</option></select></label></div></header>
 <nav class="collection-switch" aria-label="Collections">
@@ -28,10 +28,26 @@
 <noscript><p class="save-error">Enable JavaScript to load the puzzles and choose a language.</p></noscript>
 <p id="save-error" class="save-error" role="alert" hidden=""></p>
 <p class="privacy" data-text="saved">Progress stays in this browser. No account, no timer.</p>
-<aside class="original"><p data-text="original">Looking for jugs, lights and the other puzzles?</p><a href="../" data-text="visitOriginal">Explore Think Again! →</a></aside>
+<aside class="original return-card" aria-labelledby="return-title">
+  <div class="return-art" aria-hidden="true">
+    <svg viewBox="0 0 164 112" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M15 30c6-16 22-22 39-17 13-10 30-8 40 1 20-5 38 6 38 24 14 11 13 30 0 40-2 16-21 25-37 21-15 9-31 6-42-3-20 4-39-8-38-27C3 57 4 39 15 30Z" fill="#F9E2AF" stroke="#47634E" stroke-width="2"/>
+      <path d="M42 34h43l-4 44c-.5 9-7 15-17 15s-16.5-6-17-15l-5-44Z" fill="#FFFCF2" stroke="#47634E" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M48 64c10-7 18 6 31-1l-2 17c-1 6-5 9-12 9s-12-4-13-10l-4-15Z" fill="#88CAB2"/>
+      <path d="M55 44v12M70 43v9" stroke="#A6B9A1" stroke-width="2" stroke-linecap="round"/>
+      <path d="M88 43h5c8 0 11 6 9 12-2 7-9 10-18 8" stroke="#47634E" stroke-width="3" stroke-linecap="round"/>
+      <path d="M119 49c0-10 7-17 17-17s17 7 17 17c0 7-4 11-8 16h-18c-4-5-8-9-8-16Z" fill="#FFF8D4" stroke="#47634E" stroke-width="3"/>
+      <path d="M128 70h16m-13 7h10" stroke="#47634E" stroke-width="3" stroke-linecap="round"/>
+      <path d="M136 27v-8m-24 8-5-5m53 6 5-5" stroke="#47634E" stroke-width="3" stroke-linecap="round"/>
+      <path d="m18 88 4 4 4-4-4-4-4 4Zm90-2 3 3 3-3-3-3-3 3Z" fill="#47634E"/>
+    </svg>
+  </div>
+  <div class="return-copy"><span class="return-kicker" data-text="returnKicker">A LITTLE DETOUR</span><h2 id="return-title" data-text="original">Looking for jugs, lights and the other puzzles?</h2><p data-text="returnNote">Step into the original 18. Pick a puzzle, make a move, and see where it takes you.</p></div>
+  <a class="return-action" href="../" data-text="visitOriginal">Explore Think Again! →</a>
+</aside>
 </main>
-<footer><span>QIDOLAB</span><span data-text="footer">Small experiments. Room to think.</span><a data-privacy-link="" href="/privacy/?lang=en">Privacy and local progress</a><p class="footer-contact"><span data-contact-label>Questions or feedback? Email</span> <a href="mailto:hello@quidence.com">hello@quidence.com</a></p></footer>
-<script type="importmap">{"imports":{"./engine.mjs":"./engine.mjs?v=2.0.0","./copy.mjs":"./copy.mjs?v=2.3.0"}}</script>
+<footer class="play-footer"><div class="footer-identity"><span class="footer-spark" aria-hidden="true">✦</span><div><strong>QIDOLAB</strong><span data-text="footer">Small experiments. Room to think.</span></div></div><p class="footer-contact"><span data-contact-label>Questions or feedback? Email</span><br><a href="mailto:hello@quidence.com">hello@quidence.com</a></p><a class="footer-privacy" data-privacy-link="" href="/privacy/?lang=en">Privacy and local progress</a></footer>
+<script type="importmap">{"imports":{"./engine.mjs":"./engine.mjs?v=2.0.0","./copy.mjs":"./copy.mjs?v=2.3.1"}}</script>
 <script type="module" src="app.mjs?v=2.1.4"></script>
 <script type="module" src="../collection-nav.mjs?v=1"></script>
 

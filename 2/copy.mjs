@@ -79,7 +79,9 @@ export const COPY = {
  saved:['Progress stays in this browser. No account, no timer.','进度保存在此浏览器。不用账号，不计时。','進度儲存在此瀏覽器。不用帳號，不計時。','El progreso se guarda en este navegador. Sin cuenta ni cronómetro.'],
  storageError:['Progress could not be saved. Keep this page open; reloading may lose your latest moves.','暂时无法保存进度。请先保持页面打开，刷新可能丢失最新操作。','暫時無法儲存進度。請先保持頁面開啟，重新整理可能遺失最新操作。','No se pudo guardar el progreso. Mantén la página abierta; al recargar podrías perder las últimas jugadas.'],
  resetNotice:['Moves reset. Your completed-round marks stay saved.','本次操作已重置，已完成的关卡标记保留。','本次操作已重設，已完成的關卡標記保留。','Jugadas reiniciadas. Se conservan las marcas de rondas resueltas.'],
+ returnKicker:['A LITTLE DETOUR','換條路，再玩一關','換條路，再玩一關','UN PEQUEÑO DESVÍO'],
  original:['Looking for jugs, lights and the other puzzles?','想玩倒水、翻灯和其他题目？','想玩倒水、翻燈和其他題目？','¿Buscas las jarras, las luces y los otros juegos?'],
+ returnNote:['Step into the original 18. Pick a puzzle, make a move, and see where it takes you.','回到最初的 18 道关，挑一道顺眼的，动手试一试。','回到最初的 18 道關，挑一道順眼的，動手試一試。','Vuelve a los 18 retos originales. Elige uno, prueba un movimiento y descubre adónde te lleva.'],
  visitOriginal:['Explore Think Again! →','去玩十八般脑洞 →','去玩十八般腦洞 →','Explora Dale una vuelta →'],
  footer:['Small experiments. Room to think.','小小的实验，慢慢想通。','小小的實驗，慢慢想通。','Pequeños experimentos. Espacio para pensar.']
 };
