@@ -3,7 +3,7 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
 const root=fileURLToPath(new URL('../',import.meta.url));
-export const publicPages=['index.html','2/index.html','2/experiments/index.html','next/index.html','playtest/index.html','qidoball/index.html','privacy/index.html'];
+export const publicPages=['index.html','2/index.html','2/experiments/index.html','next/index.html','classics/index.html','playtest/index.html','qidoball/index.html','privacy/index.html'];
 export function headers(){
  const hashes=new Set();
  for(const file of publicPages){const html=fs.readFileSync(path.join(root,file),'utf8');
