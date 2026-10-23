@@ -1,5 +1,5 @@
 import {FOX_DAYS,foxEscape,RIVER_ITEMS,initialRiver,riverMove,riverWon,initialHanoi,hanoiMove,hanoiWon,initialQueens,queenConflicts,queensWon} from './engine.mjs';
-import {COPY,languages,format} from './copy.mjs';
+import {COPY,languages,format} from './copy.mjs?v=2';
 import {syncLanguageURL} from '../language-url.mjs';
 const $=selector=>document.querySelector(selector);
 const games=['fox','river','hanoi','queens'];
@@ -13,11 +13,13 @@ let locale=new URL(location.href).searchParams.get('lang')||read('quidence-local
 if(!languages.includes(locale))locale='en';
 let copy=COPY[locale],game=games.includes(location.hash.slice(1))?location.hash.slice(1):'fox';
 let seen=new Set(readList('qidolab-classics-guides')),completed=new Set(readList('qidolab-classics-completed'));
-let guideStep=0,guideOpen=!seen.has(game),foxHoles=5,foxPlan=[],river=initialRiver(),riverHistory=[],riverPassenger=null,hanoiN=3,pegs=initialHanoi(3),hanoiHistory=[],selectedPeg=null,queensN=4,queens=initialQueens(4),queensHistory=[],feedback='';
+let guideStep=0,guideOpen=!seen.has(game),foxHoles=5,foxPlan=[],river=initialRiver(),riverHistory=[],riverPassenger=null,hanoiN=3,pegs=initialHanoi(3),hanoiHistory=[],selectedPeg=null,queensN=4,queens=initialQueens(4),queensHistory=[],feedback=null;
 const t=(key,parts)=>format(copy[key],parts),html=(str)=>String(str).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-function setLocale(next){if(!languages.includes(next))return;locale=next;copy=COPY[locale];document.documentElement.lang=locale;$('#language').value=locale;syncLanguageURL(document,locale);document.defaultView.dispatchEvent(new document.defaultView.Event('languagechange'));document.querySelectorAll('[data-copy]').forEach(el=>{el.textContent=copy[el.dataset.copy];});render();}
+const say=(key,parts={},route=null)=>{feedback={key,parts,route};};
+const feedbackText=()=>feedback?t(feedback.key,feedback.parts)+(feedback.route?' '+feedback.route.map((den,i)=>t('foxRoute',{day:i+1,den})).join(' · '):''):'';
+function setLocale(next){if(!languages.includes(next))return;locale=next;copy=COPY[locale];document.documentElement.lang=locale;$('#language').value=locale;syncLanguageURL(document,locale);document.defaultView.dispatchEvent(new document.defaultView.Event('languagechange'));document.querySelectorAll('[data-copy]').forEach(el=>{el.textContent=copy[el.dataset.copy];});document.querySelectorAll('[data-copy-aria]').forEach(el=>{el.setAttribute('aria-label',copy[el.dataset.copyAria]);});render();}
 function mark(){completed.add(game);write('qidolab-classics-completed',JSON.stringify([...completed]));document.querySelectorAll('[data-game]').forEach(el=>el.querySelector('.completed').textContent=completed.has(el.dataset.game)?'✓':'');}
-function changeGame(next){if(!games.includes(next))return;game=next;feedback='';guideStep=0;guideOpen=!seen.has(game);if(location.hash!=='#'+game)history.replaceState(null,'','#'+game);render();}
+function changeGame(next){if(!games.includes(next))return;game=next;feedback=null;guideStep=0;guideOpen=!seen.has(game);if(location.hash!=='#'+game)history.replaceState(null,'','#'+game);render();}
 function finishGuide(){guideOpen=false;seen.add(game);write('qidolab-classics-guides',JSON.stringify([...seen]));render();}
 function render(){document.querySelectorAll('.game-tabs a').forEach(el=>{el.toggleAttribute('aria-current',el.dataset.game===game);el.querySelector('.completed').textContent=completed.has(el.dataset.game)?'✓':'';});renderGuide();renderPlay();}
 function demoArt(){const step=guideStep;return {
@@ -31,7 +33,7 @@ function renderGuide(){const host=$('#walkthrough');if(!guideOpen){host.innerHTM
 const button=(action,label,extra='')=>'<button type="button" data-action="'+action+'" '+extra+'>'+html(label)+'</button>';
 function renderPlay(){const head='<div class="play-head"><span class="round-icon" aria-hidden="true">'+icons[game]+'</span><div><span class="eyebrow">'+html(copy.title)+'</span><h2>'+html(copy[game])+'</h2></div></div><p>'+html(copy[game+'Rule'])+'</p><p class="goal">'+html(copy[game+'Goal'])+'</p>';
  let body='';if(game==='fox')body=foxUI();if(game==='river')body=riverUI();if(game==='hanoi')body=hanoiUI();if(game==='queens')body=queensUI();
- $('#play').innerHTML=head+body+'<div class="tools">'+button('hint',t('hint'))+button('undo',t('undo'))+button('reset',t('reset'))+'</div><p class="feedback" role="status">'+html(feedback)+'</p>';
+ $('#play').innerHTML=head+body+'<div class="tools">'+button('hint',t('hint'))+button('undo',t('undo'))+button('reset',t('reset'))+'</div><p class="feedback" role="status">'+html(feedbackText())+'</p>';
 }
 function sizes(action,values,active,label){return '<div class="sizes" role="group" aria-label="'+html(label)+'">'+values.map(n=>button(action,String(n),`data-value="${n}" aria-pressed="${n===active}"`)).join('')+'</div>';}
 function foxUI(){const days=FOX_DAYS[foxHoles];return sizes('fox-size',[4,5,6],foxHoles,t('foxDays',{n:foxHoles,days}))+`<p class="counter">${html(t('foxDays',{n:foxHoles,days}))}</p><h3>${html(t('foxPlan'))}</h3><div class="plan">${Array.from({length:days},(_,i)=>'<span class="'+(foxPlan[i]?'filled':'')+'">'+(foxPlan[i]?'🔎 '+foxPlan[i]:'○ '+(i+1))+'</span>').join('')}</div><p>${html(t('foxPick',{day:Math.min(foxPlan.length+1,days)}))}</p><div class="dens">${Array.from({length:foxHoles},(_,i)=>button('fox-pick',String(i+1),`data-value="${i+1}" ${foxPlan.length===days?'disabled':''}`)).join('')}</div><button class="primary check" type="button" data-action="fox-check" ${foxPlan.length===days?'':'disabled'}>${html(t('foxCheck'))}</button>`;}
@@ -45,17 +47,17 @@ document.addEventListener('click',e=>{const el=e.target.closest('button[data-act
  if(action==='replay'){guideStep=0;guideOpen=true;renderGuide();return;}
  if(action==='skip'){finishGuide();return;}
  if(action==='guide-next'){if(guideStep===2)finishGuide();else{guideStep++;renderGuide();}return;}
- if(action==='hint'){feedback=t(game+'Hint');renderPlay();return;}
- if(action==='reset'){if(game==='fox')foxPlan=[];if(game==='river'){river=initialRiver();riverHistory=[];riverPassenger=null;}if(game==='hanoi'){pegs=initialHanoi(hanoiN);hanoiHistory=[];selectedPeg=null;}if(game==='queens'){queens=initialQueens(queensN);queensHistory=[];}feedback='';renderPlay();return;}
- if(action==='undo'){if(game==='fox')foxPlan.pop();if(game==='river'){river=riverHistory.pop()||river;riverPassenger=null;}if(game==='hanoi'){pegs=hanoiHistory.pop()||pegs;selectedPeg=null;}if(game==='queens')queens=queensHistory.pop()||queens;feedback='';renderPlay();return;}
- if(action==='fox-size'){foxHoles=Number(value);foxPlan=[];feedback='';}
- if(action==='fox-pick'&&foxPlan.length<FOX_DAYS[foxHoles]){foxPlan.push(Number(value));feedback='';}
- if(action==='fox-check'){if(foxPlan.length<FOX_DAYS[foxHoles])feedback=t('foxNeed',{days:FOX_DAYS[foxHoles]});else{const escape=foxEscape(foxHoles,foxPlan);feedback=escape?t('foxBad')+' '+escape.map((den,i)=>t('foxRoute',{day:i+1,den})).join(' · '):t('foxGood');if(!escape)mark();}}
+ if(action==='hint'){say(game+'Hint');renderPlay();return;}
+ if(action==='reset'){if(game==='fox')foxPlan=[];if(game==='river'){river=initialRiver();riverHistory=[];riverPassenger=null;}if(game==='hanoi'){pegs=initialHanoi(hanoiN);hanoiHistory=[];selectedPeg=null;}if(game==='queens'){queens=initialQueens(queensN);queensHistory=[];}feedback=null;renderPlay();return;}
+ if(action==='undo'){if(game==='fox')foxPlan.pop();if(game==='river'){river=riverHistory.pop()||river;riverPassenger=null;}if(game==='hanoi'){pegs=hanoiHistory.pop()||pegs;selectedPeg=null;}if(game==='queens')queens=queensHistory.pop()||queens;feedback=null;renderPlay();return;}
+ if(action==='fox-size'){foxHoles=Number(value);foxPlan=[];feedback=null;}
+ if(action==='fox-pick'&&foxPlan.length<FOX_DAYS[foxHoles]){foxPlan.push(Number(value));feedback=null;}
+ if(action==='fox-check'){if(foxPlan.length<FOX_DAYS[foxHoles])say('foxNeed',{days:FOX_DAYS[foxHoles]});else{const escape=foxEscape(foxHoles,foxPlan);if(escape)say('foxBad',{},escape);else say('foxGood');if(!escape)mark();}}
  if(action==='passenger')riverPassenger=value==='solo'?null:value;
- if(action==='river-cross'){const next=riverMove(river,riverPassenger);if(!next)feedback=t('riverBad');else{riverHistory.push(river);river=next;riverPassenger=null;feedback=riverWon(river)?t('riverGood'):'';if(riverWon(river))mark();}}
- if(action==='hanoi-size'){hanoiN=Number(value);pegs=initialHanoi(hanoiN);hanoiHistory=[];selectedPeg=null;feedback='';}
- if(action==='peg'){const target=Number(value);if(selectedPeg===null){if(pegs[target].length)selectedPeg=target;}else if(selectedPeg===target)selectedPeg=null;else{const next=hanoiMove(pegs,selectedPeg,target);if(next){hanoiHistory.push(pegs);pegs=next;feedback=hanoiWon(pegs,hanoiN)?t('hanoiGood',{n:hanoiHistory.length}):'';if(hanoiWon(pegs,hanoiN))mark();}else feedback=t('hanoiBad');selectedPeg=null;}}
- if(action==='queens-size'){queensN=Number(value);queens=initialQueens(queensN);queensHistory=[];feedback='';}
- if(action==='queen'){const r=Number(el.dataset.row),c=Number(el.dataset.col);queensHistory.push(queens);queens=[...queens];queens[r]=queens[r]===c?-1:c;const clashes=queenConflicts(queens);feedback=queensWon(queens)?t('queensGood'):clashes.size?t('queensConflict',{n:clashes.size}):'';if(queensWon(queens))mark();}
+ if(action==='river-cross'){const next=riverMove(river,riverPassenger);if(!next)say('riverBad');else{riverHistory.push(river);river=next;riverPassenger=null;feedback=null;if(riverWon(river)){say('riverGood');mark();}}}
+ if(action==='hanoi-size'){hanoiN=Number(value);pegs=initialHanoi(hanoiN);hanoiHistory=[];selectedPeg=null;feedback=null;}
+ if(action==='peg'){const target=Number(value);if(selectedPeg===null){if(pegs[target].length)selectedPeg=target;}else if(selectedPeg===target)selectedPeg=null;else{const next=hanoiMove(pegs,selectedPeg,target);if(next){hanoiHistory.push(pegs);pegs=next;feedback=null;if(hanoiWon(pegs,hanoiN)){say('hanoiGood',{n:hanoiHistory.length});mark();}}else say('hanoiBad');selectedPeg=null;}}
+ if(action==='queens-size'){queensN=Number(value);queens=initialQueens(queensN);queensHistory=[];feedback=null;}
+ if(action==='queen'){const r=Number(el.dataset.row),c=Number(el.dataset.col);queensHistory.push(queens);queens=[...queens];queens[r]=queens[r]===c?-1:c;const clashes=queenConflicts(queens);feedback=null;if(queensWon(queens)){say('queensGood');mark();}else if(clashes.size)say('queensConflict',{n:clashes.size});}
  renderPlay();});
 setLocale(locale);

@@ -3,6 +3,8 @@ export const COPY={
  en:{
   title:'Old Tricks, New Moves',subtitle:'Familiar puzzles. A fresh way to play.',intro:'Four classic ideas, rebuilt as little experiments. Try a move, watch what changes, and work out why it works.',
   language:'Language',games:'Choose a puzzle',fox:'Where did the fox go?',river:'One boat, three passengers',hanoi:'Stack by stack',queens:'Queens, keep your distance',
+  returnKicker:'A LITTLE DETOUR',returnTitle:'Still curious?',returnNote:'Try the number games next. You can come back to these classics whenever you like.',returnAction:'Play Just One More ↗',footerBrand:'QIDOLAB / OLD TRICKS',footerLine:'Four classics · Your next move',
+  sourceFoxLink:'Rustan Leino’s puzzle collection',sourceRiverLink:'MacTutor on Alcuin’s puzzle book',sourceHanoiLink:'MacTutor history of Édouard Lucas',sourceQueensLink:'V. Chvátal’s eight queens history',
   foxShort:'Plan for every possible path',riverShort:'Get everyone across safely',hanoiShort:'Move the whole stack',queensShort:'No two may meet',
   originFox:'Fox search',noteFox:' (credits Claude Marché for a related form).',noteRiver:' (a historical account of the river puzzle).',noteHanoi:' (Lucas, 1883).',noteQueens:' (first posed by Bezzel in 1848).',originRiver:'River crossing',originHanoi:'Tower of Hanoi',originQueens:'Queens',
   sourceNote:'We adapted only the puzzle mechanics. The teaching text, visuals and code on this page were made for Qidolab; these links document earlier forms of the ideas.',
@@ -16,6 +18,8 @@ export const COPY={
  'zh-CN':{
   title:'经典换个玩',subtitle:'老谜题，试试新招。',intro:'四种经典思路，重新做成能动手的小实验。先试一步，看看变化，再想想为什么。',
   language:'语言',games:'选一道谜题',fox:'狐狸今晚去哪儿？',river:'一条船，三个乘客',hanoi:'一层一层搬',queens:'皇后别碰面',
+  returnKicker:'再走一站',returnTitle:'还想继续动动脑？',returnNote:'去数字不打烊试试八种数字游戏。经典谜题随时可以回来玩。',returnAction:'去数字不打烊 ↗',footerBrand:'QIDOLAB / 经典换个玩',footerLine:'四道经典题 · 下一步由你选',
+  sourceFoxLink:'Rustan Leino 的谜题集',sourceRiverLink:'MacTutor 的阿尔昆谜题资料',sourceHanoiLink:'MacTutor 的 Édouard Lucas 生平',sourceQueensLink:'V. Chvátal 的八皇后史料',
   foxShort:'计划要挡住每一条路',riverShort:'安全送到对岸',hanoiShort:'把整座塔搬过去',queensShort:'谁也别互相攻击',
   originFox:'搜狐狸',noteFox:'（其中记录了 Claude Marché 转述的相关版本）。',noteRiver:'（介绍阿尔昆文集中的过河谜题）。',noteHanoi:'（记载 Lucas 于 1883 年设计的游戏）。',noteQueens:'（记载 Bezzel 于 1848 年提出的问题）。',originRiver:'过河',originHanoi:'河内塔',originQueens:'皇后摆放',
   sourceNote:'这里只借鉴谜题机制；本页的教学文字、画面与代码均为 Qidolab 重新制作。以下链接记录这些谜题较早的形式。',
@@ -29,6 +33,8 @@ export const COPY={
  'zh-TW':{
   title:'經典換個玩',subtitle:'老謎題，試試新招。',intro:'四種經典思路，重新做成能動手的小實驗。先試一步，看看變化，再想想為什麼。',
   language:'語言',games:'選一道謎題',fox:'狐狸今晚去哪裡？',river:'一條船，三位乘客',hanoi:'一層一層搬',queens:'皇后別碰面',
+  returnKicker:'再走一站',returnTitle:'還想繼續動動腦？',returnNote:'到數字不打烊試試八種數字遊戲。經典謎題隨時可以回來玩。',returnAction:'去數字不打烊 ↗',footerBrand:'QIDOLAB / 經典換個玩',footerLine:'四道經典題 · 下一步由你選',
+  sourceFoxLink:'Rustan Leino 的謎題集',sourceRiverLink:'MacTutor 的阿爾昆謎題資料',sourceHanoiLink:'MacTutor 的 Édouard Lucas 生平',sourceQueensLink:'V. Chvátal 的八皇后史料',
   foxShort:'計畫要擋住每一條路',riverShort:'安全送到對岸',hanoiShort:'把整座塔搬過去',queensShort:'誰也別互相攻擊',
   originFox:'搜狐狸',noteFox:'（其中記錄了 Claude Marché 轉述的相關版本）。',noteRiver:'（介紹阿爾昆文集中的過河謎題）。',noteHanoi:'（記載 Lucas 於 1883 年設計的遊戲）。',noteQueens:'（記載 Bezzel 於 1848 年提出的問題）。',originRiver:'過河',originHanoi:'河內塔',originQueens:'皇后擺放',
   sourceNote:'這裡只借鑑謎題機制；本頁的教學文字、畫面與程式碼均由 Qidolab 重新製作。以下連結記錄這些謎題較早的形式。',
@@ -42,6 +48,8 @@ export const COPY={
  'es-MX':{
   title:'Clásicos con giro',subtitle:'Acertijos conocidos. Otra manera de jugarlos.',intro:'Cuatro ideas clásicas convertidas en pequeños experimentos. Haz un movimiento, observa el cambio y descubre por qué funciona.',
   language:'Idioma',games:'Elige un acertijo',fox:'¿Dónde estará el zorro?',river:'Una barca, tres pasajeros',hanoi:'Disco por disco',queens:'Reinas sin choques',
+  returnKicker:'OTRA PARADA',returnTitle:'¿Seguimos jugando?',returnNote:'Prueba los ocho juegos de números. Puedes volver a estos clásicos cuando quieras.',returnAction:'Jugar ¡Una más! ↗',footerBrand:'QIDOLAB / CLÁSICOS',footerLine:'Cuatro clásicos · Tú eliges la siguiente jugada',
+  sourceFoxLink:'La colección de Rustan Leino',sourceRiverLink:'MacTutor sobre el libro de Alcuino',sourceHanoiLink:'MacTutor sobre Édouard Lucas',sourceQueensLink:'Historia de las ocho reinas por V. Chvátal',
   foxShort:'Un plan para todas las rutas',riverShort:'Cruza sin dejar riesgos',hanoiShort:'Mueve la torre completa',queensShort:'Que ninguna se ataque',
   originFox:'Buscar al zorro',noteFox:' (cita a Claude Marché por una versión relacionada).',noteRiver:' (explica el acertijo del libro de Alcuino).',noteHanoi:' (Lucas, 1883).',noteQueens:' (propuesto por Bezzel en 1848).',originRiver:'Cruzar el río',originHanoi:'Torres de Hanói',originQueens:'Reinas',
   sourceNote:'Adaptamos solo las mecánicas. Los textos, dibujos y el código de esta página fueron creados para Qidolab. Estos enlaces documentan versiones anteriores de las ideas.',
